@@ -24,6 +24,9 @@
                 connectionURL="jdbc:mysql:///takeout?serverTimezone=UTC"
                 userId="root"
                 password="root">
+<!--            mysql8.0以上的版本不支持catalogs/schema在生成user实体类的时候会将information schemas(数据库自带表中的user类)一并创建-->
+<!--            加上此句是生成指定数据库中的User表-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
 
