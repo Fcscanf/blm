@@ -31,6 +31,13 @@
 
     <dependencies>
 
+        <!-- https://mvnrepository.com/artifact/org.apiguardian/apiguardian-api -->
+        <dependency>
+            <groupId>org.apiguardian</groupId>
+            <artifactId>apiguardian-api</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
         <!--springmvc-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -146,6 +153,13 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.6</version>
         </dependency>
+
+
+       <!-- <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+        </dependency>-->
 
         <!--JSR303数据校验-->
         <dependency>

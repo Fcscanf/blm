@@ -152,4 +152,72 @@
       isvalid = #{isvalid,jdbcType=INTEGER}
     where storeid = #{storeid,jdbcType=VARCHAR}
   </update>
+
+
+
+
+
+
+
+  <!--模糊查询-->
+  <select id="find" parameterType="Map" resultType="com.blm.bean.StoreDetail">
+   /* select s.storeid,s.userid,s.tel,s.email,s.storename,s.storeaddress,s.certurl,s.shopfronturl,s.area,s.isvalid
+    from storedetail s,*/
+    select * from storedetail
+    <where>
+      <if test="storename!=null and storename!='' ">
+        and storename like #{storename}
+      </if>
+    </where>
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
+
+  <select id="getTotal" parameterType="Map" resultType="Long">
+    select count(*) from storedetail
+    <where>
+      <if test="storename!=null and storename!='' ">
+        and storename like #{storename}
+      </if>
+    </where>
+  </select>
+
+
+
+
+
+  <update id="update" parameterType="com.blm.bean.StoreDetail">
+    update storedetail
+    <set>
+      <if test="tel!=null and tel!='' ">
+        tel=#{tel},
+      </if>
+      <if test="email!=null and email!='' ">
+        email=#{email},
+      </if>
+      <if test="storename!=null and storename!='' ">
+        storename=#{storename},
+      </if>
+      <if test="storeaddress!=null and storeaddress!='' ">
+        storeaddress=#{storeaddress},
+      </if>
+
+
+      <if test="certrul!=null and certrul!='' ">
+        certrul=#{certrul},
+      </if>
+      <if test="shopfronturl!=null and shopfronturl!='' ">
+        shopfronturl=#{shopfronturl},
+      </if>
+      <if test="area!=null and area!='' ">
+        area=#{area},
+      </if>
+
+    </set>
+    where storeid=#{storeid}
+  </update>
+
+
 </mapper>
