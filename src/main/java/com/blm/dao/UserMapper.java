@@ -2,6 +2,8 @@ package com.blm.dao;
 
 import com.blm.bean.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(String userid);
 
@@ -14,4 +16,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    public List<User> selectAllUser();
+
+    public User selectUserByPhone(String phone);
 }

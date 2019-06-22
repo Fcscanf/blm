@@ -56,4 +56,54 @@
 <!--    </mvc:interceptors>-->
 
 <!--    <bean class="fun.krisme.controller.handler.MyExceptionHandler" id="exceptionHandler"></bean>-->
+
+    <!--    spring security-->
+    <!--    注册BCryptPasswordEncoder-->
+    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="bCryptPasswordEncoder"/>
+    <!--    注册redis-->
+    <bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" id="redisconnectionFactory">
+        <property name="hostName" value="47.98.117.19"/>
+    </bean>
+    <bean class="org.springframework.data.redis.core.RedisTemplate" id="redisTemplate">
+        <property name="connectionFactory" ref="redisconnectionFactory"/>
+    </bean>
+
+
+    <!--    rabbitmq待测试-->
+    <!--    <rabbit:connection-factory id="connectionFactory"-->
+    <!--                               username="guest" password="guest" host="47.98.117.19" port="5672" virtual-host="/vhost1" />-->
+    <!--    &lt;!&ndash;定义queue queueTest &ndash;&gt;-->
+    <!--    <rabbit:queue name="queueTest" durable="true" auto-delete="false" exclusive="false"  />-->
+    <!--    <rabbit:direct-exchange name="exchangeTest" durable="true" auto-delete="false">-->
+    <!--        <rabbit:bindings>-->
+    <!--            <rabbit:binding queue="queueTest" key="queueTestKey"></rabbit:binding>-->
+    <!--        </rabbit:bindings>-->
+    <!--    </rabbit:direct-exchange>-->
+    <!--    <rabbit:template id="amqpTemplate"  connection-factory="connectionFactory" exchange="exchangeTest" />-->
+
+    <!--    注册短信模板相关信息-->
+    <bean class="com.blm.service.Impl.UserServiceImpl" id="userService">
+        <property name="template_code" value="SMS_157276347"/>
+        <property name="sign_name" value="Fcsanf官方通知"/>
+    </bean>
+    <bean class="com.blm.util.SmsUtil" id="smsUtil">
+        <property name="accessKeyId" value="LTAIUA4lNtnHNf1w"/>
+        <property name="accessKeySecret" value="e62x8Hv1tzzpgjuORLyKrDI5M5AlBA"/>
+    </bean>
+    <!--    短信模板 改进意见：将所有的短信属性全部都放进属性文件-->
+
+    <!--    jwtutil中的信息,这里的key不能太短，起码五个字符-->
+    <bean class="com.blm.util.JwtUtil" id="jwtUtil">
+        <property name="key" value="blmblm"></property>
+        <property name="ttl" value="3600000"></property>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/"/>
+<!--            <mvc:mapping path="/user/**"/>-->
+            <bean class="com.blm.interceptor.JwtInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

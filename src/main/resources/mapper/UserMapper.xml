@@ -116,4 +116,12 @@
       isvalid = #{isvalid,jdbcType=INTEGER}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectAllUser"  resultType="com.blm.bean.User">
+    select * from user
+  </select>
+
+  <select id="selectUserByPhone" resultType="com.blm.bean.User" parameterType="String">
+    select phone,password from user where phone=#{phone}
+  </select>
 </mapper>
