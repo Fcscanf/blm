@@ -8,8 +8,9 @@ import com.blm.bean.StoreDetail;
 import com.blm.dao.PageBean;
 import com.blm.service.StoreDetailService;
 import com.blm.util.ResponseUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,8 +50,9 @@ public class StoreDetailController {
         List<StoreDetail> storeList=storeDetailService.find(map);
         Long total=storeDetailService.getTotal(map);
 
+
         JSONObject result=new JSONObject();
-        JSONArray jsonArray=JSONArray.fromObject(storeList);
+        JSONArray jsonArray= new JSONArray(storeList);
 
         result.put("rows", jsonArray);
         result.put("total", total);
