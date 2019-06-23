@@ -21,7 +21,6 @@ public class StoreDetailServiceImpl implements StoreDetailService {
 
 
     public List<StoreDetail> find(Map<String, Object> map){
-
         return storeDetailMapper.find(map);
     }
 
@@ -32,5 +31,10 @@ public class StoreDetailServiceImpl implements StoreDetailService {
 
     public int update(StoreDetail storeDetail){
     return storeDetailMapper.update(storeDetail);
+    }
+
+    //查询商家所有信息
+    public List<StoreDetail> findAll() {
+        return storeDetailMapper.findAll();
     }
 }

@@ -18,5 +18,8 @@ public interface StoreDetailService {
 
 
     public int update(StoreDetail storeDetail);//更新店面信息
+
+    //查询商家所有信息
+    public List<StoreDetail> findAll();
 }
 
