@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+ul{
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #ededed;
+}
+.blm-header{
+    width: 100%;
+    height: 60px;
+    background-color: #EDE387;
+}
+.blm-header .hd-container{
+    width: 1200px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blm-header .hd-container .hd-logo{
+    float: left;
+}
+.blm-header .hd-container .hd-logo .title{
+    display: inline-block;
+    font-family: 'STHupo';
+    color: #3B200C;
+    height: 100%;
+    line-height: 60px;
+}
+.hd-container .hd-logo > span{
+    font-size: 50px;
+}
+.hd-container .hd-listBox{
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+.hd-container .hd-listBox a{
+    color: #3B200C;
+    font-size: 20px;
+    text-decoration: none;
+}
+.hd-container .hd-listBox a:hover{
+    font-weight: bold;
+}
+.hd-container .hd-listBox span{
+    padding: 5px;
+}
+.blm-container .blm-listNav{
+    margin: 10px 0px;
+    width: 100%;
+    height: 50px;
+}
+.blm-container .blm-listNav .nav-container{
+    max-width: 1200px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blm-listNav .nav-container a{
+    width: 250px;
+    height: 100%;
+    display: block;
+    float: left;
+    line-height: 50px;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'YouYuan';
+    font-weight: bold;
+}
+.blm-listNav .nav-container a:nth-child(2n+1){
+    background-color: #DE8100;
+    color: #ededed;
+    
+}
+.blm-listNav .nav-container a:nth-child(2n+2){
+    background-color: #EDE387;
+    color: #3B200C;
+}
+.blm-container .blm-banner{
+    width: 100%;
+    height: 400px;
+}
+.blm-banner .ban-container{
+    position: relative;
+    width: 1200px;
+    max-width: 1200px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../img/bgbg.jpg);
+    background-repeat: no-repeat;
+    background-size: 1200px 400px;
+    overflow: hidden;
+}
+.blm-banner .ban-container .list-container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: showBanner 15s infinite;
+    width: 900%;
+    height: 100%;
+}
+.ban-container .list-container .list-item{
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    float: left;
+}
+.ban-container .list-container .list-item a img{
+    height: 250px;
+    transform: 0.3s;
+}
+.ban-container .list-container .list-item a img:hover{
+    height: 300px;
+}
+.ban-container .list-container .list-item > a{
+    margin: auto;
+}
+.blm-banner .ban-container .preBtn{
+    left: 0;
+}
+.blm-banner .ban-container .nextBtn{
+    right: 0;
+}
+.blm-banner .ban-container .ctrBox{
+    display: block;
+    height: 60px;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    font-weight: bold;
+    color: #ededed;
+    text-align: center;
+    line-height: 60px;
+    top: calc(50% - 30px);
+    cursor: pointer;
+}
+.blm-banner .ban-container .ctrBox:hover{
+    font-size: 18px;
+}
+.blm-shopNav{
+    margin-top: 20px;
+    width: 100%;
+}
+.shopContainer{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.shopContainer .shop-title h1{
+    color: #3B200C;
+    font-family: 'YouYuan';
+}
+.shopContainer .shop-list{
+    width: 1200px;
+    margin-top: 15px;
+}
+.shopContainer .shop-list .shop-item{
+    float: left;
+    width: 590px;
+    height: 200px;
+    margin-top: 10px;
+    box-shadow: 3px 3px 3px #ccc;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.shopContainer .shop-list .shop-item:hover{
+    box-shadow: 4px 4px 5px #666;
+}
+.shopContainer .shop-list .shop-item:nth-child(2n+1){
+    background-color: #ccfc62;
+}
+.shopContainer .shop-list .shop-item:nth-child(2n+2){
+    background-color: #ede387;
+    margin-left: 20px;
+}
+.shopContainer .shop-setBox{
+    height: 1100px;
+    width: 1200px;
+}
+.blm-bottom{
+    width: 100%;
+    height: 80px;
+    background-color: #DE8100;
+}
+.bot-container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    line-height: 80px;
+    color: #ededed;
+    overflow: hidden;
+}
+.bot-container .web-info .group-info{
+    font-size:18px;
+    font-family: 'YouYuan';
+    font-weight: bold;
+}
+.bot-container .web-info .author{
+    padding-left: 20px;
+    color: #333;
+    font-family: 'YouYuan';
+    font-size: 12px;
+}
+.bot-container .web-info{
+    width: 300px;
+    float: left;
+}
+.bot-container .toTop{
+    margin-left: 200px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #ede387;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.bot-container .toTop span{
+    color: #3B200C;
+    font-weight: bold;
+    font-family: 'YouYuan';
+}
+@keyframes showBanner {
+    0%,18%{left:0px;}
+    20%,38%{left: calc(-1*1200px);}
+    40%,58%{left: calc(-2*1200px);}
+    60%,78%{left:calc(-3*1200px);}
+    80%,98%{left:calc(-4*1200px);}
+    100%{left: calc(-5*1200px);}
+}
