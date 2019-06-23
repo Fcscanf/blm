@@ -96,7 +96,7 @@ public class UserController {
         }
         user = userService.selectUserByPhone(user.getPhone());
         String token = jwtUtil.createJWT(user.getUserid(),user.getPhone(),"user");
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("token",token);
         map.put("roles","user");
         return new Result(true,StatusCode.OK,"登陆成功",map);
@@ -125,6 +125,8 @@ public class UserController {
         return "storeManage";
     }
 
+    @RequestMapping("/toregister")
+    public String toRegister(){return "register";}
 
 
 
