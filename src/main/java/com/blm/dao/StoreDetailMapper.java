@@ -14,6 +14,10 @@ public interface StoreDetailMapper {
     int updateByPrimaryKey(StoreDetail record);
 
 
+   //查询商家所有信息
+    List<StoreDetail> findAll();
+
+
 
     public List<StoreDetail> find(Map<String, Object> map);//查询所有店面
     public Long getTotal(Map<String, Object> map);//查询总记录数
