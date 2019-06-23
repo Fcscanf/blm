@@ -124,4 +124,8 @@
   <select id="selectUserByPhone" resultType="com.blm.bean.User" parameterType="String">
     select phone,password from user where phone=#{phone}
   </select>
+
+  <select id="selectUserByUserName" resultType="com.blm.bean.User" parameterType="String">
+    select * from user where username=#{username};
+  </select>
 </mapper>

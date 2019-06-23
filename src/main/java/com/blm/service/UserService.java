@@ -15,4 +15,6 @@ public interface UserService {
     public void sendMsg(String phone);
 
     public User selectUserByPhone(String phone);
+
+    public User checkUserName(String username);
 }

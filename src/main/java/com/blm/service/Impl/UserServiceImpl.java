@@ -120,4 +120,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserByPhone(phone);
     }
 
+    @Override
+    public User checkUserName(String username) {
+        User user = userMapper.selectUserByUserName(username);
+        return user;
+    }
+
 }

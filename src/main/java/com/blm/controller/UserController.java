@@ -31,8 +31,10 @@ public class UserController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+
     /**
-     *
+     *  用户注册，用户名、手机号码校验后的插入数据
      * @param user
      * @return
      */
@@ -44,7 +46,7 @@ public class UserController {
     }
 
     /**
-     *
+     *  显示所有用户信息
      * @return
      */
     @ResponseBody
@@ -59,10 +61,6 @@ public class UserController {
     }
 
     /**
-     * url为loginp
-     * 参数为
-     * phone String
-     * password String
      * 手机号+密码登录
      * @return
      */
@@ -80,7 +78,6 @@ public class UserController {
 
     /**
      * 手机号+验证码登录
-     * 第二次只要传一个code即可，就登陆之前的手机号在参数中传过来
      * @param code
      * @param user
      * @return
@@ -104,29 +101,58 @@ public class UserController {
     }
 
     /**
-     * 发送验证码
+     * 注册和登录的验证码发送都应用此方法——辨别码
+     * 发送验证码/sendsms/{phone}/1就是登录直接发送验证码
+     * 发送验证码/sendsms/{phone}/0就是注册——先检验手机号是否已经存在，若已经存在返回false，正确返回true并发送验证码
+     *
      * @param phone
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/sendsms/{phone}",method = RequestMethod.POST)
-    public Result sendMsg(@PathVariable String phone){
+    @RequestMapping(value = "/sendsms/{phone}/{code}",method = RequestMethod.POST)
+    public Result sendMsg(@PathVariable String phone,@PathVariable String code){
+        if ("1".equals(code)){
+            userService.sendMsg(phone);
+            return new Result(true,StatusCode.OK,"发送成功");
+        }
+        if ("0".equals(code)){
+            User user = userService.selectUserByPhone(phone);
+            if (user != null){
+                return new Result(false,StatusCode.ERROR,"手机号已经注册！");
+            }
+        }
         userService.sendMsg(phone);
         return new Result(true,StatusCode.OK,"发送成功");
     }
 
+
+//    检测用户名是否存在
+    @ResponseBody
+    @RequestMapping(value = "/check",method = RequestMethod.POST)
+    public Result checkUser(@RequestBody User user){
+        user = userService.checkUserName(user.getUsername());
+        if (user != null){
+            return new Result(false,StatusCode.ERROR,"用户名已存在！");
+        }
+        return new Result(true,StatusCode.OK,"用户名符合要求");
+    }
+
+//    跳转登录界面
     @RequestMapping("/getuserlogin")
     public String getuserlogin(){
         return "userlogin";
     }
 
+//    跳转storeManage界面
     @RequestMapping("/getstoreManage")
     public String getStoreManage(){
         return "storeManage";
     }
 
+//    跳转注册界面
     @RequestMapping("/toregister")
     public String toRegister(){return "register";}
+
 
 
 

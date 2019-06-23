@@ -17,7 +17,23 @@ $(function () {
     }
     //发送验证码
     $(".validateLogin_send").click(function () {
+        // var username=$(".username").val();
+        // console.info("手机号码："+username)
         settime($(this));
+        // $.ajax({
+        //     type:"post",
+        //     url:"#",
+        //     dataType:"json",
+        //     success:function (result) {
+        //         console.info(result.code)
+        //         if (result.code==20000){
+        //             console.info(result)
+        //         }
+        //     },
+        //     error:function () {
+        //
+        //     }
+        // })
     })
     //验证用户号码
     $(".username").blur(function () {
@@ -102,18 +118,15 @@ $(function () {
     function loginp2() {
         var username=$(".username").val();
         var validate=$(".validate").val();
-        var user = {
-            'username':username,
-            'validate':validate
-        }
         $.ajax({
-            contentType : "application/json",
             type:"post",
             url:"#",
             dataType:"json",
-            data:{
-                'user' :user
-            },
+            headers: {'Content-Type':'application/json'},
+            data:JSON.stringify({
+                "phone":username,
+                "password":validate
+            }),
             success:function (result) {
 
             },

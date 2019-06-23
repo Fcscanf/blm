@@ -41,4 +41,6 @@ public interface UserMapper {
     public List<User> selectAllUser();
 
     public User selectUserByPhone(String phone);
+
+    public User selectUserByUserName(String phone);
 }
