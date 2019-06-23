@@ -70,18 +70,25 @@ $(function () {
         loginpassword();
     })
     function loginpassword() {
-        var username=$(".username").val();
-        var password=$(".password").val();
+        console.info(1)
+        var username=$(".username").val().trim();
+        var password=$(".password").val().trim();
+        console.info(username)
+        console.info(password)
         $.ajax({
             type:"post",
-            url:"#",
+            url:"http://localhost:8080/blm_war_exploded/user/loginp",
             dataType:"json",
-            data:{
-                'username':username,
-                'password':password
-            },
+            headers: {'Content-Type':'application/json'},
+            data:JSON.stringify({
+                "phone":username,
+                "password":password
+            }),
             success:function (result) {
-
+                console.info(result.code)
+                if (result.code==20000){
+                    window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
+                }
             },
             error:function () {
 
@@ -100,6 +107,7 @@ $(function () {
             'validate':validate
         }
         $.ajax({
+            contentType : "application/json",
             type:"post",
             url:"#",
             dataType:"json",
