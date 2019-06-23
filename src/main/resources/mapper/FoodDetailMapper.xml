@@ -8,11 +8,12 @@
       <arg column="othername" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="price" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="picpath" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    foodid, foodname, othername, price, description, isvalid
+    foodid, foodname, othername, price, description, picpath, isvalid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -26,11 +27,11 @@
   </delete>
   <insert id="insert" parameterType="com.blm.bean.FoodDetail">
     insert into fooddetail (foodid, foodname, othername, 
-      price, description, isvalid
-      )
+      price, description, picpath, 
+      isvalid)
     values (#{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR}, 
-      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{isvalid,jdbcType=INTEGER}
-      )
+      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{picpath,jdbcType=VARCHAR}, 
+      #{isvalid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.FoodDetail">
     insert into fooddetail
@@ -49,6 +50,9 @@
       </if>
       <if test="description != null">
         description,
+      </if>
+      <if test="picpath != null">
+        picpath,
       </if>
       <if test="isvalid != null">
         isvalid,
@@ -70,6 +74,9 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
+      <if test="picpath != null">
+        #{picpath,jdbcType=VARCHAR},
+      </if>
       <if test="isvalid != null">
         #{isvalid,jdbcType=INTEGER},
       </if>
@@ -90,6 +97,9 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
+      <if test="picpath != null">
+        picpath = #{picpath,jdbcType=VARCHAR},
+      </if>
       <if test="isvalid != null">
         isvalid = #{isvalid,jdbcType=INTEGER},
       </if>
@@ -102,6 +112,7 @@
       othername = #{othername,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       description = #{description,jdbcType=VARCHAR},
+      picpath = #{picpath,jdbcType=VARCHAR},
       isvalid = #{isvalid,jdbcType=INTEGER}
     where foodid = #{foodid,jdbcType=VARCHAR}
   </update>
