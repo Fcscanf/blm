@@ -37,6 +37,9 @@
 <div region="north" style="height: 78px;background-color: #E0ECFF">
     <table style="padding: 5px" width="100%">
         <tr>
+            <td width="50%">
+                <img alt="logo" src="${pageContext.request.contextPath}/images/bglogo.png">
+            </td>
             <td valign="bottom" align="right" width="50%">
                 <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.username }</font><br>
                 <font size="3">&nbsp;&nbsp;<strong>电话：</strong>${resultStoreDetail.tel}</font>

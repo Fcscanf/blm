@@ -92,10 +92,6 @@
     <table style="margin: auto; width: 100%; height: 100%" border=0
            cellSpacing=0 cellpadding=0>
         <tbody>
-        <tr>
-            <td height=150>
-            </td>
-        </tr>
         <tr style="height: 254px">
             <td>
                 <div style="background-color: #278296">
