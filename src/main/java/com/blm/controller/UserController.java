@@ -2,6 +2,7 @@ package com.blm.controller;
 
 import com.blm.bean.Result;
 import com.blm.bean.StatusCode;
+import com.blm.bean.StoreRegistTemp;
 import com.blm.bean.User;
 import com.blm.service.UserService;
 import com.blm.util.JwtUtil;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -125,8 +127,11 @@ public class UserController {
         return new Result(true,StatusCode.OK,"发送成功");
     }
 
-
-//    检测用户名是否存在
+    /**
+     * 检测用户名是否存在
+     * @param user
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/check",method = RequestMethod.POST)
     public Result checkUser(@RequestBody User user){
@@ -135,6 +140,32 @@ public class UserController {
             return new Result(false,StatusCode.ERROR,"用户名已存在！");
         }
         return new Result(true,StatusCode.OK,"用户名符合要求");
+    }
+
+    /**
+     * 用户直接注册为商家
+     * 先将用户注册为用户但是角色字段设置为商家
+     * 然后在向商家表中添加信息
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/store",method = RequestMethod.POST)
+    public Result InsertStore(@RequestBody StoreRegistTemp storeRegistTemp){
+        userService.insertStore(storeRegistTemp);
+        return new Result(true, StatusCode.OK,"注册成功");
+    }
+
+    /**
+     * 图片上传并返回oss中图片的唯一表示key
+     * @param multipartFile
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/certurl",method = RequestMethod.POST)
+    public Result InsertCertUrl(@RequestParam("pic") MultipartFile multipartFile){
+        //将图片放进缓存
+        String key = userService.uploadImage(multipartFile);
+        return new Result(true,StatusCode.OK,"图片上传成功！",key);
     }
 
 //    跳转登录界面
@@ -152,6 +183,7 @@ public class UserController {
 //    跳转注册界面
     @RequestMapping("/toregister")
     public String toRegister(){return "register";}
+
 
 
 

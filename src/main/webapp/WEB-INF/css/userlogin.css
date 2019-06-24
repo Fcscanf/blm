@@ -38,7 +38,8 @@ img{display: block;}
 .titleleft{border-right: 1px solid #ccc;color: #b40707;font-size: 20px;width: 180px;height: 20px;display: inline-block;}
 .table1{width: 328px;height: 244px;margin: auto;}
 .table2{width: 328px;height: 244px;margin: auto;position: absolute;top: 84px;left: 26px;z-index: -1}
-.username{border: 0px;color: black; height: 46px;border-radius: 0px;width: 328px;border-bottom: 1px solid #ccc;}
+#username1{border: 0px;color: black; height: 46px;border-radius: 0px;width: 328px;border-bottom: 1px solid #ccc;}
+#username2{border: 0px;color: black; height: 46px;border-radius: 0px;width: 328px;border-bottom: 1px solid #ccc;}
 .password{border: 0px;color: black; height: 46px;border-radius: 0px;width: 328px;border-bottom: 1px solid #ccc;}
 .validate{border: 0px;color: black; height: 46px;border-radius: 0px;width: 328px;border-bottom: 1px solid #ccc;}
 .message_warp{width: 328px;height: 46px;/*padding:16px 0;*/position: relative}
