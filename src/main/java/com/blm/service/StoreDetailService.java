@@ -21,5 +21,9 @@ public interface StoreDetailService {
 
     //查询商家所有信息
     public List<StoreDetail> findAll(String storeid);
+
+//    周宇未完成方法
+    List<StoreDetail> find(Map<String, Object> map);
+
 }
 

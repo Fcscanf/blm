@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blm.dao.StoreDetailMapper">
-<<<<<<< HEAD
-  <resultMap id="BaseResultMap" type="com.blm.bean.StoreDetail">
+
+ <!-- <resultMap id="BaseResultMap" type="com.blm.bean.StoreDetail">
     <constructor>
       <idArg column="storeid" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="userid" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
       <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
-
+-->
 
   <select id="findAllById"  parameterType="String" resultMap="ResultMap">
     select c.foodid,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
@@ -57,9 +57,8 @@
   </select>
 
 
-  <sql id="Base_Column_List">
-    storeid, userid, tel, email, storename, storeaddress, certurl, shopfronturl, area, 
-=======
+
+
     <resultMap id="BaseResultMap" type="com.blm.bean.StoreDetail">
         <constructor>
             <idArg column="storeid" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -75,9 +74,7 @@
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-    storeid, userid, tel, email, storename, storeaddress, certurl, shopfronturl, area,
->>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
-    isvalid
+    storeid, userid, tel, email, storename, storeaddress, certurl, shopfronturl, area,isvalid
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
