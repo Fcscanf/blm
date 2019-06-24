@@ -1,5 +1,7 @@
 package com.blm.bean;
 
+import java.util.List;
+
 public class CheckFood {
     private String foodid;
 
@@ -9,11 +11,33 @@ public class CheckFood {
 
     private String storeid;
 
-    public CheckFood(String foodid, String foodtype, String keywords, String storeid) {
+    private List<FoodDetail> foodDetail;
+
+    private List<StoreDetail>  storeDetail;
+
+    public CheckFood(String foodid, String foodtype, String keywords, String storeid, List<FoodDetail> foodDetail, List<StoreDetail> storeDetail) {
         this.foodid = foodid;
         this.foodtype = foodtype;
         this.keywords = keywords;
         this.storeid = storeid;
+        this.foodDetail = foodDetail;
+        this.storeDetail = storeDetail;
+    }
+
+    public List<FoodDetail> getFoodDetail() {
+        return foodDetail;
+    }
+
+    public void setFoodDetail(List<FoodDetail> foodDetail) {
+        this.foodDetail = foodDetail;
+    }
+
+    public List<StoreDetail> getStoreDetail() {
+        return storeDetail;
+    }
+
+    public void setStoreDetail(List<StoreDetail> storeDetail) {
+        this.storeDetail = storeDetail;
     }
 
     public CheckFood() {

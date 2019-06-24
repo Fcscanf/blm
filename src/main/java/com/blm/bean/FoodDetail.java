@@ -13,13 +13,26 @@ public class FoodDetail {
 
     private Integer isvalid;
 
-    public FoodDetail(String foodid, String foodname, String othername, Float price, String description, Integer isvalid) {
+    private String picpath;
+
+
+
+    public FoodDetail(String foodid, String foodname, String othername, Float price, String description, Integer isvalid, String picpath) {
         this.foodid = foodid;
         this.foodname = foodname;
         this.othername = othername;
         this.price = price;
         this.description = description;
         this.isvalid = isvalid;
+        this.picpath = picpath;
+    }
+
+    public String getPicpath() {
+        return picpath;
+    }
+
+    public void setPicpath(String picpath) {
+        this.picpath = picpath;
     }
 
     public FoodDetail() {

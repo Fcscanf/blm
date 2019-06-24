@@ -15,7 +15,7 @@ public interface StoreDetailMapper {
 
 
    //查询商家所有信息
-    List<StoreDetail> findAll();
+    List<StoreDetail> findAllById(String userid);
 
 
 

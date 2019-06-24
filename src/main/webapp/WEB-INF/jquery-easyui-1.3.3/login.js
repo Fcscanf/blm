@@ -70,28 +70,21 @@ $(function () {
         loginpassword();
     })
     function loginpassword() {
-        console.info(1)
-        var username=$("#username1").val().trim();
-        var password=$(".password").val().trim();
-        console.info(username)
-        console.info(password)
+        var username=$(".username").val();
+        var password=$(".password").val();
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/blm_war_exploded/user/loginp",
+            url:"#",
             dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                "phone":username,
-                "password":password
-            }),
+            data:{
+                'username':username,
+                'password':password
+            },
             success:function (result) {
-                console.info(result.code)
-                if (result.code==20000){
-                    window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
-                }
+
             },
             error:function () {
-
+                alert("失败")
             }
         })
     }
@@ -100,52 +93,25 @@ $(function () {
         login2();
     })
     function loginp2() {
-        var username=$("#username2").val().trim();;
+        var username=$(".username").val();
         var validate=$(".validate").val();
-        var user = {
-            'username':username,
-            '                                                                                                                                                                                                                                                        ':validate
-        }
         $.ajax({
-            type:"POST",
-            url:"http://localhost:8080/blm_war_exploded/user/**",
+            type:"post",
+            url:"#",
             dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                'phone':phone,
-                'isvalid':isvalid
-            }),
-            success:function (result) {
-                alert("success")
+            data:{
+                'username':username,
+                'validate':validate
             },
-            error:function (result) {
-                alert("error")
-            }
-        })
-    }
-    //点击发送验证码
-    $(".sendms").click(function () {
-        vilidation();
-    })
+            success:function (result) {
 
-    function vilidation() {
-      var phone=$("#username2").val().trim();
-      var isvalid="1";
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8080/blm_war_exploded/user/**",
-            dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                'phone':phone,
-                'isvalid':isvalid
-            }),
-            success:function (result) {
-              alert("success")
             },
-            error:function (result) {
-                alert("error")
+            error:function () {
             }
         })
     }
+
+
+
+
 })

@@ -15,7 +15,42 @@
       <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
-  //查询商家所有信息
+
+
+  <select id="findAllById"  parameterType="String" resultMap="ResultMap">
+    select c.foodid,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
+    s.storename,s.storeaddress,s.tel,s.email,s.certurl,s.area
+    from checkfood c,fooddetail f,storedetail s
+    where c.foodid=f.foodid and c.storeid=s.storeid and s.storeid=#{storeid}
+  </select>
+
+  <resultMap type="com.blm.bean.StoreDetail" id="ResultMap" >
+    <id property="storeid" column="storeid" />
+    <result property="storename" column="storename" />
+    <result property="storeaddress" column="storeaddress" />
+    <result property="tel" column="tel" />
+    <result property="email" column="email" />
+    <result property="certurl" column="certurl" />
+    <result property="area" column="area" />
+    <collection property="checkFoods" ofType="com.blm.bean.CheckFood">
+      <id property="foodid" column="foodid" />
+      <result property="keywords" column="keywords" />
+      <result property="storeid" column="storeid" />
+      <result property="foodtype" column="foodtype" />
+    </collection>
+    <collection property="foodDetails" ofType="com.blm.bean.FoodDetail">
+      <id property="foodid" column="foodid" />
+      <result property="foodname" column="foodname" />
+      <result property="price" column="price" />
+      <result property="picpath" column="picpath"/>
+      <result property="description" column="description"/>
+    </collection>
+  </resultMap>
+
+
+
+
+
   <select id="findAll" resultType="map">
       select  * from storedetail
   </select>

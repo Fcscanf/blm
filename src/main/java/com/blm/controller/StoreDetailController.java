@@ -35,19 +35,13 @@ public class StoreDetailController {
     //获取商家所有信息
     @RequestMapping("/findAll")
     public String findall(HttpServletResponse response) throws Exception {
-        List<StoreDetail> storeDetails = storeDetailService.findAll();
+        List<StoreDetail> storeDetails = storeDetailService.findAll("12");
         JSONObject result=new JSONObject();
         JSONArray jsonArray= new JSONArray(storeDetails);
         result.put("result",jsonArray);
         ResponseUtil.write(response, result);
-        return  null;
+        return  "test";
     }
-
-
-    //前端获取商家所有信息的
-
-
-
 
 
 

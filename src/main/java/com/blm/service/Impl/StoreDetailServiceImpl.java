@@ -34,7 +34,7 @@ public class StoreDetailServiceImpl implements StoreDetailService {
     }
 
     //查询商家所有信息
-    public List<StoreDetail> findAll() {
-        return storeDetailMapper.findAll();
+    public List<StoreDetail> findAll(String storename) {
+        return storeDetailMapper.findAllById(storename);
     }
 }

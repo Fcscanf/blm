@@ -103,6 +103,7 @@ public class UserController {
 
     }
 
+
     /**
      * 发送验证码
      * @param phone
@@ -111,6 +112,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/sendsms/{phone}",method = RequestMethod.POST)
     public Result sendMsg(@PathVariable String phone){
+        System.out.println("接受成功");
         userService.sendMsg(phone);
         return new Result(true,StatusCode.OK,"发送成功");
     }
