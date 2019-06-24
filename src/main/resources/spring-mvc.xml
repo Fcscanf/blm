@@ -16,9 +16,9 @@
     <mvc:resources  location="/WEB-INF/css/" mapping="/css/**"/>
     <mvc:resources  location="/WEB-INF/js/" mapping="/js/**"/>
     <mvc:resources mapping="/font_blm/**" location="/WEB-INF/font_blm/" />
-    <mvc:resources  location="/WEB-INF/highcharts4" mapping="/highcharts4/**"/>
-    <mvc:resources  location="/WEB-INF/images" mapping="/images/**"/>
-    <mvc:resources  location="/WEB-INF/img" mapping="/img/**"/>
+    <mvc:resources  location="/WEB-INF/highcharts4/" mapping="/highcharts4/**"/>
+    <mvc:resources  location="/WEB-INF/images/" mapping="/images/**"/>
+    <mvc:resources  location="/WEB-INF/img/" mapping="/img/**"/>
     <mvc:resources  location="/WEB-INF/jquery-easyui-1.3.3/" mapping="/jquery-easyui-1.3.3/**"/>
 
 
@@ -27,18 +27,6 @@
           p:prefix="/WEB-INF/views/" p:suffix=".jsp" >
         <property name="order" value="1"/>
     </bean>
-
-
-
-<!--    文件上传
-        1、配置multipartResolver
-        2、jsp中输入框的类型设置为file
-        3、在UploadController里接收
--->
-<!--    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"-->
-<!--          p:defaultEncoding="UTF-8"-->
-<!--          p:maxUploadSize="54000000">-->
-<!--    </bean>-->
 
 
 <!--    拦截器
@@ -109,4 +97,9 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+<!--   配置multipartResolver——文件上传-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"
+        p:defaultEncoding="UTF-8"
+        p:maxInMemorySize="54000000">
+    </bean>
 </beans>

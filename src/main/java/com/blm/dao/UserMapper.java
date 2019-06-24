@@ -42,6 +42,12 @@ public interface UserMapper {
 
     public User selectUserByPhone(String phone);
 
+<<<<<<< HEAD
 
 
+=======
+    public User selectUserByUsername(String username);//商家登录(查询商家用户名)
+
+    public User selectUserByUsernamek(String username);
+>>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
 }

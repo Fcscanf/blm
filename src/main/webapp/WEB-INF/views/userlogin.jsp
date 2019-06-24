@@ -96,7 +96,11 @@
                             </tr>
                             <tr>
                                 <td class="login_wrap">
+<<<<<<< HEAD
                                     <a href="javascript:void(0);" class="button_login2">登录</a>
+=======
+                                    <a href="javascript:void(0)" class="button_login2">登录</a>
+>>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
 
                                 </td>
 

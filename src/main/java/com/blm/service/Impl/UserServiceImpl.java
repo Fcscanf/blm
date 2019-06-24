@@ -1,16 +1,21 @@
 package com.blm.service.Impl;
 
 import com.aliyuncs.exceptions.ClientException;
+import com.blm.bean.StoreDetail;
+import com.blm.bean.StoreRegistTemp;
 import com.blm.bean.User;
+import com.blm.dao.StoreDetailMapper;
 import com.blm.dao.UserMapper;
 import com.blm.service.UserService;
 import com.blm.util.IdWorker;
+import com.blm.util.OSSClientUtil;
 import com.blm.util.SmsUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -34,8 +39,15 @@ public class UserServiceImpl implements UserService {
 //
 //    @Autowired
 //    private AmqpTemplate amqpTemplate;
+//    短信工具类
     @Autowired
     private SmsUtil smsUtil;
+
+    @Autowired
+    private StoreDetailMapper storeDetailMapper;
+
+    @Autowired
+    private OSSClientUtil ossClientUtil;
 
     private String template_code;
     private String sign_name;
@@ -119,5 +131,91 @@ public class UserServiceImpl implements UserService {
     public User selectUserByPhone(String phone) {
         return userMapper.selectUserByPhone(phone);
     }
+
+    @Override
+    public User checkUserName(String username) {
+        User user = userMapper.selectUserByUsernamek(username);
+        return user;
+    }
+
+//    商家注册信息的插入
+    @Override
+    public void insertStore(StoreRegistTemp storeRegistTemp) {
+        User user = storeRegistTemp.getUser();
+        StoreDetail storeDetail = storeRegistTemp.getStoreDetail();
+        String key = storeRegistTemp.getKey();
+        String id = idWorker.nextId()+"";
+        user.setUserid(id);
+        user.setCreatetime(new Date());
+        user.setRoleid("2");
+        user.setIsvalid(1);
+        userMapper.insert(user);
+        storeDetail.setStoreid(idWorker.nextId()+"");
+        storeDetail.setCerturl(key);
+        storeDetail.setUserid(id);
+        storeDetail.setShopfronturl("1.jpg");
+        storeDetail.setIsvalid(1);
+        storeDetailMapper.insert(storeDetail);
+    }
+
+
+    //将图片上传到服务器并返回可以拿到值的key
+    @Override
+    public String uploadImage(MultipartFile file){
+//根据id查询用户
+//        User user = userMapper.selectByPrimaryKey(id);
+//对上传文件进行Base64编码
+//        String s = null;
+//        try {
+//            s = Base64.encode(file.getBytes());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+////拼接DataURL数据头
+//        String dataUrl = new String("data:image/jpg;base64,"+s);
+//        System.out.println(dataUrl);
+////        user.setStaffPhoto(dataUrl);
+////保存图片信息
+////        userDao.save(user);
+//        StoreDetail storeDetail = new StoreDetail();
+//        storeDetail.setUserid("1");
+//        storeDetail.setStoreid("4");
+//        storeDetailMapper.updateByPrimaryKeySelective(storeDetail);
+//        return dataUrl;
+
+        if (file == null || file.getSize()<=0){
+            throw new RuntimeException("图片不能为空");
+        }
+        return ossClientUtil.uploadImg2Oss(file);
+
+//        商家注册（图片上传）最终逻辑
+//        用户店家上传图片，返回图片在oos的存储地址，
+//        商家注册的时候，将接收到的key一起发过来
+
+
+    }
+
+
+    @Override
+    public User selectUserByUsername(String username){
+        return userMapper.selectUserByUsername(username);
+    }
+
+    /**
+     * 商家用户名+密码登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
+    public User login(String username,String  password){
+        User user = userMapper.selectUserByUsername(username);
+        if (user != null && encoder.matches(password,user.getPassword())){
+            return user;
+
+        }
+        return null;
+    }
+
 
 }

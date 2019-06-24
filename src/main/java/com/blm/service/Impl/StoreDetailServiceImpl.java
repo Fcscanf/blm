@@ -24,6 +24,10 @@ public class StoreDetailServiceImpl implements StoreDetailService {
         return storeDetailMapper.find(map);
     }
 
+    public StoreDetail findStoreDetailByUsername(String username) {
+        return null;
+    }
+
     public Long getTotal(Map<String, Object> map){
         return storeDetailMapper.getTotal(map);
     }

@@ -15,10 +15,67 @@ $(function () {
             }, 1000)
         }
     }
-    //发送验证码
-    $(".validateLogin_send").click(function () {
-        settime($(this));
+//发送验证码
+    $(".sendms").click(function () {
+        vilidation();
     })
+
+    function vilidation() {
+        console.info("start")
+        var phone=$("#username2").val().trim();
+        // var isvalid="1";
+        $.ajax({
+            type:"POST",
+            url:"http://localhost:8080/blm_war_exploded/user/sendsms/"+phone+"/1",
+            // dataType:"json",
+            // headers: {'Content-Type':'application/json'},
+            // data:JSON.stringify({
+            //     'phone':phone,
+            //     // 'isvalid':isvalid
+            // }),
+            success:function (result) {
+                console.info("success")
+            },
+            error:function (result) {
+                console.info("error")
+            }
+        })
+    }
+
+
+
+
+
+
+    //发送验证码
+ /*   $(".validateLogin_send").click(function () {*/
+        // var username=$(".username").val();
+        // console.info("手机号码："+username)
+ /*       settime($(this));*/
+        // $.ajax({
+        //     type:"post",
+        //     url:"#",
+        //     dataType:"json",
+        //     success:function (result) {
+        //         console.info(result.code)
+        //         if (result.code==20000){
+        //             console.info(result)
+        //         }
+        //     },
+        //     error:function () {
+        //
+        //     }
+        // })
+ /*   })*/
+
+
+
+
+
+
+
+
+
     //验证用户号码
     $(".username").blur(function () {
         var pPattern = /^1[345789]\d{9}$/;
@@ -97,16 +154,21 @@ $(function () {
     }
     //验证登录
     $(".button_login2").click(function () {
-        login2();
+        loginp2();
     })
     function loginp2() {
+<<<<<<< HEAD
         var username=$("#username2").val().trim();;
+=======
+        var phone=$("#username2").val();
+>>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
         var validate=$(".validate").val();
         var user = {
             'username':username,
             '                                                                                                                                                                                                                                                        ':validate
         }
         $.ajax({
+<<<<<<< HEAD
             type:"POST",
             url:"http://localhost:8080/blm_war_exploded/user/**",
             dataType:"json",
@@ -117,6 +179,19 @@ $(function () {
             }),
             success:function (result) {
                 alert("success")
+=======
+            contentType : "application/json",
+            type:"post",
+            url:"http://localhost:8080/blm_war_exploded/user/login/"+validate,
+            dataType:"json",
+            headers: {'Content-Type':'application/json'},
+            data:JSON.stringify({
+                "phone":phone,
+            }),
+            success:function (result) {
+                console.info(result)
+                window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
+>>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
             },
             error:function (result) {
                 alert("error")

@@ -23,6 +23,7 @@ public class FoodDetail {
         this.othername = othername;
         this.price = price;
         this.description = description;
+        this.picpath = picpath;
         this.isvalid = isvalid;
         this.picpath = picpath;
     }
