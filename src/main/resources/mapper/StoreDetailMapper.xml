@@ -154,7 +154,6 @@
   </update>
 
 
-<<<<<<< HEAD
   <!--模糊查询-->
   <select id="find" parameterType="Map" resultType="com.blm.bean.StoreDetail">
    /* select s.storeid,s.userid,s.tel,s.email,s.storename,s.storeaddress,s.certurl,s.shopfronturl,s.area,s.isvalid
@@ -216,7 +215,6 @@
   </update>
 
 
-=======
 
 
 
@@ -225,5 +223,4 @@
        select s.storeid,s.tel,s.email,s.storename,s.storeaddress,s.certurl,s.shopfronturl,s.area,u.username
        from storedetail s,user u where s.userid=u.userid and u.username=#{username}
     </select>
->>>>>>> 1e931f7460016c05dbd86d3ffeef66826c5da728
 </mapper>

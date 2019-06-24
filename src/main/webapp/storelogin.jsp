@@ -92,8 +92,12 @@
     <table style="margin: auto; width: 100%; height: 100%" border=0
            cellSpacing=0 cellpadding=0>
         <tbody>
+        <TR>
+            <TD height=150>&nbsp;</TD>
+        </TR>
         <tr style="height: 254px">
             <td>
+                <div style="MARGIN: 0px auto; WIDTH: 936px"></div>
                 <div style="background-color: #278296">
                     <div style="margin: 0px auto; width: 936px">
                         <div
@@ -103,12 +107,12 @@
                                 <table border=0 cellSpacing=0 cellpadding=0 width="100%">
                                     <tbody>
                                     <tr>
-                                        <td style="height: 45px"><INPUT type="text" class=input
+                                        <td style="height: 45px"><input type="text" class=input
                                                                         value="${user.username }" name="username"
                                                                         id="username"></td>
                                     </tr>
                                     <tr>
-                                        <td><INPUT type="password" class=input value="${user.password }" name="password"
+                                        <td><input type="password" class=input value="${user.password }" name="password"
                                                    id="password"/></td>
                                     </tr>
                                     </tbody>
@@ -125,7 +129,7 @@
                                                 id=btnLogin src="${pageContext.request.contextPath}/images/btn1.jpg"
                                                 type=image name=btnLogin onclick="javascript:login();return false;">
                                         </td>
-                                        <td width=100 align=middle><INPUT
+                                        <td width=100 align=middle><input
                                                 style="border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px"
                                                 id=btnReset src="${pageContext.request.contextPath}/images/btn2.jpg"
                                                 type=image name=btnReset
