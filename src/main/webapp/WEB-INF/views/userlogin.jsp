@@ -86,7 +86,7 @@
                                 <td>
                                     <input type="text" id="username2" placeholder="请输入用户名">
                                     <input type="text" class="validate" placeholder="验证码">
-                                    <div class="validateLogin_send"><a href="javascript:void(0);" class="sendms">获取验证码</a></div>
+                                    <div class="validateLogin_send"><a href="#" class="sendms">获取验证码</a></div>
                                 </td>
                             </tr>
                             <tr>
@@ -96,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td class="login_wrap">
-                                    <a href="#" class="button_login2">登录</a>
+                                    <a href="javascript:void(0)" class="button_login2">登录</a>
 
                                 </td>
 

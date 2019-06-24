@@ -1,4 +1,4 @@
-package com.blm.dao;
+package com.blm.bean;
 
 /**
  * @author 周宇

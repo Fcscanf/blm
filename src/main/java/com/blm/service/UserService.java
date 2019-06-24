@@ -26,4 +26,8 @@ public interface UserService {
     public void insertStore(StoreRegistTemp storeRegistTemp);
 
     public String uploadImage(MultipartFile file);
+
+    public User selectUserByUsername(String username);
+
+    public User login(String username,String  password);
 }

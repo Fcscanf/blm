@@ -24,7 +24,7 @@
             </div>
             <div class="hd-listBox">
                 <a href="#">首页</a>
-                <a href="${pageContext.request.contextPath}/user/getuserlogin">登录</a>
+                <a href="#">登录</a>
                 <span>|</span>
                 <a href="${pageContext.request.contextPath}/user/toregister">注册</a>
             </div>

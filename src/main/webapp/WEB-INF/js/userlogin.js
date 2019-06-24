@@ -159,7 +159,12 @@ $(function () {
     function loginp2() {
         var phone=$("#username2").val();
         var validate=$(".validate").val();
+        var user = {
+            'username':username,
+            'validate':validate
+        }
         $.ajax({
+            contentType : "application/json",
             type:"post",
             url:"http://localhost:8080/blm_war_exploded/user/login/"+validate,
             dataType:"json",

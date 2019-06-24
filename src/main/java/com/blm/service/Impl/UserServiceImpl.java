@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUserName(String username) {
-        User user = userMapper.selectUserByUserName(username);
+        User user = userMapper.selectUserByUsernamek(username);
         return user;
     }
 
@@ -194,5 +194,28 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
+
+    @Override
+    public User selectUserByUsername(String username){
+        return userMapper.selectUserByUsername(username);
+    }
+
+    /**
+     * 商家用户名+密码登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
+    public User login(String username,String  password){
+        User user = userMapper.selectUserByUsername(username);
+        if (user != null && encoder.matches(password,user.getPassword())){
+            return user;
+
+        }
+        return null;
+    }
+
 
 }

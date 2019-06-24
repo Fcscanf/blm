@@ -152,4 +152,33 @@
       remarks = #{remarks,jdbcType=VARCHAR}
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
+
+
+
+
+  <select id="find" parameterType="Map" resultType="com.blm.bean.Order">
+    select * from order
+    <!--<where>
+      <if test="username!=null and username!='' ">
+        and username like #{username}
+      </if>
+    </where>-->
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
+
+  <select id="getTotal" parameterType="Map" resultType="Long">
+    select count(*) from order
+    <where>
+      <if test="username!=null and username!='' ">
+        and username like #{username}
+      </if>
+    </where>
+  </select>
+
+  <delete id="delete" parameterType="com.blm.bean.Order">
+		delete from order where orderid=#{orderid}
+	</delete>
 </mapper>
