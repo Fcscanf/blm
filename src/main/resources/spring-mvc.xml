@@ -15,10 +15,10 @@
 
     <mvc:resources  location="/WEB-INF/css/" mapping="/css/**"/>
     <mvc:resources  location="/WEB-INF/js/" mapping="/js/**"/>
-    <mvc:resources mapping="/font_blm/**" location="/WEB-INF/font_blm/" />
-    <mvc:resources  location="/WEB-INF/highcharts4" mapping="/highcharts4/**"/>
-    <mvc:resources  location="/WEB-INF/images" mapping="/images/**"/>
-    <mvc:resources  location="/WEB-INF/img" mapping="/img/**"/>
+    <mvc:resources  location="/WEB-INF/font_blm/" mapping="/font_blm/**"/>
+    <mvc:resources  location="/WEB-INF/highcharts4/" mapping="/highcharts4/**"/>
+    <mvc:resources  location="/WEB-INF/images/" mapping="/images/**"/>
+    <mvc:resources  location="/WEB-INF/img/" mapping="/img/**"/>
     <mvc:resources  location="/WEB-INF/jquery-easyui-1.3.3/" mapping="/jquery-easyui-1.3.3/**"/>
 
 
