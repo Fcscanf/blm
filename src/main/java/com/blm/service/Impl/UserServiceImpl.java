@@ -120,4 +120,24 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserByPhone(phone);
     }
 
+
+    @Override
+    public User selectUserByUsername(String username){
+        return userMapper.selectUserByUsername(username);
+    }
+
+    /**
+     * 商家用户名+密码登录
+     * @param username
+     * @param password
+     * @return
+     */
+    public User login(String username,String  password){
+        User user = userMapper.selectUserByUsername(username);
+        if (user != null && encoder.matches(password,user.getPassword())){
+            return user;
+
+        }
+        return null;
+    }
 }

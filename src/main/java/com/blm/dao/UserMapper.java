@@ -41,4 +41,6 @@ public interface UserMapper {
     public List<User> selectAllUser();
 
     public User selectUserByPhone(String phone);
+
+    public User selectUserByUsername(String username);//商家登录(查询商家用户名)
 }

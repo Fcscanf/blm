@@ -2,7 +2,9 @@ package com.blm.controller;
 
 import com.blm.bean.Result;
 import com.blm.bean.StatusCode;
+import com.blm.bean.StoreDetail;
 import com.blm.bean.User;
+import com.blm.service.StoreDetailService;
 import com.blm.service.UserService;
 import com.blm.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,9 @@ public class UserController {
 
     @Autowired
     public UserService userService;
+
+    @Autowired
+    public StoreDetailService storeDetailService;
 
     @Autowired
     private HttpServletRequest request;
@@ -129,5 +135,33 @@ public class UserController {
     public String toRegister(){return "register";}
 
 
+    /**
+     *
+     * @param user
+     * @param storeDetail
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/loginstore")
+    public String login(User user,StoreDetail storeDetail, HttpServletRequest request)throws Exception{
+        User resultUser=userService.login(user.getUsername(),user.getPassword());
+        StoreDetail resultStoreDetail=storeDetailService.findStoreDetailByUsername(user.getUsername());
+
+        if(resultUser==null){
+            request.setAttribute("user", user);
+            request.setAttribute("errorMsg", "用户名或密码错误！");
+            return "storelogin";
+        }else{
+            HttpSession session=request.getSession();
+            session.setAttribute("currentUser", resultUser);
+            session.setAttribute("resultStoreDetail",resultStoreDetail);
+            return "storemain";
+        }
+    }
+
+
 
 }
+
+

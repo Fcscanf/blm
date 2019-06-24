@@ -15,4 +15,10 @@ public interface UserService {
     public void sendMsg(String phone);
 
     public User selectUserByPhone(String phone);
+
+    public User selectUserByUsername(String username);
+
+    public User login(String username,String  password);//商家用户名+密码登录
+
+
 }

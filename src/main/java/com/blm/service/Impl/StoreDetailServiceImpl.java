@@ -1,6 +1,7 @@
 package com.blm.service.Impl;
 
 import com.blm.bean.StoreDetail;
+import com.blm.bean.User;
 import com.blm.dao.StoreDetailMapper;
 import com.blm.service.StoreDetailService;
 import org.springframework.stereotype.Service;
@@ -19,22 +20,7 @@ public class StoreDetailServiceImpl implements StoreDetailService {
     @Resource
     private StoreDetailMapper storeDetailMapper;
 
-
-    public List<StoreDetail> find(Map<String, Object> map){
-        return storeDetailMapper.find(map);
-    }
-
-    public Long getTotal(Map<String, Object> map){
-        return storeDetailMapper.getTotal(map);
-    }
-
-
-    public int update(StoreDetail storeDetail){
-    return storeDetailMapper.update(storeDetail);
-    }
-
-    //查询商家所有信息
-    public List<StoreDetail> findAll() {
-        return storeDetailMapper.findAll();
+    public StoreDetail findStoreDetailByUsername(String username){
+        return storeDetailMapper.findStoreDetailByUsername(username);
     }
 }
