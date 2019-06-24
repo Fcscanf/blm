@@ -96,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td class="login_wrap">
-                                    <a href="javascript:void(0)" class="button_login2">登录</a>
+                                    <a href="#" class="button_login2">登录</a>
 
                                 </td>
 

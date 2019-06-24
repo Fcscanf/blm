@@ -15,12 +15,6 @@
       <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
-  //查询商家所有信息
-  <select id="findAll" resultType="map">
-      select  * from storedetail
-  </select>
-
-
   <sql id="Base_Column_List">
     storeid, userid, tel, email, storename, storeaddress, certurl, shopfronturl, area, 
     isvalid

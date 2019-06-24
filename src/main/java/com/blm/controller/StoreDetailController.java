@@ -1,21 +1,17 @@
 package com.blm.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
-
 import com.blm.bean.StoreDetail;
-
 import com.blm.dao.PageBean;
 import com.blm.service.StoreDetailService;
 import com.blm.util.ResponseUtil;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,30 +22,18 @@ import java.util.Map;
  *
  */
 @Controller
-@RequestMapping("/storeDetail")
+@RequestMapping("storeDetail")
 public class StoreDetailController {
     @Resource
     private StoreDetailService storeDetailService;
 
-
-    //获取商家所有信息
-    @RequestMapping("/findAll")
-    public String findall(HttpServletResponse response) throws Exception {
-        List<StoreDetail> storeDetails = storeDetailService.findAll();
-        JSONObject result=new JSONObject();
-        JSONArray jsonArray= new JSONArray(storeDetails);
-        result.put("result",jsonArray);
-        ResponseUtil.write(response, result);
-        return  null;
-    }
-
-
-    //前端获取商家所有信息的
-
-
-
-
-
+    /**
+     * 所有店面展示
+     * @param storeDetail
+     * @param response
+     * @return
+     * @throws Exception
+     */
 
     @RequestMapping("/list")
     public String list(@RequestParam(value="page",required=false)String page, @RequestParam(value="rows",required=false)String rows, StoreDetail storeDetail, HttpServletResponse response)throws Exception{
@@ -76,7 +60,13 @@ public class StoreDetailController {
 
 
 
-
+    /**
+     * 添加或者修改用户
+     * @param storeDetail
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/update")
     public String update(StoreDetail storeDetail, HttpServletResponse response)throws Exception{
         int resultTotal=0; // 操作的记录条数
