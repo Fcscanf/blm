@@ -1,22 +1,17 @@
 package com.blm.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
-
 import com.blm.bean.PageBean;
 import com.blm.bean.StoreDetail;
-
-
 import com.blm.service.StoreDetailService;
 import com.blm.util.ResponseUtil;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -9,17 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class CheckFoodServiceImpl implements CheckFoodService {
-@Autowired
+  @Autowired
   private CheckFoodMapper checkFoodMapper;
-    @Override
-    public List<CheckFood> findAll() {
-      return checkFoodMapper.findAll();
-    }
+
+  public List<CheckFood> findAll() {
+    return checkFoodMapper.findAll();
+  }
 
   @Override
-  public List<CheckFood> vaugefind(String foodName) {
-    return checkFoodMapper.vaguefind(foodName);
-}
-
+  public List<CheckFood> vaugefind(String foodtype) {
+    return checkFoodMapper.vaguefind(foodtype);
+  }
 
 }

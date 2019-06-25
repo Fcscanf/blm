@@ -179,8 +179,4 @@
   <delete id="delete" parameterType="com.blm.bean.FoodDetail">
 		delete from fooddetail where foodid=#{foodid}
 	</delete>
-
-  <select id="findAllFoodDetail_k" resultType="com.blm.bean.FoodDetail">
-    select * from fooddetail
-  </select>
 </mapper>

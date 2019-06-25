@@ -186,7 +186,7 @@ public class UserController {
 //    跳转storeManage界面
     @RequestMapping("/getstoreManage")
     public String getStoreManage(){
-        return "storeManage";
+        return "storemain";
     }
 
 //    跳转注册界面

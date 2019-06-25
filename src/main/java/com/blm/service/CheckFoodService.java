@@ -10,4 +10,5 @@ public interface CheckFoodService {
     public List<CheckFood> findAll();
 
     public List<CheckFood> vaugefind(String foodName);
+
 }

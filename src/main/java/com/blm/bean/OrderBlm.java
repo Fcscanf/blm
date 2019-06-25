@@ -1,7 +1,6 @@
 package com.blm.bean;
 
 import java.util.Date;
-import java.util.List;
 
 public class OrderBlm {
     private String orderid;
@@ -18,17 +17,13 @@ public class OrderBlm {
 
     private String totalprice;
 
-    private Date date;
+    private Date datee;
 
     private Integer isvalid;
 
     private String remarks;
 
-    private List<FoodDetail> foodDetails;
-
-    private List<OrderDetail> orderDetails;
-
-    public OrderBlm(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date date, Integer isvalid, String remarks, List<FoodDetail> foodDetails, List<OrderDetail> orderDetails) {
+    public OrderBlm(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date datee, Integer isvalid, String remarks) {
         this.orderid = orderid;
         this.userid = userid;
         this.username = username;
@@ -36,27 +31,9 @@ public class OrderBlm {
         this.foodid = foodid;
         this.foodname = foodname;
         this.totalprice = totalprice;
-        this.date = date;
+        this.datee = datee;
         this.isvalid = isvalid;
         this.remarks = remarks;
-        this.foodDetails = foodDetails;
-        this.orderDetails = orderDetails;
-    }
-
-    public List<FoodDetail> getFoodDetails() {
-        return foodDetails;
-    }
-
-    public void setFoodDetails(List<FoodDetail> foodDetails) {
-        this.foodDetails = foodDetails;
-    }
-
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
     }
 
     public OrderBlm() {
@@ -119,12 +96,12 @@ public class OrderBlm {
         this.totalprice = totalprice == null ? null : totalprice.trim();
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDatee() {
+        return datee;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDatee(Date datee) {
+        this.datee = datee;
     }
 
     public Integer getIsvalid() {
