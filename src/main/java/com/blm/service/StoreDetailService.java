@@ -25,5 +25,7 @@ public interface StoreDetailService {
 //    周宇未完成方法
     List<StoreDetail> find(Map<String, Object> map);
 
+
+
 }
 

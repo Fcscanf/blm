@@ -2,6 +2,8 @@ package com.blm.controller;
 
 import com.blm.bean.FoodDetail;
 import com.blm.bean.PageBean;
+import com.blm.bean.Result;
+import com.blm.bean.StatusCode;
 import com.blm.service.FoodDetailService;
 import com.blm.util.ResponseUtil;
 import com.blm.util.StringUtil;
@@ -9,7 +11,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -110,6 +114,12 @@ public class FoodDetailController {
         result.put("success", true);
         ResponseUtil.write(response, result);
         return null;
+    }
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST)
+    public Result getFoodDetail_k(){
+        return new Result(true, StatusCode.OK,"查询成功",foodDetailService.find_k());
     }
 
 
