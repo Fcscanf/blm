@@ -9,11 +9,33 @@ public class CheckFood {
 
     private String storeid;
 
-    public CheckFood(String foodid, String foodtype, String keywords, String storeid) {
+    private StoreDetail storeDetail;
+
+    private FoodDetail foodDetail;
+
+    public FoodDetail getFoodDetail() {
+        return foodDetail;
+    }
+
+    public void setFoodDetail(FoodDetail foodDetail) {
+        this.foodDetail = foodDetail;
+    }
+
+    public CheckFood(String foodid, String foodtype, String keywords, String storeid, StoreDetail storeDetail, FoodDetail foodDetail) {
         this.foodid = foodid;
         this.foodtype = foodtype;
         this.keywords = keywords;
         this.storeid = storeid;
+        this.storeDetail = storeDetail;
+        this.foodDetail = foodDetail;
+    }
+
+    public void setStoreDetail(StoreDetail storeDetail) {
+        this.storeDetail = storeDetail;
+    }
+
+    public StoreDetail getStoreDetail() {
+        return storeDetail;
     }
 
     public CheckFood() {

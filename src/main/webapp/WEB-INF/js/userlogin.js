@@ -160,7 +160,7 @@ $(function () {
         var phone=$("#username2").val();
         var validate=$(".validate").val();
         var user = {
-            'username':username,
+            'username':phone,
             'validate':validate
         }
         $.ajax({

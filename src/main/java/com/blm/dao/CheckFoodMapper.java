@@ -1,6 +1,10 @@
 package com.blm.dao;
 
 import com.blm.bean.CheckFood;
+import org.apache.ibatis.annotations.Param;
+
+
+import java.util.List;
 
 public interface CheckFoodMapper {
     int deleteByPrimaryKey(String foodid);
@@ -14,4 +18,8 @@ public interface CheckFoodMapper {
     int updateByPrimaryKeySelective(CheckFood record);
 
     int updateByPrimaryKey(CheckFood record);
+
+    List<CheckFood> findAll();
+
+    List<CheckFood> vaguefind(@Param("foodtype") String foodtype);
 }

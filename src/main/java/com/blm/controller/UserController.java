@@ -172,7 +172,7 @@ public class UserController {
 
     @RequestMapping("/getstoreManage")
     public String getStoreManage(){
-        return "storeManage";
+        return "storemain";
     }
 
     @RequestMapping("/toregister")

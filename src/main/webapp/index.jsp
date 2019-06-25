@@ -9,9 +9,8 @@
 <html>
 <head>
     <title>饱了吗首页</title>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="font_blm/iconfont.css">
-    <script src="js/home.js" defer></script>
     <script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
