@@ -1,9 +1,6 @@
 package com.blm.service;
 
 import com.blm.bean.StoreDetail;
-import com.blm.bean.User;
-
-import java.util.List;
 
 /**
  * @author 周宇

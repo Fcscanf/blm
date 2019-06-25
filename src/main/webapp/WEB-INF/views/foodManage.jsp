@@ -106,7 +106,12 @@
             });
         }
 
-
+        /*加载图片*/
+        function imgFormatter(value,row,index){
+            if('' != value && null != value)
+                value = '<img style="width:30px; height:30px;align:center" src="' + value + '">';
+            return  value;
+        }
     </script>
     <title>Insert title here</title>
 </head>
@@ -117,12 +122,11 @@
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
-        <th field="foodname" width="50" align="center">商品</th>
-        <th field="othername" width="50" align="center">别名</th>
-        <th field="price" width="50" align="center">价格</th>
-        <th field="description" width="100" align="center">描述</th>
-        <th field="picpath" width="100" height="100" align="center">如图</th>
-
+        <th field="foodname" width="50" height="50" align="center">商品</th>
+        <th field="othername" width="50" height="50" align="center">别名</th>
+        <th field="price" width="50" height="50" align="center">价格</th>
+        <th field="description" width="100" height="50" align="center">描述</th>
+        <th data-options="field:'picpath',width:100, height:50,formatter: imgFormatter">如图</th>
     </tr>
     </thead>
 </table>

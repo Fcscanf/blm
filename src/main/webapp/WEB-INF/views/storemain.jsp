@@ -36,6 +36,9 @@
 <div region="north" style="height: 78px;background-color: #E0ECFF">
     <table style="padding: 5px" width="100%">
         <tr>
+            <td width="50%">
+                <img alt="logo" src="${resultStoreDetail.shopfronturl}">
+            </td>
             <td valign="bottom" align="center" width="50%">
                 <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser}</font><br>
                 <font size="3">
