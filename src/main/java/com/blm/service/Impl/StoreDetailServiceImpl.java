@@ -1,6 +1,5 @@
 package com.blm.service.Impl;
 
-import com.blm.bean.FoodDetail;
 import com.blm.bean.StoreDetail;
 import com.blm.dao.StoreDetailMapper;
 import com.blm.service.StoreDetailService;
@@ -9,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.xml.soap.Detail;
-import java.util.List;
 
 /**
  * @author 周宇

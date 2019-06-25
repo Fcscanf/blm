@@ -7,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/**
+ * @author 周宇
+ * @university ycit.com
+ * @creat 2019/6/20 11:24
+ */
 @Service
 public class CheckFoodServiceImpl implements CheckFoodService {
   @Autowired

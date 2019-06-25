@@ -2,7 +2,7 @@ package com.blm.bean;
 
 import java.util.Date;
 
-public class Order {
+public class OrderBlm {
     private String orderid;
 
     private String userid;
@@ -17,13 +17,13 @@ public class Order {
 
     private String totalprice;
 
-    private Date date;
+    private Date datee;
 
     private Integer isvalid;
 
     private String remarks;
 
-    public Order(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date date, Integer isvalid, String remarks) {
+    public OrderBlm(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date datee, Integer isvalid, String remarks) {
         this.orderid = orderid;
         this.userid = userid;
         this.username = username;
@@ -31,12 +31,12 @@ public class Order {
         this.foodid = foodid;
         this.foodname = foodname;
         this.totalprice = totalprice;
-        this.date = date;
+        this.datee = datee;
         this.isvalid = isvalid;
         this.remarks = remarks;
     }
 
-    public Order() {
+    public OrderBlm() {
         super();
     }
 
@@ -96,12 +96,12 @@ public class Order {
         this.totalprice = totalprice == null ? null : totalprice.trim();
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDatee() {
+        return datee;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDatee(Date datee) {
+        this.datee = datee;
     }
 
     public Integer getIsvalid() {

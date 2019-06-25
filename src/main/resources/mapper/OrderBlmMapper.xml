@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blm.dao.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.blm.bean.Order">
+<mapper namespace="com.blm.dao.OrderBlmMapper">
+  <resultMap id="BaseResultMap" type="com.blm.bean.OrderBlm">
     <constructor>
       <idArg column="orderid" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="userid" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -10,37 +10,69 @@
       <arg column="foodid" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="foodname" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="totalprice" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="datee" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="remarks" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
+
+  <select id="findAllByUserId_wz"  parameterType="String" resultMap="ResultMap_wz">
+    select o.orderid,o.username,o.storeid,o.totalprice,o.date,o.userid,t.foodid,t.orderid,t.orderdetailid,
+    f.foodid,f.foodname,f.price,f.picpath
+    from  fooddetail f,orderdetail t,orderblm o
+    where t.foodid=f.foodid
+    and t.orderid=o.orderid
+    and o.userid=#{userid}
+   </select>
+
+  <resultMap type="com.blm.bean.OrderBlm" id="ResultMap_wz" >
+    <id property="orderid" column="orderid" />
+    <result property="username" column="username" />
+    <result property="storeid" column="storeid" />
+    <result property="totalprice" column="totalprice" />
+    <result property="date" column="date" />
+    <collection property="orderDetails" ofType="com.blm.bean.OrderDetail">
+      <id property="orderdetailid" column="orderdetailid" />
+      <result property="foodid" column="foodid" />
+      <result property="orderid" column="orderid" />
+    </collection>
+    <collection property="foodDetails" ofType="com.blm.bean.FoodDetail">
+      <id property="foodid" column="foodid" />
+      <result property="foodname" column="foodname" />
+      <result property="price" column="price" />
+      <result property="picpath" column="picpath"/>
+    </collection>
+  </resultMap>
+
+
+
+
   <sql id="Base_Column_List">
-    orderid, userid, username, storeid, foodid, foodname, totalprice, date, isvalid, 
+    orderid, userid, username, storeid, foodid, foodname, totalprice, datee, isvalid,
     remarks
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
-    from order
+    from orderblm
     where orderid = #{orderid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from order
+    delete from orderblm
     where orderid = #{orderid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blm.bean.Order">
-    insert into order (orderid, userid, username, 
-      storeid, foodid, foodname, 
-      totalprice, date, isvalid, 
+  <insert id="insert" parameterType="com.blm.bean.OrderBlm">
+    insert into orderblm (orderid, userid, username,
+      storeid, foodid, foodname,
+      totalprice, datee, isvalid,
       remarks)
-    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, 
-      #{totalprice,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER}, 
+    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR},
+      #{totalprice,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER},
       #{remarks,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.blm.bean.Order">
-    insert into order
+  <insert id="insertSelective" parameterType="com.blm.bean.OrderBlm">
+    insert into orderblm
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderid != null">
         orderid,
@@ -63,8 +95,8 @@
       <if test="totalprice != null">
         totalprice,
       </if>
-      <if test="date != null">
-        date,
+      <if test="datee != null">
+        datee,
       </if>
       <if test="isvalid != null">
         isvalid,
@@ -95,8 +127,8 @@
       <if test="totalprice != null">
         #{totalprice,jdbcType=VARCHAR},
       </if>
-      <if test="date != null">
-        #{date,jdbcType=TIMESTAMP},
+      <if test="datee != null">
+        #{datee,jdbcType=TIMESTAMP},
       </if>
       <if test="isvalid != null">
         #{isvalid,jdbcType=INTEGER},
@@ -106,8 +138,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.Order">
-    update order
+  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.OrderBlm">
+    update orderblm
     <set>
       <if test="userid != null">
         userid = #{userid,jdbcType=VARCHAR},
@@ -127,8 +159,8 @@
       <if test="totalprice != null">
         totalprice = #{totalprice,jdbcType=VARCHAR},
       </if>
-      <if test="date != null">
-        date = #{date,jdbcType=TIMESTAMP},
+      <if test="datee != null">
+        datee = #{datee,jdbcType=TIMESTAMP},
       </if>
       <if test="isvalid != null">
         isvalid = #{isvalid,jdbcType=INTEGER},
@@ -139,38 +171,36 @@
     </set>
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.blm.bean.Order">
-    update order
+  <update id="updateByPrimaryKey" parameterType="com.blm.bean.OrderBlm">
+    update orderblm
     set userid = #{userid,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       storeid = #{storeid,jdbcType=VARCHAR},
       foodid = #{foodid,jdbcType=VARCHAR},
       foodname = #{foodname,jdbcType=VARCHAR},
       totalprice = #{totalprice,jdbcType=VARCHAR},
-      date = #{date,jdbcType=TIMESTAMP},
+      datee = #{datee,jdbcType=TIMESTAMP},
       isvalid = #{isvalid,jdbcType=INTEGER},
       remarks = #{remarks,jdbcType=VARCHAR}
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
 
 
-
-
-  <select id="find" parameterType="Map" resultType="com.blm.bean.Order">
-    select * from order
-    <!--<where>
+  <select id="find_zy" parameterType="Map" resultType="com.blm.bean.OrderBlm">
+    select * from orderblm
+    <where>
       <if test="username!=null and username!='' ">
         and username like #{username}
       </if>
-    </where>-->
+    </where>
     <if test="start!=null and size!=null">
       limit #{start},#{size}
     </if>
   </select>
 
 
-  <select id="getTotal" parameterType="Map" resultType="Long">
-    select count(*) from order
+  <select id="getTotal_zy" parameterType="Map" resultType="Long">
+    select count(*) from orderblm
     <where>
       <if test="username!=null and username!='' ">
         and username like #{username}
@@ -178,7 +208,7 @@
     </where>
   </select>
 
-  <delete id="delete" parameterType="com.blm.bean.Order">
-		delete from order where orderid=#{orderid}
+  <delete id="delete_zy" parameterType="com.blm.bean.OrderBlm">
+		delete from orderblm where orderid=#{orderid}
 	</delete>
 </mapper>
