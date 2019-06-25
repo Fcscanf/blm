@@ -5,9 +5,18 @@ public class UserDetail {
 
     private String address;
 
-    public UserDetail(String userid, String address) {
+    private String addresss;
+
+    private String sex;
+
+    private String phonee;
+
+    public UserDetail(String userid, String address, String addresss, String sex, String phonee) {
         this.userid = userid;
         this.address = address;
+        this.addresss = addresss;
+        this.sex = sex;
+        this.phonee = phonee;
     }
 
     public UserDetail() {
@@ -28,5 +37,29 @@ public class UserDetail {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public String getAddresss() {
+        return addresss;
+    }
+
+    public void setAddresss(String addresss) {
+        this.addresss = addresss == null ? null : addresss.trim();
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public String getPhonee() {
+        return phonee;
+    }
+
+    public void setPhonee(String phonee) {
+        this.phonee = phonee == null ? null : phonee.trim();
     }
 }
