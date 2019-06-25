@@ -1,4 +1,4 @@
-package com.blm.service.Impl;
+package com.blm.service.impl;
 
 import com.blm.bean.Admin;
 import com.blm.dao.AdminMapper;
@@ -14,6 +14,7 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
+    @Override
     public Admin getAdmin(Admin admin) {
         return this.adminMapper.getAdmin_d(admin);
     }
