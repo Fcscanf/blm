@@ -16,4 +16,6 @@ public interface OrderService {
     public Long getTotal(Map<String, Object> map);
 
     public int delete(String orderid);//删除订单
+
+    public List<Order> findAllByUserId_wz(String userid);//查询订单（详细信息） wz
 }

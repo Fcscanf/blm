@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blm.dao.StoreDetailMapper">
-<<<<<<< HEAD
-  <resultMap id="BaseResultMap" type="com.blm.bean.StoreDetail">
-    <constructor>
-      <idArg column="storeid" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="userid" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="tel" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="storename" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="storeaddress" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="certurl" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="shopfronturl" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="area" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
-    </constructor>
-  </resultMap>
 
 
-  <select id="findAllById"  parameterType="String" resultMap="ResultMap">
+  <select id="findAllById_wz"  parameterType="String" resultMap="ResultMap_wz">
     select c.foodid,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
     s.storename,s.storeaddress,s.tel,s.email,s.certurl,s.area
     from checkfood c,fooddetail f,storedetail s
     where c.foodid=f.foodid and c.storeid=s.storeid and s.storeid=#{storeid}
   </select>
 
-  <resultMap type="com.blm.bean.StoreDetail" id="ResultMap" >
+  <resultMap type="com.blm.bean.StoreDetail" id="ResultMap_wz" >
     <id property="storeid" column="storeid" />
     <result property="storename" column="storename" />
     <result property="storeaddress" column="storeaddress" />
@@ -49,17 +34,11 @@
   </resultMap>
 
 
-
-
-
   <select id="findAll" resultType="map">
       select  * from storedetail
   </select>
 
 
-  <sql id="Base_Column_List">
-    storeid, userid, tel, email, storename, storeaddress, certurl, shopfronturl, area, 
-=======
     <resultMap id="BaseResultMap" type="com.blm.bean.StoreDetail">
         <constructor>
             <idArg column="storeid" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -76,7 +55,6 @@
     </resultMap>
     <sql id="Base_Column_List">
     storeid, userid, tel, email, storename, storeaddress, certurl, shopfronturl, area,
->>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
     isvalid
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
