@@ -70,7 +70,7 @@
         </javaClientGenerator>
 
 
-        <table tableName="userdetail" domainObjectName="UserDetail"
+        <table tableName="orderblm" domainObjectName="OrderBlm"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
