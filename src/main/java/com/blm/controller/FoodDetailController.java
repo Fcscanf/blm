@@ -122,6 +122,4 @@ public class FoodDetailController {
         return new Result(true, StatusCode.OK,"查询成功",foodDetailService.find_k());
     }
 
-
-
 }

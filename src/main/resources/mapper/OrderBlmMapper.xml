@@ -15,6 +15,38 @@
       <arg column="remarks" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
+
+  <select id="findAllByUserId_wz"  parameterType="String" resultMap="ResultMap_wz">
+    select o.orderid,o.username,o.storeid,o.totalprice,o.date,o.userid,t.foodid,t.orderid,t.orderdetailid,
+    f.foodid,f.foodname,f.price,f.picpath
+    from  fooddetail f,orderdetail t,orderblm o
+    where t.foodid=f.foodid
+    and t.orderid=o.orderid
+    and o.userid=#{userid}
+   </select>
+
+  <resultMap type="com.blm.bean.OrderBlm" id="ResultMap_wz" >
+    <id property="orderid" column="orderid" />
+    <result property="username" column="username" />
+    <result property="storeid" column="storeid" />
+    <result property="totalprice" column="totalprice" />
+    <result property="date" column="date" />
+    <collection property="orderDetails" ofType="com.blm.bean.OrderDetail">
+      <id property="orderdetailid" column="orderdetailid" />
+      <result property="foodid" column="foodid" />
+      <result property="orderid" column="orderid" />
+    </collection>
+    <collection property="foodDetails" ofType="com.blm.bean.FoodDetail">
+      <id property="foodid" column="foodid" />
+      <result property="foodname" column="foodname" />
+      <result property="price" column="price" />
+      <result property="picpath" column="picpath"/>
+    </collection>
+  </resultMap>
+
+
+
+
   <sql id="Base_Column_List">
     orderid, userid, username, storeid, foodid, foodname, totalprice, date, isvalid, 
     remarks
