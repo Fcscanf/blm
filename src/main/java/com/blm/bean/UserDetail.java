@@ -1,26 +1,34 @@
 package com.blm.bean;
 
 public class UserDetail {
+    private String id;
+
     private String userid;
-
-    private String address;
-
-    private String addresss;
 
     private String sex;
 
-    private String phonee;
+    private String address;
 
-    public UserDetail(String userid, String address, String addresss, String sex, String phonee) {
+    private String phone;
+
+    public UserDetail(String id, String userid, String sex, String address, String phone) {
+        this.id = id;
         this.userid = userid;
-        this.address = address;
-        this.addresss = addresss;
         this.sex = sex;
-        this.phonee = phonee;
+        this.address = address;
+        this.phone = phone;
     }
 
     public UserDetail() {
         super();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getUserid() {
@@ -31,22 +39,6 @@ public class UserDetail {
         this.userid = userid == null ? null : userid.trim();
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public String getAddresss() {
-        return addresss;
-    }
-
-    public void setAddresss(String addresss) {
-        this.addresss = addresss == null ? null : addresss.trim();
-    }
-
     public String getSex() {
         return sex;
     }
@@ -55,11 +47,19 @@ public class UserDetail {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getPhonee() {
-        return phonee;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPhonee(String phonee) {
-        this.phonee = phonee == null ? null : phonee.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 }
