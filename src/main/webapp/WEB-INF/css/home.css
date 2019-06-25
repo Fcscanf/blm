@@ -17,7 +17,7 @@ html,body{
 .blm-header{
     width: 100%;
     height: 60px;
-    background-color: #EDE387;
+    background-color: #9cb240;
 }
 .blm-header .hd-container{
     width: 1200px;
@@ -31,166 +31,362 @@ html,body{
 .blm-header .hd-container .hd-logo .title{
     display: inline-block;
     font-family: 'STHupo';
-    color: #3B200C;
+    color: #c4c38f;
     height: 100%;
     line-height: 60px;
 }
 .hd-container .hd-logo > span{
     font-size: 50px;
+    color: #c4c38f;
 }
-.hd-container .hd-listBox{
-    float: right;
-    height: 60px;
+.hd-container .list-title{
+    height: 100%;
     line-height: 60px;
+    margin-left: 20px;
+    float:left;
 }
-.hd-container .hd-listBox a{
-    color: #3B200C;
+.hd-container .list-title > a{
+    width: 160px;
+    height: 100%;
     font-size: 20px;
-    text-decoration: none;
-}
-.hd-container .hd-listBox a:hover{
-    font-weight: bold;
-}
-.hd-container .hd-listBox span{
-    padding: 5px;
-}
-.blm-container .blm-listNav{
-    margin: 10px 0px;
-    width: 100%;
-    height: 50px;
-}
-.blm-container .blm-listNav .nav-container{
-    max-width: 1200px;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.blm-listNav .nav-container a{
-    width: 250px;
-    height: 100%;
     display: block;
-    float: left;
-    line-height: 50px;
-    font-size: 18px;
     text-align: center;
-    font-family: 'YouYuan';
-    font-weight: bold;
-}
-.blm-listNav .nav-container a:nth-child(2n+1){
-    background-color: #DE8100;
-    color: #ededed;
-    
-}
-.blm-listNav .nav-container a:nth-child(2n+2){
-    background-color: #EDE387;
-    color: #3B200C;
-}
-.blm-container .blm-banner{
-    width: 100%;
-    height: 400px;
-}
-.blm-banner .ban-container{
-    position: relative;
-    width: 1200px;
-    max-width: 1200px;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-image: url(../img/bgbg.jpg);
-    background-repeat: no-repeat;
-    background-size: 1200px 400px;
-    overflow: hidden;
-}
-.blm-banner .ban-container .list-container{
-    position: absolute;
-    left: 0;
-    top: 0;
-    animation: showBanner 15s infinite;
-    width: 900%;
-    height: 100%;
-}
-.ban-container .list-container .list-item{
-    width: 1200px;
-    height: 100%;
-    display: flex;
     float: left;
-}
-.ban-container .list-container .list-item a img{
-    height: 250px;
-    transform: 0.3s;
-}
-.ban-container .list-container .list-item a img:hover{
-    height: 300px;
-}
-.ban-container .list-container .list-item > a{
-    margin: auto;
-}
-.blm-banner .ban-container .preBtn{
-    left: 0;
-}
-.blm-banner .ban-container .nextBtn{
-    right: 0;
-}
-.blm-banner .ban-container .ctrBox{
-    display: block;
-    height: 60px;
-    width: 40px;
-    background: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    font-weight: bold;
-    color: #ededed;
-    text-align: center;
     line-height: 60px;
-    top: calc(50% - 30px);
+    transition: 0.3s;
+}
+.hd-container .list-title > a:hover{
+    background: linear-gradient(270deg,#b3bc6e,#c4c38f);
+}
+.hd-container .list-title > a:nth-child(1){
+    background-color: #b3bc6e;
+}
+.hd-container .user-info{
+    position: relative;
+    float: right;
+    height: 100%;
+    line-height: 60px;
+    font-size: 16px;
+}
+.hd-container .user-info .user-name{
+    padding-right: 20px;
+}
+.hd-container .user-info .iconfont{
+    cursor: pointer;
+    font-size: 22px;
+    transition: 0.3s;
+}
+.hd-container .user-info .iconfont:hover{
+    color: #fff;
+    font-weight: bold;
+}
+.hd-container .user-info .targetList{
+    position: absolute;
+    right: 0;
+    width: 120px;
+    box-shadow: 0px 0px 3px #424242,0px 0px 5px;
+    background-color: #fff;
+    z-index: 99;
+    font-size: 12px;
+    display: none;
+}
+.hd-container .user-info .targetList .small-span{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    z-index: 96;
+    background-color: #fff;
+    transform: rotate(45deg);
+    right: 15px;
+    top: -10px;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+}
+.hd-container .user-info .targetList ul{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    padding-top: 12px;
+}
+.hd-container .user-info .targetList ul li{
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px;
+    border-radius: 3px;
     cursor: pointer;
 }
-.blm-banner .ban-container .ctrBox:hover{
-    font-size: 18px;
+.hd-container .user-info .targetList ul li:hover{
+    background-color: #ddd;
 }
-.blm-shopNav{
+.hd-container .user-info .targetList ul li .iconfont{
+    font-size: 10px;
+}
+.blm-place{
+    width: 100%;
+}
+.blm-place .place-container{
+    position: relative;
+    width: 1200px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+.blm-place .place-container .now-place{
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    width: 500px;
+    overflow: hidden;
+}
+.place-container .now-place .pSpan-1{
+    color:#666;
+    padding-right: 10px;
+}
+.place-container .now-place .pSpan-2{
+    color: #333;
+    padding-right: 10px;
+}
+.place-container .now-place .pSpan-2:hover{
+    color: #0089dc;
+}
+.place-container .now-place .pSpan-3 a{
+    color: #0089dc;
+    padding-right: 10px;
+}
+.place-container .now-place .pSpan-4{
+    color: #333;
+}
+.place-container .sou-food{
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 50px;
+    line-height: 50px;
+}
+.place-container .sou-food > .sou{
+    position: absolute;
+    right: -5px;
+    height: 24px;
+    width: 200px;
+    border: 1px solid #ccc;
+    top: 10px;
+    padding: 2px 0px 0px 10px;
+    transition: 0.3s;
+}
+.place-container .sou-food > .sou:focus{
+    width: 250px;
+}
+.place-container .sou-food > span{
+    position: absolute;
+    right: 0;
+}
+.food-class{
+    width: 100%;
+}
+.food-class .food-container{
+    overflow: hidden;
+    width: 1200px;
+    height:96px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border-top:3px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    box-shadow: 0px 0px 5px #ddd;
+    box-sizing: border-box;
+    padding: 15px 20px 15px 20px;
+}
+.food-class .food-container .left{
+    float: left;
+    width: 80px;
+    height: 100%;
+    color: #666;
+    font-size: 14px;
+}
+.food-class .food-container .right{
+    float: right;
+    width: calc(100% - 80px);
+    height: 100%;
+}
+.food-class .food-container .right > span{
+    font-size: 14px;
+    color: #333;
+    padding: 5px 10px;
+    float: left;
+    margin-left: 8px;
+}
+.food-class .food-container .right > span.on{
+    background-color: #f6f6f6;
+    font-weight: bold;
+}
+.food-class .food-container .right > span:hover{
+    background-color: #f6f6f6;
+}
+.shop-class{
     margin-top: 20px;
     width: 100%;
 }
-.shopContainer{
+.shop-container{
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid #e6e6e6;
 }
-.shopContainer .shop-title h1{
-    color: #3B200C;
-    font-family: 'YouYuan';
-}
-.shopContainer .shop-list{
-    width: 1200px;
-    margin-top: 15px;
-}
-.shopContainer .shop-list .shop-item{
-    float: left;
-    width: 590px;
-    height: 200px;
-    margin-top: 10px;
-    box-shadow: 3px 3px 3px #ccc;
+.shop-class .shop-container .shop-item{
+    position: relative;
+    width: 300px;
+    height: 135px;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #fff;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 20px;
     transition: 0.3s;
-    border-radius: 5px;
 }
-.shopContainer .shop-list .shop-item:hover{
-    box-shadow: 4px 4px 5px #666;
+.shop-class .shop-container .shop-item > a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
-.shopContainer .shop-list .shop-item:nth-child(2n+1){
-    background-color: #ccfc62;
+.shop-container .shop-item > a > .imgBox{
+    height: 100%;
+    width: 70px;
+    float: left;
 }
-.shopContainer .shop-list .shop-item:nth-child(2n+2){
-    background-color: #ede387;
-    margin-left: 20px;
+.shop-container .shop-item > a > .imgBox > img{
+    width: 70px;
+    height: 70px;
+    display: block;
 }
-.shopContainer .shop-setBox{
-    height: 1100px;
+.shop-container .shop-item > a > .infoBox{
+    width: 190px;
+    height: 100%;
+    float: right;
+    box-sizing: border-box;
+    padding: 5px 5px 5px 15px;
+}
+.infoBox .food-name{
+    font-size: 18px;
+    font-family: STXingkai;
+    color: #333;
+    margin-bottom: 5px;
+    height: 20px;
+    line-height: 20px;
+    overflow:hidden;
+}
+.infoBox .food-price{
+    font-size: 14px;
+    color: #666;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.infoBox .food-shop{
+    font-size: 12px;
+    padding: 5px 0px 5px 0px;
+    color: #666;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.shop-container .shop-item:hover{
+    border-bottom: 2px solid #ccc;
+    background-color: #ededed;
+}
+.shop-container .shop-item:hover .food-name{
+    color: #0089dc;
+}
+.shop-container .shop-item:hover .hide-info{
+    display: block;
+}
+.shop-container .shop-item .hide-info{
+    position: absolute;
+    width: 300px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    padding: 30px 10px 20px 10px;
+    z-index: 99;
+    display: none;
+    background-color: #fff;
+}
+.shop-container .shop-item:nth-child(4n+1) .hide-info{
+    left: 100%;
+    top: 0;
+}
+.shop-container .shop-item:nth-child(4n+2) .hide-info{
+    left: 100%;
+    top: 0;
+}
+.shop-container .shop-item:nth-child(4n+3) .hide-info{
+    left: 100%;
+    top: 0;
+}
+.shop-container .shop-item:nth-child(4n+4) .hide-info{
+    right: 100%;
+    top: 0;
+}
+.hide-info .h-span{
+    position: absolute;
+    background-color: #fff;
+    width: 16px;
+    height: 16px;
+    transform: rotate(45deg);
+    left:-10px;
+    top: 10px;
+    border-bottom: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    z-index: 98;
+}
+.hide-info .h-name{
+    font-size: 16px;
+}
+.hide-info .h-class{
+    font-size: 12px;
+    color: #666;
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #999;
+}
+.hide-info .h-price{
+    display: inline-block;
+    font-size: 12px;
+    padding: 8px 20px;
+    background-color: #ededed;
+    color: #000;
+    margin-top: 8px;
+}
+.hide-info .h-desc{
+    font-size: 12px;
+    color: #333;
+    text-indent: 2rem;
+    line-height: 20px;
+}
+.shop-tomore{
+    height: 100px;
+    width: 100%;
+}
+.shop-tomore .more-container{
+    height: 50px;
     width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    background: linear-gradient(to bottom,#f9f9f9,#eee);
+    color: #777;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px #424242,0px 0px 6px #ccc;
+    border-radius: 5px;
 }
 .blm-bottom{
     width: 100%;
     height: 80px;
-    background-color: #DE8100;
+    background-color: #87AB31;
 }
 .bot-container{
     width: 1200px;
@@ -220,7 +416,7 @@ html,body{
     margin-left: 200px;
     padding: 15px;
     border-radius: 20px;
-    background-color: #ede387;
+    background-color: #b3bc6e;
     height: 40px;
     line-height: 40px;
     cursor: pointer;
@@ -229,12 +425,4 @@ html,body{
     color: #3B200C;
     font-weight: bold;
     font-family: 'YouYuan';
-}
-@keyframes showBanner {
-    0%,18%{left:0px;}
-    20%,38%{left: calc(-1*1200px);}
-    40%,58%{left: calc(-2*1200px);}
-    60%,78%{left:calc(-3*1200px);}
-    80%,98%{left:calc(-4*1200px);}
-    100%{left: calc(-5*1200px);}
 }
