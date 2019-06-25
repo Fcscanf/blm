@@ -1,169 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blm.dao.CheckFoodMapper">
-  <resultMap id="BaseResultMap" type="com.blm.bean.CheckFood">
-    <constructor>
-      <idArg column="foodid" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="foodtype" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="keywords" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="storeid" javaType="java.lang.String" jdbcType="VARCHAR" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
-    foodid, foodtype, keywords, storeid
-  </sql>
+<!--  <resultMap id="BaseResultMap" type="com.blm.bean.CheckFood">-->
+<!--    <constructor>-->
+<!--      <idArg column="foodid" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--      <arg column="foodtype" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--      <arg column="keywords" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--      <arg column="storeid" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--    </constructor>-->
+<!--  </resultMap>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    foodid, foodtype, keywords, storeid-->
+<!--  </sql>-->
 
-  <select id="vaguefind" parameterType="String" resultMap="ResultMap">
-    <bind name="pattern" value="'%' + keyword + '%'" ></bind>
-     select c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
-    s.storename,s.storeaddress
-    from checkfood c,fooddetail f,storedetail s
-    where c.foodid=f.foodid and c.storeid=s.storeid
-      and ( c.foodtype like #{pattern} or f.foodname like #{pattern})
-  </select>
-
-
-
-  <select id="findAll"  resultMap="ResultMap">
-    select c.foodid,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
-    s.storename,s.storeaddress
-    from checkfood c,fooddetail f,storedetail s
-    where c.foodid=f.foodid and c.storeid=s.storeid
-  </select>
-
-  <resultMap type="com.blm.bean.CheckFood" id="ResultMap" >
-    <id property="foodid" column="foodid" />
-    <result property="keywords" column="keywords" />
-    <result property="storeid" column="storeid" />
-    <result property="foodtype" column="foodtype" />
-    <collection property="storeDetail" ofType="com.blm.bean.StoreDetail">
-    <id property="storeid" column="storeid" />
-    <result property="storename" column="storename" />
-    <result property="storeaddress" column="storeaddress" />
-    </collection>
-    <collection property="foodDetail" ofType="com.blm.bean.FoodDetail">
-      <id property="foodid" column="foodid" />
-      <result property="foodname" column="foodname" />
-      <result property="price" column="price" />
-      <result property="picpath" column="picpath"/>
-      <result property="description" column="description"/>
-    </collection>
-  </resultMap>
+<!--  <select id="vaguefind" parameterType="String" resultMap="ResultMap">-->
+<!--    <bind name="pattern" value="'%' + keyword + '%'" ></bind>-->
+<!--     select c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,-->
+<!--    s.storename,s.storeaddress-->
+<!--    from checkfood c,fooddetail f,storedetail s-->
+<!--    where c.foodid=f.foodid and c.storeid=s.storeid-->
+<!--      and ( c.foodtype like #{pattern} or f.foodname like #{pattern})-->
+<!--  </select>-->
 
 
 
+<!--  <select id="findAll"  resultMap="ResultMap">-->
+<!--    select c.foodid,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,-->
+<!--    s.storename,s.storeaddress-->
+<!--    from checkfood c,fooddetail f,storedetail s-->
+<!--    where c.foodid=f.foodid and c.storeid=s.storeid-->
+<!--  </select>-->
+
+<!--  <resultMap type="com.blm.bean.CheckFood" id="ResultMap" >-->
+<!--    <id property="foodid" column="foodid" />-->
+<!--    <result property="keywords" column="keywords" />-->
+<!--    <result property="storeid" column="storeid" />-->
+<!--    <result property="foodtype" column="foodtype" />-->
+<!--    <collection property="storeDetail" ofType="com.blm.bean.StoreDetail">-->
+<!--    <id property="storeid" column="storeid" />-->
+<!--    <result property="storename" column="storename" />-->
+<!--    <result property="storeaddress" column="storeaddress" />-->
+<!--    </collection>-->
+<!--    <collection property="foodDetail" ofType="com.blm.bean.FoodDetail">-->
+<!--      <id property="foodid" column="foodid" />-->
+<!--      <result property="foodname" column="foodname" />-->
+<!--      <result property="price" column="price" />-->
+<!--      <result property="picpath" column="picpath"/>-->
+<!--      <result property="description" column="description"/>-->
+<!--    </collection>-->
+<!--  </resultMap>-->
 
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from checkfood
-    where foodid = #{foodid,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from checkfood
-    where foodid = #{foodid,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.blm.bean.CheckFood">
-    insert into checkfood (foodid, foodtype, keywords, 
-      storeid)
-    values (#{foodid,jdbcType=VARCHAR}, #{foodtype,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
-      #{storeid,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.blm.bean.CheckFood">
-    insert into checkfood
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="foodid != null">
-        foodid,
-      </if>
-      <if test="foodtype != null">
-        foodtype,
-      </if>
-      <if test="keywords != null">
-        keywords,
-      </if>
-      <if test="storeid != null">
-        storeid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="foodid != null">
-        #{foodid,jdbcType=VARCHAR},
-      </if>
-      <if test="foodtype != null">
-        #{foodtype,jdbcType=VARCHAR},
-      </if>
-      <if test="keywords != null">
-        #{keywords,jdbcType=VARCHAR},
-      </if>
-      <if test="storeid != null">
-        #{storeid,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.CheckFood">
-    update checkfood
-    <set>
-      <if test="foodtype != null">
-        foodtype = #{foodtype,jdbcType=VARCHAR},
-      </if>
-      <if test="keywords != null">
-        keywords = #{keywords,jdbcType=VARCHAR},
-      </if>
-      <if test="storeid != null">
-        storeid = #{storeid,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where foodid = #{foodid,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.blm.bean.CheckFood">
-    update checkfood
-    set foodtype = #{foodtype,jdbcType=VARCHAR},
-      keywords = #{keywords,jdbcType=VARCHAR},
-      storeid = #{storeid,jdbcType=VARCHAR}
-    where foodid = #{foodid,jdbcType=VARCHAR}
-  </update>
 
-  <select id="findAll"  resultMap="ResultMap">
-    select c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
-    s.storename,s.storeaddress
-    from checkfood c,fooddetail f,storedetail s
-    where c.foodid=f.foodid and c.storeid=s.storeid
-  </select>
 
-  <resultMap type="com.blm.bean.CheckFood" id="ResultMap" >
-    <id property="foodid" column="foodid" />
-    <result property="keywords" column="keywords" />
-    <result property="storeid" column="storeid" />
-    <result property="foodtype" column="foodtype" />
-    <collection property="storeDetail" ofType="com.blm.bean.StoreDetail">
-      <id property="storeid" column="storeid" />
-      <result property="storename" column="storename" />
-      <result property="storeaddress" column="storeaddress" />
-    </collection>
-    <collection property="foodDetail" ofType="com.blm.bean.FoodDetail">
-      <id property="foodid" column="foodid" />
-      <result property="foodname" column="foodname" />
-      <result property="price" column="price" />
-      <result property="picpath" column="picpath"/>
-      <result property="description" column="description"/>
-    </collection>
-  </resultMap>
 
-    <select id="vaguefind" parameterType="String" resultMap="ResultMap">
-        <bind name="pattern" value="'%' + foodtype + '%'" ></bind>
-        select
-          c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
-          s.storename,s.storeaddress
-        from
-          checkfood c,fooddetail f,storedetail s
-        where
-          c.foodid=f.foodid
-        and
-          c.storeid=s.storeid
-        and(
-          c.foodtype like #{pattern}
-          or f.foodname like #{pattern}
-        )
-    </select>
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from checkfood-->
+<!--    where foodid = #{foodid,jdbcType=VARCHAR}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">-->
+<!--    delete from checkfood-->
+<!--    where foodid = #{foodid,jdbcType=VARCHAR}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.blm.bean.CheckFood">-->
+<!--    insert into checkfood (foodid, foodtype, keywords, -->
+<!--      storeid)-->
+<!--    values (#{foodid,jdbcType=VARCHAR}, #{foodtype,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, -->
+<!--      #{storeid,jdbcType=VARCHAR})-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.blm.bean.CheckFood">-->
+<!--    insert into checkfood-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="foodid != null">-->
+<!--        foodid,-->
+<!--      </if>-->
+<!--      <if test="foodtype != null">-->
+<!--        foodtype,-->
+<!--      </if>-->
+<!--      <if test="keywords != null">-->
+<!--        keywords,-->
+<!--      </if>-->
+<!--      <if test="storeid != null">-->
+<!--        storeid,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="foodid != null">-->
+<!--        #{foodid,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="foodtype != null">-->
+<!--        #{foodtype,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="keywords != null">-->
+<!--        #{keywords,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="storeid != null">-->
+<!--        #{storeid,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.CheckFood">-->
+<!--    update checkfood-->
+<!--    <set>-->
+<!--      <if test="foodtype != null">-->
+<!--        foodtype = #{foodtype,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="keywords != null">-->
+<!--        keywords = #{keywords,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="storeid != null">-->
+<!--        storeid = #{storeid,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where foodid = #{foodid,jdbcType=VARCHAR}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.blm.bean.CheckFood">-->
+<!--    update checkfood-->
+<!--    set foodtype = #{foodtype,jdbcType=VARCHAR},-->
+<!--      keywords = #{keywords,jdbcType=VARCHAR},-->
+<!--      storeid = #{storeid,jdbcType=VARCHAR}-->
+<!--    where foodid = #{foodid,jdbcType=VARCHAR}-->
+<!--  </update>-->
+
+<!--  <select id="findAll"  resultMap="ResultMap">-->
+<!--    select c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,-->
+<!--    s.storename,s.storeaddress-->
+<!--    from checkfood c,fooddetail f,storedetail s-->
+<!--    where c.foodid=f.foodid and c.storeid=s.storeid-->
+<!--  </select>-->
+
+<!--  <resultMap type="com.blm.bean.CheckFood" id="ResultMap" >-->
+<!--    <id property="foodid" column="foodid" />-->
+<!--    <result property="keywords" column="keywords" />-->
+<!--    <result property="storeid" column="storeid" />-->
+<!--    <result property="foodtype" column="foodtype" />-->
+<!--    <collection property="storeDetail" ofType="com.blm.bean.StoreDetail">-->
+<!--      <id property="storeid" column="storeid" />-->
+<!--      <result property="storename" column="storename" />-->
+<!--      <result property="storeaddress" column="storeaddress" />-->
+<!--    </collection>-->
+<!--    <collection property="foodDetail" ofType="com.blm.bean.FoodDetail">-->
+<!--      <id property="foodid" column="foodid" />-->
+<!--      <result property="foodname" column="foodname" />-->
+<!--      <result property="price" column="price" />-->
+<!--      <result property="picpath" column="picpath"/>-->
+<!--      <result property="description" column="description"/>-->
+<!--    </collection>-->
+<!--  </resultMap>-->
+
+<!--    <select id="vaguefind" parameterType="String" resultMap="ResultMap">-->
+<!--        <bind name="pattern" value="'%' + foodtype + '%'" ></bind>-->
+<!--        select-->
+<!--          c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,-->
+<!--          s.storename,s.storeaddress-->
+<!--        from-->
+<!--          checkfood c,fooddetail f,storedetail s-->
+<!--        where-->
+<!--          c.foodid=f.foodid-->
+<!--        and-->
+<!--          c.storeid=s.storeid-->
+<!--        and(-->
+<!--          c.foodtype like #{pattern}-->
+<!--          or f.foodname like #{pattern}-->
+<!--        )-->
+<!--    </select>-->
 </mapper>
