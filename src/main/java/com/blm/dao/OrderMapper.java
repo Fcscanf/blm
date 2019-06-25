@@ -18,6 +18,8 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
+    List<Order> findAllByUserId_wz(String userid);//查询订单（详细信息） wz
+
 
     public List<Order> find(Map<String, Object> map);//查询订单
 

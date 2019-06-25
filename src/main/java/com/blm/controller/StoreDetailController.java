@@ -1,17 +1,22 @@
 package com.blm.controller;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+
 import com.blm.bean.PageBean;
 import com.blm.bean.StoreDetail;
+
+
 import com.blm.service.StoreDetailService;
 import com.blm.util.ResponseUtil;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +36,7 @@ public class StoreDetailController {
     //获取商家所有信息
     @RequestMapping("/findAll")
     public String findall(HttpServletResponse response) throws Exception {
-        List<StoreDetail> storeDetails = storeDetailService.findAll("12");
+        List<StoreDetail> storeDetails = storeDetailService.findAll_wz("12");
         JSONObject result=new JSONObject();
         JSONArray jsonArray= new JSONArray(storeDetails);
         result.put("result",jsonArray);

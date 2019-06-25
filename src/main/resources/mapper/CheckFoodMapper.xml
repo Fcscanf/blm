@@ -123,4 +123,47 @@
       storeid = #{storeid,jdbcType=VARCHAR}
     where foodid = #{foodid,jdbcType=VARCHAR}
   </update>
+
+  <select id="findAll"  resultMap="ResultMap">
+    select c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
+    s.storename,s.storeaddress
+    from checkfood c,fooddetail f,storedetail s
+    where c.foodid=f.foodid and c.storeid=s.storeid
+  </select>
+
+  <resultMap type="com.blm.bean.CheckFood" id="ResultMap" >
+    <id property="foodid" column="foodid" />
+    <result property="keywords" column="keywords" />
+    <result property="storeid" column="storeid" />
+    <result property="foodtype" column="foodtype" />
+    <collection property="storeDetail" ofType="com.blm.bean.StoreDetail">
+      <id property="storeid" column="storeid" />
+      <result property="storename" column="storename" />
+      <result property="storeaddress" column="storeaddress" />
+    </collection>
+    <collection property="foodDetail" ofType="com.blm.bean.FoodDetail">
+      <id property="foodid" column="foodid" />
+      <result property="foodname" column="foodname" />
+      <result property="price" column="price" />
+      <result property="picpath" column="picpath"/>
+      <result property="description" column="description"/>
+    </collection>
+  </resultMap>
+
+    <select id="vaguefind" parameterType="String" resultMap="ResultMap">
+        <bind name="pattern" value="'%' + foodtype + '%'" ></bind>
+        select
+          c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
+          s.storename,s.storeaddress
+        from
+          checkfood c,fooddetail f,storedetail s
+        where
+          c.foodid=f.foodid
+        and
+          c.storeid=s.storeid
+        and(
+          c.foodtype like #{pattern}
+          or f.foodname like #{pattern}
+        )
+    </select>
 </mapper>

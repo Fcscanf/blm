@@ -19,6 +19,42 @@
     orderid, userid, username, storeid, foodid, foodname, totalprice, date, isvalid, 
     remarks
   </sql>
+
+
+  <select id="findAllByUserId"  parameterType="String" resultMap="ResultMap">
+    select o.orderid,o.username,o.storeid,o.totalprice,o.date,o.userid,t.foodid,t.orderid,t.orderdetailid,
+    f.fooid,f.foodname,f.price,f.picpath
+    from  fooddetail f,orderdetail t,order o
+    where t.fooid=f.foodid
+    and t.orderid=o.orderid
+    and o.userid=#{userid}
+   </select>
+
+  <resultMap type="com.blm.bean.Order" id="ResultMap" >
+    <id property="orderid" column="orderid" />
+    <result property="username" column="username" />
+    <result property="storeid" column="storeid" />
+    <result property="totalprice" column="totalprice" />
+    <result property="date" column="date" />
+    <collection property="orderDetails" ofType="com.blm.bean.OrderDetail">
+      <id property="orderdetailid" column="orderdetailid" />
+      <result property="foodid" column="foodid" />
+      <result property="orderid" column="orderid" />
+    </collection>
+    <collection property="foodDetails" ofType="com.blm.bean.FoodDetail">
+      <id property="foodid" column="foodid" />
+      <result property="foodname" column="foodname" />
+      <result property="price" column="price" />
+      <result property="picpath" column="picpath"/>
+    </collection>
+  </resultMap>
+
+
+
+
+
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

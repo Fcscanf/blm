@@ -16,16 +16,10 @@ public interface StoreDetailService {
 
     public Long getTotal(Map<String, Object> map);//查询总记录数
 
-
+    public List<StoreDetail> find(Map<String, Object> map);
     public int update(StoreDetail storeDetail);//更新店面信息
 
     //查询商家所有信息
-    public List<StoreDetail> findAll(String storeid);
-
-//    周宇未完成方法
-    List<StoreDetail> find(Map<String, Object> map);
-
-
-
+    public List<StoreDetail> findAll_wz(String storeid);
 }
 

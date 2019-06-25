@@ -2,14 +2,17 @@ package com.blm.controller;
 
 import com.blm.bean.Order;
 import com.blm.bean.PageBean;
+import com.blm.bean.StoreDetail;
 import com.blm.service.OrderService;
 import com.blm.util.ResponseUtil;
 import com.blm.util.StringUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +39,12 @@ public class OrderController {
      * @return
      * @throws Exception
      */
+
+
+
+
+
+
     @RequestMapping("/list")
     public String List(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, Order order, HttpServletResponse response) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
@@ -70,5 +79,15 @@ public class OrderController {
 
     }
 
-
+    //查询订单（详细信息） wz
+    @ResponseBody
+    @RequestMapping("/findallbyid")
+    public String findAllById_wz(@RequestBody Order order,HttpServletResponse response) throws Exception {
+        List<Order> storeDetails = orderService.findAllByUserId_wz(order.getUserid());
+        JSONObject result=new JSONObject();
+        JSONArray jsonArray= new JSONArray(storeDetails);
+        result.put("result",jsonArray);
+        ResponseUtil.write(response, result);
+        return  "test";
+    }
 }

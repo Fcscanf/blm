@@ -23,6 +23,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
 
     public List<Order> find(Map<String, Object> map){
+
+
         return orderMapper.find(map);
     }
 
@@ -36,6 +38,11 @@ public class OrderServiceImpl implements OrderService {
     public int delete(String orderid){
         return orderMapper.delete(orderid);
 
+    }
+    //查询订单（详细信息） wz
+    @Override
+    public List<Order> findAllByUserId_wz(String userid) {
+        return orderMapper.findAllByUserId_wz(userid);
     }
 
 }
