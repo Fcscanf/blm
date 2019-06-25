@@ -33,7 +33,7 @@
         </div>
         <div class="reg-rightBox">
             <span>已有账号</span>
-            <a href="#">登录></a>
+            <a href="javascript:void(0)">登录></a>
         </div>
     </div>
     <div class="blm-content">
