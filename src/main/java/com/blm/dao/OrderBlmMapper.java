@@ -1,6 +1,5 @@
 package com.blm.dao;
 
-import com.blm.bean.Order;
 import com.blm.bean.OrderBlm;
 
 import java.util.List;
