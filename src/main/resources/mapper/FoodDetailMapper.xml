@@ -120,9 +120,14 @@
 
 
 
-  <select id="find" parameterType="Map" resultType="com.blm.bean.FoodDetail">
-    select * from fooddetail
-    <where>
+  <select id="find_zy" parameterType="Map" resultType="com.blm.bean.FoodDetail">
+    select u.userid,u.username,
+    s.storeid,s.userid,
+    c.foodid,c.storeid,
+    f.foodid,f.foodname,f.othername,f.price,f.description,f.picpath
+    from user u,storedetail s,checkfood c,fooddetail f
+    where u.userid=s.userid and s.storeid=c.storeid and c.foodid=f.foodid  and u.username=#{username}
+   <where>
       <if test="foodname!=null and foodname!='' ">
         and foodname like #{foodname}
       </if>
@@ -135,7 +140,6 @@
     </if>
   </select>
 
-  <!--public Long getTotal(Map<String, Object> map);//查询总记录数-->
   <select id="getTotal" parameterType="Map" resultType="Long">
     select count(*) from fooddetail
     <where>

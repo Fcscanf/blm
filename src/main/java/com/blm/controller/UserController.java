@@ -198,7 +198,7 @@ public class UserController {
             return "redirect:/storelogin.jsp";
         }else{
             HttpSession session=request.getSession();
-            session.setAttribute("currentUser", resultUser);
+            session.setAttribute("currentUser", resultUser.getUsername());
             session.setAttribute("resultStoreDetail",resultStoreDetail);
             return "storemain";
         }

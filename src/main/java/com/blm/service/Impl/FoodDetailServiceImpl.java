@@ -19,8 +19,9 @@ public class FoodDetailServiceImpl implements FoodDetailService {
 
     @Resource
     private FoodDetailMapper foodDetailMapper;
-    public List<FoodDetail> find(Map<String, Object> map){
-        return foodDetailMapper.find(map);
+
+    public List<FoodDetail> find_zy(Map map){
+        return foodDetailMapper.find_zy(map);
     }
 
     public Long getTotal(Map<String, Object> map){

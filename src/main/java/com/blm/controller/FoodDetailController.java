@@ -41,22 +41,25 @@ public class FoodDetailController {
     }
 
     /**
-     * 显示各种商品
+     * 商品展示(连表查询)
      * @param page
      * @param rows
      * @param foodDetail
      * @param response
+     * @param session
      * @return
      * @throws Exception
      */
+
     @RequestMapping("/list")
-    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, FoodDetail foodDetail, HttpServletResponse response) throws Exception {
+    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, FoodDetail foodDetail, HttpServletResponse response,HttpSession session) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("foodname", StringUtil.formatLike(foodDetail.getFoodname()));//模糊查询时使用
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPagesize());
-        List<FoodDetail> foodList = foodDetailService.find(map);
+        map.put("username",session.getAttribute("currentUser"));
+        List<FoodDetail> foodList =foodDetailService.find_zy(map);
         Long total = foodDetailService.getTotal(map);
         JSONObject result = new JSONObject();
         JSONArray jsonArray = new JSONArray(foodList);

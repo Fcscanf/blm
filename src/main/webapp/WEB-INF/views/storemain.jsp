@@ -37,7 +37,7 @@
     <table style="padding: 5px" width="100%">
         <tr>
             <td valign="bottom" align="center" width="50%">
-                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.username }</font><br>
+                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser}</font><br>
                 <font size="3">
                     &nbsp;&nbsp;地址：${resultStoreDetail.storeaddress}
                     &nbsp;&nbsp;服务区：${resultStoreDetail.area}<br>

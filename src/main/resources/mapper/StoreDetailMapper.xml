@@ -156,8 +156,6 @@
 
   <!--模糊查询-->
   <select id="find" parameterType="Map" resultType="com.blm.bean.StoreDetail">
-   /* select s.storeid,s.userid,s.tel,s.email,s.storename,s.storeaddress,s.certurl,s.shopfronturl,s.area,s.isvalid
-    from storedetail s,*/
     select * from storedetail
     <where>
       <if test="storename!=null and storename!='' ">
