@@ -111,17 +111,28 @@ public class UserController {
 
     }
 
-
     /**
-     * 发送验证码
+     * 注册和登录的验证码发送都应用此方法——辨别码
+     * 发送验证码/sendsms/{phone}/1就是登录直接发送验证码
+     * 发送验证码/sendsms/{phone}/0就是注册——先检验手机号是否已经存在，若已经存在返回false，正确返回true并发送验证码
+     *
      * @param phone
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/sendsms/{phone}",method = RequestMethod.POST)
-    public Result sendMsg(@PathVariable String phone){
-        System.out.println("接受成功");
-        userService.sendMsg(phone);
+    @RequestMapping(value = "/sendsms/{phone}/{code}",method = RequestMethod.POST)
+    public Result sendMsg(@PathVariable String phone,@PathVariable String code){
+        if ("1".equals(code)){
+            userService.sendMsg(phone,code);
+            return new Result(true,StatusCode.OK,"发送成功");
+        }
+        if ("0".equals(code)){
+            User user = userService.selectUserByPhone(phone);
+            if (user != null){
+                return new Result(false,StatusCode.ERROR,"手机号已经注册！");
+            }
+        }
+        userService.sendMsg(phone,code);
         return new Result(true,StatusCode.OK,"发送成功");
     }
 
@@ -172,11 +183,13 @@ public class UserController {
         return "userlogin";
     }
 
+//    跳转storeManage界面
     @RequestMapping("/getstoreManage")
     public String getStoreManage(){
         return "storeManage";
     }
 
+//    跳转注册界面
     @RequestMapping("/toregister")
     public String toRegister(){return "register";}
 
@@ -210,5 +223,3 @@ public class UserController {
 
 
 }
-
-

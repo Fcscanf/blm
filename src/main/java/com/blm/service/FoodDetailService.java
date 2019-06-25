@@ -20,4 +20,6 @@ public interface FoodDetailService {
     public int add(FoodDetail FoodDetail);//新增新商品
 
     public int delete(String id);//删除商品
+
+    public List<FoodDetail> find_k();
 }

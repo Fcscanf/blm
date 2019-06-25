@@ -157,29 +157,13 @@ $(function () {
         loginp2();
     })
     function loginp2() {
-<<<<<<< HEAD
-        var username=$("#username2").val().trim();;
-=======
         var phone=$("#username2").val();
->>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
         var validate=$(".validate").val();
         var user = {
             'username':username,
-            '                                                                                                                                                                                                                                                        ':validate
+            'validate':validate
         }
         $.ajax({
-<<<<<<< HEAD
-            type:"POST",
-            url:"http://localhost:8080/blm_war_exploded/user/**",
-            dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                'phone':phone,
-                'isvalid':isvalid
-            }),
-            success:function (result) {
-                alert("success")
-=======
             contentType : "application/json",
             type:"post",
             url:"http://localhost:8080/blm_war_exploded/user/login/"+validate,
@@ -191,36 +175,13 @@ $(function () {
             success:function (result) {
                 console.info(result)
                 window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
->>>>>>> 1558498d30fb8add4e9771c827f2385fa283f8ac
             },
-            error:function (result) {
-                alert("error")
+            error:function () {
             }
         })
     }
-    //点击发送验证码
-    $(".sendms").click(function () {
-        vilidation();
-    })
 
-    function vilidation() {
-      var phone=$("#username2").val().trim();
-      var isvalid="1";
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8080/blm_war_exploded/user/**",
-            dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                'phone':phone,
-                'isvalid':isvalid
-            }),
-            success:function (result) {
-              alert("success")
-            },
-            error:function (result) {
-                alert("error")
-            }
-        })
-    }
+
+
+
 })

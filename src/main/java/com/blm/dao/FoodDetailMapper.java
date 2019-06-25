@@ -27,4 +27,6 @@ public interface FoodDetailMapper {
     public int add(FoodDetail FoodDetail);//新增新商品
 
     public int delete(String foodid);//删除商品
+
+    public List<FoodDetail> findAllFoodDetail_k();
 }
