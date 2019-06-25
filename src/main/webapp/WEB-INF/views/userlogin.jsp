@@ -114,16 +114,10 @@
                                 <td class="mt_link">
                                     <a href="#" class="register">注册账号</a>
                                     <a href="#" class="forget">忘记密码</a>
-
                                 </td>
-
                             </tr>
                         </table>
-
-
                     </div>
-
-
                 </div>
 
             </div>

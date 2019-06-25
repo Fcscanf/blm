@@ -195,7 +195,7 @@ public class UserController {
         if(resultUser==null){
             request.setAttribute("user", user);
             request.setAttribute("errorMsg", "用户名或密码错误！");
-            return "storelogin";
+            return "redirect:/storelogin.jsp";
         }else{
             HttpSession session=request.getSession();
             session.setAttribute("currentUser", resultUser);
