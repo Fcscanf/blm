@@ -10,13 +10,13 @@
       <arg column="foodid" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="foodname" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="totalprice" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="datee" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="remarks" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    orderid, userid, username, storeid, foodid, foodname, totalprice, date, isvalid, 
+    orderid, userid, username, storeid, foodid, foodname, totalprice, datee, isvalid, 
     remarks
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -32,11 +32,11 @@
   <insert id="insert" parameterType="com.blm.bean.OrderBlm">
     insert into orderblm (orderid, userid, username, 
       storeid, foodid, foodname, 
-      totalprice, date, isvalid, 
+      totalprice, datee, isvalid, 
       remarks)
     values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, 
-      #{totalprice,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER}, 
+      #{totalprice,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER}, 
       #{remarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.OrderBlm">
@@ -63,8 +63,8 @@
       <if test="totalprice != null">
         totalprice,
       </if>
-      <if test="date != null">
-        date,
+      <if test="datee != null">
+        datee,
       </if>
       <if test="isvalid != null">
         isvalid,
@@ -95,8 +95,8 @@
       <if test="totalprice != null">
         #{totalprice,jdbcType=VARCHAR},
       </if>
-      <if test="date != null">
-        #{date,jdbcType=TIMESTAMP},
+      <if test="datee != null">
+        #{datee,jdbcType=TIMESTAMP},
       </if>
       <if test="isvalid != null">
         #{isvalid,jdbcType=INTEGER},
@@ -127,8 +127,8 @@
       <if test="totalprice != null">
         totalprice = #{totalprice,jdbcType=VARCHAR},
       </if>
-      <if test="date != null">
-        date = #{date,jdbcType=TIMESTAMP},
+      <if test="datee != null">
+        datee = #{datee,jdbcType=TIMESTAMP},
       </if>
       <if test="isvalid != null">
         isvalid = #{isvalid,jdbcType=INTEGER},
@@ -147,7 +147,7 @@
       foodid = #{foodid,jdbcType=VARCHAR},
       foodname = #{foodname,jdbcType=VARCHAR},
       totalprice = #{totalprice,jdbcType=VARCHAR},
-      date = #{date,jdbcType=TIMESTAMP},
+      datee = #{datee,jdbcType=TIMESTAMP},
       isvalid = #{isvalid,jdbcType=INTEGER},
       remarks = #{remarks,jdbcType=VARCHAR}
     where orderid = #{orderid,jdbcType=VARCHAR}
