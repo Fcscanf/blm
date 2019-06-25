@@ -73,7 +73,7 @@
     <!--    <rabbit:template id="amqpTemplate"  connection-factory="connectionFactory" exchange="exchangeTest" />-->
 
     <!--    注册短信模板相关信息-->
-    <bean class="com.blm.service.Impl.UserServiceImpl" id="userService">
+    <bean class="com.blm.service.impl.UserServiceImpl" id="userService">
         <property name="template_code" value="SMS_157276347"/>
         <property name="sign_name" value="Fcsanf官方通知"/>
     </bean>

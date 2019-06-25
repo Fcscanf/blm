@@ -1,4 +1,4 @@
-package com.blm.service.Impl;
+package com.blm.service.impl;
 
 
 import com.blm.bean.OrderBlm;
@@ -23,17 +23,20 @@ public class OrderBlmServiceImpl implements OrderBlmService {
     @Resource
     private OrderBlmMapper orderBlmMapper;
 
+    @Override
     public List<OrderBlm> find_zy(Map<String, Object> map) {
         return orderBlmMapper.find_zy(map);
     }
 
 
+    @Override
     public Long getTotal_zy(Map<String, Object> map) {
 
         return orderBlmMapper.getTotal_zy(map);
     }
 
 
+    @Override
     public int delete_zy(String orderid) {
         return orderBlmMapper.delete_zy(orderid);
 
