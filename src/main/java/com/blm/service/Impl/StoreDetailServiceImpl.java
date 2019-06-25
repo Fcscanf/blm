@@ -24,6 +24,10 @@ public class StoreDetailServiceImpl implements StoreDetailService {
         return storeDetailMapper.find(map);
     }
 
+    public StoreDetail findStoreDetailByUsername(String username) {
+        return null;
+    }
+
     public Long getTotal(Map<String, Object> map){
         return storeDetailMapper.getTotal(map);
     }
@@ -34,7 +38,7 @@ public class StoreDetailServiceImpl implements StoreDetailService {
     }
 
     //查询商家所有信息
-    public List<StoreDetail> findAll() {
-        return storeDetailMapper.findAll();
+    public List<StoreDetail> findAll_wz(String storeid) {
+        return storeDetailMapper.findAllById_wz(storeid);
     }
 }

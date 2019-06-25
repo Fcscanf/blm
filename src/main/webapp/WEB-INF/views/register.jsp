@@ -405,41 +405,42 @@
             }
         })
 
-        //普通用户的表单校验-用户名
-        //修改-对空字符串的控制
+        //普通用户的表单校对
         $nor_username.focus(function(){ //username
-           $nor_username.blur(function () {
-               var username = $nor_username.val()
-               $.ajax({
-                   type: "post",
-                   url: "http://localhost:8080/blm_war_exploded/user/check",
-                   dataType: "json",
-                   headers: {'Content-Type': 'application/json'},
-                   data: JSON.stringify({
-                       "username": username,
-                   }),
-                   success: function (result) {
-                       console.info(result.code)
-                       if (result.code == 20000) {
-                           console.info(result.message)
-                       }
-                   },
-                   error: function () {
+            $(window).keydown(function(event){
+                $(window).keyup(function(e){
 
-                   }
-               })
-           })
+                    // $.ajax({
+                    //     type: "POST",
+                    //     url: "some.php",
+                    //     data: "name=John&location=Boston",
+                    //     success: function(msg){
+                    //         if(msg = true){
+                    //             //验证通过的话进行赋值
+                    //             normalUser.username = $(this).val();
 
 
+                    //         }else{
+                    //             //报错处理
+                    //             $errAn1.css({
+                    //                 'animation':'errInfoMove 2s ease-in-out 0s 1 alternate forwards',
+                    //                 'display':'block'
+                    //             });
+                    //         }
+                    //     },
+                    //     error: function(){}
+                    // })
 
-                    // if($nor_username.val() === '123'){
-                    //     $errInfoList_n.eq(0).css('display','block');
-                    //     $errContainer_n.eq(0).addClass('errState');
-                    // }else{
-                    //     $errInfoList_n.eq(0).css('display','none');
-                    //     $errContainer_n.eq(0).removeClass('errState');
-                    // }
+                    if($nor_username.val() === '123'){
+                        $errInfoList_n.eq(0).css('display','block');
+                        $errContainer_n.eq(0).addClass('errState');
+                    }else{
+                        $errInfoList_n.eq(0).css('display','none');
+                        $errContainer_n.eq(0).removeClass('errState');
+                    }
+                })
 
+            });
         })
         //普通用户密码框校对
         $nor_userpwd.focus(function(){
@@ -469,7 +470,7 @@
                 })
             })
         })
-        //普通用户手机号码校对-点击
+        //普通用户手机号码校对
         $nor_mobile.focus(function() {
             $(window).keydown(function(){
                 $(window).keyup(function (event) {

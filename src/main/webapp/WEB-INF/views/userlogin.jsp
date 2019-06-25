@@ -12,7 +12,7 @@
     <title>Login</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userlogin.css">
-    <script src="${pageContext.request.contextPath}/js/userlogin.js"></script>
+     <script src="${pageContext.request.contextPath}/js/userlogin.js"></script>
 
 
 </head>
@@ -44,7 +44,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <input type="text" class="username" placeholder="请输入用户名">
+                                    <input type="text" id="username1" placeholder="请输入用户名">
                                     <input type="password" class="password" placeholder="请输入密码">
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <input type="text" class="username" placeholder="请输入用户名">
+                                    <input type="text" id="username2" placeholder="请输入用户名">
                                     <input type="text" class="validate" placeholder="验证码">
                                     <div class="validateLogin_send"><a href="javascript:void(0);" class="sendms">获取验证码</a></div>
                                 </td>
@@ -96,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td class="login_wrap">
-                                    <a href="#" class="button_login2">登录</a>
+                                    <a href="javascript:void(0)" class="button_login2">登录</a>
 
                                 </td>
 

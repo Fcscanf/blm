@@ -7,15 +7,18 @@ import java.util.Map;
 
 public interface StoreDetailMapper {
     int deleteByPrimaryKey(String storeid);
+
     int insert(StoreDetail record);
+
     int insertSelective(StoreDetail record);
+
     StoreDetail selectByPrimaryKey(String storeid);
     int updateByPrimaryKeySelective(StoreDetail record);
     int updateByPrimaryKey(StoreDetail record);
 
 
    //查询商家所有信息
-    List<StoreDetail> findAll();
+    List<StoreDetail> findAllById_wz(String storeid);
 
 
 

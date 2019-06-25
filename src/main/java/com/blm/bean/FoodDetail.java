@@ -11,11 +11,13 @@ public class FoodDetail {
 
     private String description;
 
-    private String picpath;
-
     private Integer isvalid;
 
-    public FoodDetail(String foodid, String foodname, String othername, Float price, String description, String picpath, Integer isvalid) {
+    private String picpath;
+
+
+
+    public FoodDetail(String foodid, String foodname, String othername, Float price, String description, Integer isvalid, String picpath) {
         this.foodid = foodid;
         this.foodname = foodname;
         this.othername = othername;
@@ -23,6 +25,15 @@ public class FoodDetail {
         this.description = description;
         this.picpath = picpath;
         this.isvalid = isvalid;
+        this.picpath = picpath;
+    }
+
+    public String getPicpath() {
+        return picpath;
+    }
+
+    public void setPicpath(String picpath) {
+        this.picpath = picpath;
     }
 
     public FoodDetail() {
@@ -67,14 +78,6 @@ public class FoodDetail {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
-    }
-
-    public String getPicpath() {
-        return picpath;
-    }
-
-    public void setPicpath(String picpath) {
-        this.picpath = picpath == null ? null : picpath.trim();
     }
 
     public Integer getIsvalid() {

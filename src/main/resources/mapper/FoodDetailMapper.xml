@@ -16,7 +16,7 @@
     foodid, foodname, othername, price, description, picpath, isvalid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from fooddetail
     where foodid = #{foodid,jdbcType=VARCHAR}
@@ -26,11 +26,11 @@
     where foodid = #{foodid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blm.bean.FoodDetail">
-    insert into fooddetail (foodid, foodname, othername, 
-      price, description, picpath, 
+    insert into fooddetail (foodid, foodname, othername,
+      price, description, picpath,
       isvalid)
-    values (#{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR}, 
-      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{picpath,jdbcType=VARCHAR}, 
+    values (#{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR},
+      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{picpath,jdbcType=VARCHAR},
       #{isvalid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.FoodDetail">
@@ -116,4 +116,71 @@
       isvalid = #{isvalid,jdbcType=INTEGER}
     where foodid = #{foodid,jdbcType=VARCHAR}
   </update>
+
+
+
+
+  <select id="find" parameterType="Map" resultType="com.blm.bean.FoodDetail">
+    select * from fooddetail
+    <where>
+      <if test="foodname!=null and foodname!='' ">
+        and foodname like #{foodname}
+      </if>
+      <if test="othername!=null and othername!='' ">
+        and othername like #{othername}
+      </if>
+    </where>
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
+  <!--public Long getTotal(Map<String, Object> map);//查询总记录数-->
+  <select id="getTotal" parameterType="Map" resultType="Long">
+    select count(*) from fooddetail
+    <where>
+      <if test="foodname!=null and foodname!='' ">
+        and foodname like #{foodname}
+      </if>
+      <if test="othername!=null and othername!='' ">
+        and othername like #{othername}
+      </if>
+    </where>
+  </select>
+
+  <insert id="add" parameterType="com.blm.bean.FoodDetail">
+    insert into fooddetail (foodid, foodname, othername,
+      price, description, isvalid
+      )
+    values (#{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR},
+      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{isvalid,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <update id="update" parameterType="com.blm.bean.FoodDetail">
+    update fooddetail
+    <set>
+      <if test="foodname!=null and foodname!='' ">
+        foodname=#{foodname},
+      </if>
+      <if test="othername!=null and othername!='' ">
+        othername=#{othername},
+      </if>
+      <if test="price!=null and price!='' ">
+        price=#{price},
+      </if>
+      <if test="description!=null and description!='' ">
+        description=#{description},
+      </if>
+    </set>
+    where foodid=#{foodid}
+  </update>
+
+  <delete id="delete" parameterType="com.blm.bean.FoodDetail">
+		delete from fooddetail where foodid=#{foodid}
+	</delete>
+
+  <select id="findAllFoodDetail_k" resultType="com.blm.bean.FoodDetail">
+    select * from fooddetail
+  </select>
 </mapper>

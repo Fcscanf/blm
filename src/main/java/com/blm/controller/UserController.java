@@ -2,15 +2,20 @@ package com.blm.controller;
 
 import com.blm.bean.Result;
 import com.blm.bean.StatusCode;
+import com.blm.bean.StoreRegistTemp;
+import com.blm.bean.StoreDetail;
 import com.blm.bean.User;
+import com.blm.service.StoreDetailService;
 import com.blm.service.UserService;
 import com.blm.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +29,9 @@ public class UserController {
     public UserService userService;
 
     @Autowired
+    public StoreDetailService storeDetailService;
+
+    @Autowired
     private HttpServletRequest request;
 
     @Autowired
@@ -31,10 +39,8 @@ public class UserController {
 
     @Autowired
     private JwtUtil jwtUtil;
-
-
     /**
-     *  用户注册，用户名、手机号码校验后的插入数据
+     *
      * @param user
      * @return
      */
@@ -46,7 +52,7 @@ public class UserController {
     }
 
     /**
-     *  显示所有用户信息
+     *
      * @return
      */
     @ResponseBody
@@ -61,6 +67,10 @@ public class UserController {
     }
 
     /**
+     * url为loginp
+     * 参数为
+     * phone String
+     * password String
      * 手机号+密码登录
      * @return
      */
@@ -78,6 +88,7 @@ public class UserController {
 
     /**
      * 手机号+验证码登录
+     * 第二次只要传一个code即可，就登陆之前的手机号在参数中传过来
      * @param code
      * @param user
      * @return
@@ -112,7 +123,7 @@ public class UserController {
     @RequestMapping(value = "/sendsms/{phone}/{code}",method = RequestMethod.POST)
     public Result sendMsg(@PathVariable String phone,@PathVariable String code){
         if ("1".equals(code)){
-            userService.sendMsg(phone);
+            userService.sendMsg(phone,code);
             return new Result(true,StatusCode.OK,"发送成功");
         }
         if ("0".equals(code)){
@@ -121,12 +132,15 @@ public class UserController {
                 return new Result(false,StatusCode.ERROR,"手机号已经注册！");
             }
         }
-        userService.sendMsg(phone);
+        userService.sendMsg(phone,code);
         return new Result(true,StatusCode.OK,"发送成功");
     }
 
-
-//    检测用户名是否存在
+    /**
+     * 检测用户名是否存在
+     * @param user
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/check",method = RequestMethod.POST)
     public Result checkUser(@RequestBody User user){
@@ -135,6 +149,32 @@ public class UserController {
             return new Result(false,StatusCode.ERROR,"用户名已存在！");
         }
         return new Result(true,StatusCode.OK,"用户名符合要求");
+    }
+
+    /**
+     * 用户直接注册为商家
+     * 先将用户注册为用户但是角色字段设置为商家
+     * 然后在向商家表中添加信息
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/store",method = RequestMethod.POST)
+    public Result InsertStore(@RequestBody StoreRegistTemp storeRegistTemp){
+        userService.insertStore(storeRegistTemp);
+        return new Result(true, StatusCode.OK,"注册成功");
+    }
+
+    /**
+     * 图片上传并返回oss中图片的唯一表示key
+     * @param multipartFile
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/certurl",method = RequestMethod.POST)
+    public Result InsertCertUrl(@RequestParam("pic") MultipartFile multipartFile){
+        //将图片放进缓存
+        String key = userService.uploadImage(multipartFile);
+        return new Result(true,StatusCode.OK,"图片上传成功！",key);
     }
 
 //    跳转登录界面
@@ -152,6 +192,32 @@ public class UserController {
 //    跳转注册界面
     @RequestMapping("/toregister")
     public String toRegister(){return "register";}
+
+
+    /**
+     *
+     * @param user
+     * @param storeDetail
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/loginstore")
+    public String login(User user,StoreDetail storeDetail, HttpServletRequest request)throws Exception{
+        User resultUser=userService.login(user.getUsername(),user.getPassword());
+        StoreDetail resultStoreDetail=storeDetailService.findStoreDetailByUsername(user.getUsername());
+
+        if(resultUser==null){
+            request.setAttribute("user", user);
+            request.setAttribute("errorMsg", "用户名或密码错误！");
+            return "storelogin";
+        }else{
+            HttpSession session=request.getSession();
+            session.setAttribute("currentUser", resultUser);
+            session.setAttribute("resultStoreDetail",resultStoreDetail);
+            return "storemain";
+        }
+    }
 
 
 

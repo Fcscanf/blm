@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blm.dao.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.blm.bean.Order">
+<mapper namespace="com.blm.dao.OrderBlmMapper">
+  <resultMap id="BaseResultMap" type="com.blm.bean.OrderBlm">
     <constructor>
       <idArg column="orderid" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="userid" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -19,54 +19,18 @@
     orderid, userid, username, storeid, foodid, foodname, totalprice, date, isvalid, 
     remarks
   </sql>
-
-
-  <select id="findAllByUserId"  parameterType="String" resultMap="ResultMap">
-    select o.orderid,o.username,o.storeid,o.totalprice,o.date,o.userid,t.foodid,t.orderid,t.orderdetailid,
-    f.fooid,f.foodname,f.price,f.picpath
-    from  fooddetail f,orderdetail t,order o
-    where t.fooid=f.foodid
-    and t.orderid=o.orderid
-    and o.userid=#{userid}
-   </select>
-
-  <resultMap type="com.blm.bean.Order" id="ResultMap" >
-    <id property="orderid" column="orderid" />
-    <result property="username" column="username" />
-    <result property="storeid" column="storeid" />
-    <result property="totalprice" column="totalprice" />
-    <result property="date" column="date" />
-    <collection property="orderDetails" ofType="com.blm.bean.OrderDetail">
-      <id property="orderdetailid" column="orderdetailid" />
-      <result property="foodid" column="foodid" />
-      <result property="orderid" column="orderid" />
-    </collection>
-    <collection property="foodDetails" ofType="com.blm.bean.FoodDetail">
-      <id property="foodid" column="foodid" />
-      <result property="foodname" column="foodname" />
-      <result property="price" column="price" />
-      <result property="picpath" column="picpath"/>
-    </collection>
-  </resultMap>
-
-
-
-
-
-
-
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order
+    from orderblm
     where orderid = #{orderid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from order
+    delete from orderblm
     where orderid = #{orderid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blm.bean.Order">
-    insert into order (orderid, userid, username, 
+  <insert id="insert" parameterType="com.blm.bean.OrderBlm">
+    insert into orderblm (orderid, userid, username, 
       storeid, foodid, foodname, 
       totalprice, date, isvalid, 
       remarks)
@@ -75,8 +39,8 @@
       #{totalprice,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER}, 
       #{remarks,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.blm.bean.Order">
-    insert into order
+  <insert id="insertSelective" parameterType="com.blm.bean.OrderBlm">
+    insert into orderblm
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderid != null">
         orderid,
@@ -142,8 +106,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.Order">
-    update order
+  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.OrderBlm">
+    update orderblm
     <set>
       <if test="userid != null">
         userid = #{userid,jdbcType=VARCHAR},
@@ -175,8 +139,8 @@
     </set>
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.blm.bean.Order">
-    update order
+  <update id="updateByPrimaryKey" parameterType="com.blm.bean.OrderBlm">
+    update orderblm
     set userid = #{userid,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       storeid = #{storeid,jdbcType=VARCHAR},
@@ -188,33 +152,4 @@
       remarks = #{remarks,jdbcType=VARCHAR}
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
-
-
-
-
-  <select id="find" parameterType="Map" resultType="com.blm.bean.Order">
-    select * from order
-    <!--<where>
-      <if test="username!=null and username!='' ">
-        and username like #{username}
-      </if>
-    </where>-->
-    <if test="start!=null and size!=null">
-      limit #{start},#{size}
-    </if>
-  </select>
-
-
-  <select id="getTotal" parameterType="Map" resultType="Long">
-    select count(*) from order
-    <where>
-      <if test="username!=null and username!='' ">
-        and username like #{username}
-      </if>
-    </where>
-  </select>
-
-  <delete id="delete" parameterType="com.blm.bean.Order">
-		delete from order where orderid=#{orderid}
-	</delete>
 </mapper>

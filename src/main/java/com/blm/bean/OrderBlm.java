@@ -1,9 +1,8 @@
 package com.blm.bean;
 
 import java.util.Date;
-import java.util.List;
 
-public class Order {
+public class OrderBlm {
     private String orderid;
 
     private String userid;
@@ -24,11 +23,7 @@ public class Order {
 
     private String remarks;
 
-    private List<OrderDetail> orderDetails;
-
-    private List<FoodDetail> foodDetails;
-
-    public Order(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date date, Integer isvalid, String remarks, List<OrderDetail> orderDetails, List<FoodDetail> foodDetails) {
+    public OrderBlm(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date date, Integer isvalid, String remarks) {
         this.orderid = orderid;
         this.userid = userid;
         this.username = username;
@@ -39,27 +34,9 @@ public class Order {
         this.date = date;
         this.isvalid = isvalid;
         this.remarks = remarks;
-        this.orderDetails = orderDetails;
-        this.foodDetails = foodDetails;
     }
 
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
-
-    public List<FoodDetail> getFoodDetails() {
-        return foodDetails;
-    }
-
-    public void setFoodDetails(List<FoodDetail> foodDetails) {
-        this.foodDetails = foodDetails;
-    }
-
-    public Order() {
+    public OrderBlm() {
         super();
     }
 

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blm.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.blm.bean.User">
-    <constructor>
-      <idArg column="userid" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="createtime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="roleid" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.blm.bean.User">
+        <constructor>
+            <idArg column="userid" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="createtime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="roleid" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="isvalid" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     userid, username, password, phone, createtime, roleid, isvalid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where userid = #{userid,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where userid = #{userid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where userid = #{userid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blm.bean.User">
+    <insert id="insert" parameterType="com.blm.bean.User">
     insert into user (userid, username, password, 
       phone, createtime, roleid, 
       isvalid)
@@ -33,80 +33,80 @@
       #{phone,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{roleid,jdbcType=VARCHAR}, 
       #{isvalid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.blm.bean.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userid,
-      </if>
-      <if test="username != null">
-        username,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="createtime != null">
-        createtime,
-      </if>
-      <if test="roleid != null">
-        roleid,
-      </if>
-      <if test="isvalid != null">
-        isvalid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=VARCHAR},
-      </if>
-      <if test="isvalid != null">
-        #{isvalid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.User">
-    update user
-    <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        createtime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="roleid != null">
-        roleid = #{roleid,jdbcType=VARCHAR},
-      </if>
-      <if test="isvalid != null">
-        isvalid = #{isvalid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where userid = #{userid,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.blm.bean.User">
+    <insert id="insertSelective" parameterType="com.blm.bean.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="createtime != null">
+                createtime,
+            </if>
+            <if test="roleid != null">
+                roleid,
+            </if>
+            <if test="isvalid != null">
+                isvalid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleid != null">
+                #{roleid,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                #{isvalid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.blm.bean.User">
+        update user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleid != null">
+                roleid = #{roleid,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                isvalid = #{isvalid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where userid = #{userid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.blm.bean.User">
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -117,15 +117,22 @@
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectAllUser"  resultType="com.blm.bean.User">
+    <select id="selectAllUser" resultType="com.blm.bean.User">
     select * from user
   </select>
 
-  <select id="selectUserByPhone" resultType="com.blm.bean.User" parameterType="String">
+    <select id="selectUserByPhone" resultType="com.blm.bean.User" parameterType="String">
     select phone,password from user where phone=#{phone}
   </select>
 
-  <select id="selectUserByUserName" resultType="com.blm.bean.User" parameterType="String">
-    select * from user where username=#{username};
-  </select>
+
+    <select id="selectUserByUsername" parameterType="String" resultType="com.blm.bean.User">
+     select u.userid,u.username,u.password,u.phone,u.createtime,u.roleid,r.rolename from user u,role r where u.roleid=r.roleid and u.roleid="2" and u.username=#{username}
+   </select>
+
+    <select id="selectUserByUsernamek" parameterType="String" resultType="com.blm.bean.User">
+        select * from user where username=#{username}
+    </select>
+
+
 </mapper>

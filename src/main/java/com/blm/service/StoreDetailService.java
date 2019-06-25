@@ -11,15 +11,15 @@ import java.util.Map;
  * @creat 2019/6/20 11:21
  */
 public interface StoreDetailService {
-    public List<StoreDetail> find(Map<String, Object> map);//查询所有店面
 
+    public StoreDetail findStoreDetailByUsername(String username);//根据登录的商家，显示相应的店面信息
 
     public Long getTotal(Map<String, Object> map);//查询总记录数
 
-
+    public List<StoreDetail> find(Map<String, Object> map);
     public int update(StoreDetail storeDetail);//更新店面信息
 
     //查询商家所有信息
-    public List<StoreDetail> findAll();
+    public List<StoreDetail> findAll_wz(String storeid);
 }
 
