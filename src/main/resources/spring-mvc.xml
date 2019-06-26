@@ -73,7 +73,7 @@
     <!--    <rabbit:template id="amqpTemplate"  connection-factory="connectionFactory" exchange="exchangeTest" />-->
 
     <!--    注册短信模板相关信息-->
-    <bean class="com.blm.service.Impl.UserServiceImpl" id="userService">
+    <bean class="com.blm.service.impl.UserServiceImpl" id="userService">
         <property name="template_code_regist" value="SMS_168730823"/>
         <property name="sign_name" value="饱了吗"/>
         <property name="template_code_login" value="SMS_168730824"/>
