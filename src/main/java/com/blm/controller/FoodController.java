@@ -1,7 +1,6 @@
 package com.blm.controller;
 
 import com.blm.bean.CheckFood;
-import com.blm.bean.FoodTemp;
 import com.blm.bean.Result;
 import com.blm.bean.StatusCode;
 import com.blm.service.CheckFoodService;
@@ -30,19 +29,12 @@ public class FoodController {
 
     //获取所有食物信息
     @RequestMapping("/findAll")
-    @ResponseBody
-    public Result findAll(HttpServletResponse response) throws Exception {
-        List<FoodTemp> checkFoods=checkFoodService.findAll();
-//        JSONObject result=new JSONObject();
-//        JSONArray jsonArray= new JSONArray(checkFoods);
-//        result.put("result",jsonArray);
-//        ResponseUtil.write(response, result);
-//        return null;
+    public Result findAll_wz(HttpServletResponse response) throws Exception {
+        List<CheckFood> checkFoods=checkFoodService.findAll();
         return new Result(true, StatusCode.OK,"查询成功",checkFoods);
     }
 
-//    跳转到主界面
-    @RequestMapping("/gethome")
+    @RequestMapping("/test")
     public String  rtTest(){
         return "home";
     }
@@ -50,13 +42,8 @@ public class FoodController {
     //模糊查询用户信息
     @ResponseBody
     @RequestMapping("/vaguefind")
-    public String vaugefind(@RequestBody CheckFood checkFood, HttpServletResponse response) throws Exception {
+    public Result vaugefind_wz(@RequestBody CheckFood checkFood, HttpServletResponse response) throws Exception {
         List<CheckFood> checkFoods=checkFoodService.vaugefind(checkFood.getFoodtype());
-        JSONObject result=new JSONObject();
-        JSONArray jsonArray= new JSONArray(checkFoods);
-        result.put("result",jsonArray);
-        ResponseUtil.write(response, result);
-        return null;
+        return new Result(true, StatusCode.OK,"查询成功",checkFoods);
     }
-
 }

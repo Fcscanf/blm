@@ -12,7 +12,7 @@
     <title>Login</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userlogin.css">
-    <script src="${pageContext.request.contextPath}/js/userlogin.js"></script>
+     <script src="${pageContext.request.contextPath}/js/userlogin.js"></script>
 
 
 </head>
@@ -86,7 +86,7 @@
                                 <td>
                                     <input type="text" id="username2" placeholder="请输入用户名">
                                     <input type="text" class="validate" placeholder="验证码">
-                                    <div class="validateLogin_send"><a href="#" class="sendms">获取验证码</a></div>
+                                    <div class="validateLogin_send"><a href="javascript:void(0);" class="sendms">获取验证码</a></div>
                                 </td>
                             </tr>
                             <tr>
@@ -114,10 +114,16 @@
                                 <td class="mt_link">
                                     <a href="#" class="register">注册账号</a>
                                     <a href="#" class="forget">忘记密码</a>
+
                                 </td>
+
                             </tr>
                         </table>
+
+
                     </div>
+
+
                 </div>
 
             </div>

@@ -11,7 +11,7 @@ import java.util.Map;
  * @creat 2019/6/21 14:55
  */
 public interface FoodDetailService {
-    public List<FoodDetail> find_zy(Map map);//根据登录的用户名查询所有商品
+    public List<FoodDetail> find(Map<String, Object> map);//查询所有商品
 
     public Long getTotal(Map<String, Object> map);//查询总记录数
 
@@ -20,4 +20,6 @@ public interface FoodDetailService {
     public int add(FoodDetail FoodDetail);//新增新商品
 
     public int delete(String id);//删除商品
+
+    public List<FoodDetail> find_k();
 }

@@ -17,7 +17,7 @@
   </resultMap>
 
   <select id="findAllByUserId_wz"  parameterType="String" resultMap="ResultMap_wz">
-    select o.orderid,o.username,o.storeid,o.totalprice,o.date,o.userid,t.foodid,t.orderid,t.orderdetailid,
+    select o.orderid,o.username,o.storeid,o.totalprice,o.datee,o.userid,t.foodid,t.orderid,t.orderdetailid,
     f.foodid,f.foodname,f.price,f.picpath
     from  fooddetail f,orderdetail t,orderblm o
     where t.foodid=f.foodid
@@ -30,7 +30,7 @@
     <result property="username" column="username" />
     <result property="storeid" column="storeid" />
     <result property="totalprice" column="totalprice" />
-    <result property="date" column="date" />
+    <result property="datee" column="datee" />
     <collection property="orderDetails" ofType="com.blm.bean.OrderDetail">
       <id property="orderdetailid" column="orderdetailid" />
       <result property="foodid" column="foodid" />
@@ -48,11 +48,11 @@
 
 
   <sql id="Base_Column_List">
-    orderid, userid, username, storeid, foodid, foodname, totalprice, datee, isvalid,
+    orderid, userid, username, storeid, foodid, foodname, totalprice, datee, isvalid, 
     remarks
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from orderblm
     where orderid = #{orderid,jdbcType=VARCHAR}
@@ -62,13 +62,13 @@
     where orderid = #{orderid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blm.bean.OrderBlm">
-    insert into orderblm (orderid, userid, username,
-      storeid, foodid, foodname,
-      totalprice, datee, isvalid,
+    insert into orderblm (orderid, userid, username, 
+      storeid, foodid, foodname, 
+      totalprice, datee, isvalid, 
       remarks)
-    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
-      #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR},
-      #{totalprice,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER},
+    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, 
+      #{totalprice,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER}, 
       #{remarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.OrderBlm">
@@ -184,27 +184,4 @@
       remarks = #{remarks,jdbcType=VARCHAR}
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
-
-
-  <select id="find_zy" parameterType="Map" resultType="com.blm.bean.OrderBlm">
-    select * from orderblm
-    <where>
-      <if test="username!=null and username!='' ">
-        and username like #{username}
-      </if>
-    </where>
-    <if test="start!=null and size!=null">
-      limit #{start},#{size}
-    </if>
-  </select>
-
-
-  <select id="getTotal_zy" parameterType="Map" resultType="Long">
-    select count(*) from orderblm
-    <where>
-      <if test="username!=null and username!='' ">
-        and username like #{username}
-      </if>
-    </where>
-  </select>
 </mapper>

@@ -26,7 +26,32 @@
             });
         }
 
-
+        function deleteOrder() {
+            var selectonRows = $("#dg").datagrid("getSelections");
+            /*获取选中的行数*/
+            if (selectonRows.length == 0) {
+                $.messager.alert("系统提示", "请选择要删除的订单！");
+                return;
+            }
+            var strIds = [];
+            /*定义一个数组用来接受选中行的orderid*/
+            for (var i = 0; i < selectonRows.length; i++) {
+                strIds.push(selectonRows[i].orderid);
+            }
+            var ids = strIds.join();
+            $.messager.confirm("系统提示", "您确定要删除这<font color=red>" + selectonRows.length + "</font>条数据吗？", function (r) {
+                if (r) {
+                    $.post("${pageContext.request.contextPath}/order/delete", {ids: ids}, function (result) {
+                        if (result.success) {
+                            $.messager.alert("系统提示", "订单删除成功！");
+                            $("#dg").datagrid("reload");
+                        } else {
+                            $.messager.alert("系统提示", "订单删除失败，请联系管理员！");
+                        }
+                    }, "json")
+                }
+            });
+        }
     </script>
 
     <title>客户历史订单</title>
@@ -48,7 +73,9 @@
     </thead>
 </table>
 <div id="tb">
-
+    <div>
+        <a href="javascript:deleteOrder()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+    </div>
     <div>
         &nbsp;用户名：&nbsp;<input type="text" id="s_username" size="20" onkeydown="if(event.keyCode==13) searchOrder()"/>
         <a href="javascript:searchOrder()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>

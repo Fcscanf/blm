@@ -2,20 +2,21 @@ package com.blm.controller;
 
 import com.blm.bean.FoodDetail;
 import com.blm.bean.PageBean;
+import com.blm.bean.Result;
+import com.blm.bean.StatusCode;
 import com.blm.service.FoodDetailService;
 import com.blm.util.ResponseUtil;
 import com.blm.util.StringUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,26 +43,22 @@ public class FoodDetailController {
     }
 
     /**
-     * 商品展示(连表查询)
+     * 显示各种商品
      * @param page
      * @param rows
      * @param foodDetail
      * @param response
-     * @param session
      * @return
      * @throws Exception
      */
-
     @RequestMapping("/list")
-    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, FoodDetail foodDetail, HttpServletResponse response,HttpSession session) throws Exception {
+    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, FoodDetail foodDetail, HttpServletResponse response) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("foodname", StringUtil.formatLike(foodDetail.getFoodname()));//模糊查询时使用
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPagesize());
-        map.put("username",session.getAttribute("currentUser"));
-
-        List<FoodDetail> foodList =foodDetailService.find_zy(map);
+        List<FoodDetail> foodList = foodDetailService.find(map);
         Long total = foodDetailService.getTotal(map);
         JSONObject result = new JSONObject();
         JSONArray jsonArray = new JSONArray(foodList);
@@ -73,17 +70,15 @@ public class FoodDetailController {
 
 
     /**
-     * 添加商品或者修改商品属性
+     * 添加或者修改商品属性
      *
      * @param foodDetail
      * @param response
      * @return
      * @throws Exception
      */
-    @ResponseBody
     @RequestMapping("/save")
-    public String save(@RequestBody FoodDetail foodDetail, HttpServletResponse response) throws Exception {
-        System.out.println(foodDetail.getFoodid());
+    public String save(FoodDetail foodDetail, HttpServletResponse response) throws Exception {
         int resultTotal = 0; // 操作的记录条数
         if (foodDetail.getFoodid() == null) {
             resultTotal = foodDetailService.add(foodDetail);
@@ -121,7 +116,10 @@ public class FoodDetailController {
         return null;
     }
 
-
-
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST)
+    public Result getFoodDetail_k(){
+        return new Result(true, StatusCode.OK,"查询成功",foodDetailService.find_k());
+    }
 
 }

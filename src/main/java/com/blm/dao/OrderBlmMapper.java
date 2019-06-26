@@ -1,9 +1,9 @@
 package com.blm.dao;
 
+
 import com.blm.bean.OrderBlm;
 
 import java.util.List;
-import java.util.Map;
 
 public interface OrderBlmMapper {
     int deleteByPrimaryKey(String orderid);
@@ -18,10 +18,5 @@ public interface OrderBlmMapper {
 
     int updateByPrimaryKey(OrderBlm record);
 
-
-    public List<OrderBlm> find_zy(Map<String, Object> map);//查询订单
-
-    public Long getTotal_zy(Map<String, Object> map);//查询总的记录数
-
-
+    List<OrderBlm> findAllByUserId_wz(String userid);//查询订单（详细信息） wz
 }

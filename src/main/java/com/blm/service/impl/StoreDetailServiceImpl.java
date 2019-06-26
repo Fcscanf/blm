@@ -3,11 +3,11 @@ package com.blm.service.impl;
 import com.blm.bean.StoreDetail;
 import com.blm.dao.StoreDetailMapper;
 import com.blm.service.StoreDetailService;
-import com.blm.util.OSSClientUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 周宇
@@ -20,14 +20,25 @@ public class StoreDetailServiceImpl implements StoreDetailService {
     private StoreDetailMapper storeDetailMapper;
 
 
-    @Autowired
-    private OSSClientUtil ossClientUtil;
+    public List<StoreDetail> find(Map<String, Object> map){
+        return storeDetailMapper.find(map);
+    }
 
-    @Override
     public StoreDetail findStoreDetailByUsername(String username) {
-        StoreDetail list = storeDetailMapper.findStoreDetailByUsername(username);
-            list.setShopfronturl(ossClientUtil.getImgUrl(list.getShopfronturl()));
-        return list;
-        /* return storeDetailMapper.findStoreDetailByUsername(username);*/
+        return null;
+    }
+
+    public Long getTotal(Map<String, Object> map){
+        return storeDetailMapper.getTotal(map);
+    }
+
+
+    public int update(StoreDetail storeDetail){
+    return storeDetailMapper.update(storeDetail);
+    }
+
+    //查询商家所有信息
+    public List<StoreDetail> findAll_wz(String storeid) {
+        return storeDetailMapper.findAllById_wz(storeid);
     }
 }

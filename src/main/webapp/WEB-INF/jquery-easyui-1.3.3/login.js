@@ -15,67 +15,10 @@ $(function () {
             }, 1000)
         }
     }
-//发送验证码
-    $(".sendms").click(function () {
-        vilidation();
-    })
-
-    function vilidation() {
-        console.info("start")
-        var phone=$("#username2").val().trim();
-        // var isvalid="1";
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8080/blm_war_exploded/user/sendsms/"+phone+"/1",
-            // dataType:"json",
-            // headers: {'Content-Type':'application/json'},
-            // data:JSON.stringify({
-            //     'phone':phone,
-            //     // 'isvalid':isvalid
-            // }),
-            success:function (result) {
-                console.info("success")
-            },
-            error:function (result) {
-                console.info("error")
-            }
-        })
-    }
-
-
-
-
-
-
     //发送验证码
- /*   $(".validateLogin_send").click(function () {*/
-        // var username=$(".username").val();
-        // console.info("手机号码："+username)
- /*       settime($(this));*/
-        // $.ajax({
-        //     type:"post",
-        //     url:"#",
-        //     dataType:"json",
-        //     success:function (result) {
-        //         console.info(result.code)
-        //         if (result.code==20000){
-        //             console.info(result)
-        //         }
-        //     },
-        //     error:function () {
-        //
-        //     }
-        // })
- /*   })*/
-
-
-
-
-
-
-
-
-
+    $(".validateLogin_send").click(function () {
+        settime($(this));
+    })
     //验证用户号码
     $(".username").blur(function () {
         var pPattern = /^1[345789]\d{9}$/;
@@ -127,54 +70,41 @@ $(function () {
         loginpassword();
     })
     function loginpassword() {
-        console.info(1)
-        var username=$("#username1").val().trim();
-        var password=$(".password").val().trim();
-        console.info(username)
-        console.info(password)
+        var username=$(".username").val();
+        var password=$(".password").val();
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/blm_war_exploded/user/loginp",
+            url:"#",
             dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                "phone":username,
-                "password":password
-            }),
+            data:{
+                'username':username,
+                'password':password
+            },
             success:function (result) {
-                console.info(result.code)
-                if (result.code==20000){
-                    window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
-                }
+
             },
             error:function () {
-
+                alert("失败")
             }
         })
     }
     //验证登录
     $(".button_login2").click(function () {
-        loginp2();
+        login2();
     })
     function loginp2() {
-        var phone=$("#username2").val();
+        var username=$(".username").val();
         var validate=$(".validate").val();
-        var user = {
-            'username':phone,
-            'validate':validate
-        }
         $.ajax({
-            contentType : "application/json",
             type:"post",
-            url:"http://localhost:8080/blm_war_exploded/user/login/"+validate,
+            url:"#",
             dataType:"json",
-            headers: {'Content-Type':'application/json'},
-            data:JSON.stringify({
-                "phone":phone,
-            }),
+            data:{
+                'username':username,
+                'validate':validate
+            },
             success:function (result) {
-                console.info(result)
-                window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
+
             },
             error:function () {
             }
