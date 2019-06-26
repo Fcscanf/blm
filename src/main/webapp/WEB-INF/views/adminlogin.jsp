@@ -94,7 +94,7 @@
                 <div style="background-color: #278296">
                     <div style="margin: 0px auto; width: 936px">
                         <div
-                                style="background: url(${pageContext.request.contextPath}/images/AdminLogin.jpg) no-repeat; height: 155px">
+                                style="background: url(${pageContext.request.contextPath}/images/AdminLogin.png) no-repeat; height: 155px">
                             <div
                                     style="text-align: left; width: 265px; FLOAT: right; height: 125px; _height: 95px">
                                 <table border=0 cellSpacing=0 cellpadding=0 width="100%">
