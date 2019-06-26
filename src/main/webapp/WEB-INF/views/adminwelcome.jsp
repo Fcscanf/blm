@@ -12,6 +12,9 @@
     <title>饱了吗管理员界面</title>
 </head>
 <body>
-${requestScope.user.userName}管理员登录成功<br><br>
+${requestScope.user.userName}管理员登录成功！<br><br>
+
+<a href="${pageContext.request.contextPath}/admin/adminlist">
+    查看管理员列表</a> <br>
 </body>
 </html>

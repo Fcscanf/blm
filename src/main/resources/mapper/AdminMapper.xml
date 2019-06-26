@@ -87,4 +87,17 @@
 		and a.password=#{password}
 	</select>
 
+
+  <select id="getAdminList_d" resultType="com.blm.bean.Admin">
+	    select adminid,loginname from admin
+	</select>
+
+  <select id="getAdminInfo_d" parameterType="com.blm.bean.Admin" resultType="com.blm.bean.Admin">
+		select a.adminid,a.loginname,u.name,a.password from admin a where a.loginname=#{loginname}
+	</select>
+
+  <select id="getAllStoreDetail_d" resultType="com.blm.bean.StoreDetail">
+    select * from storedetail;
+  </select>
+
 </mapper>
