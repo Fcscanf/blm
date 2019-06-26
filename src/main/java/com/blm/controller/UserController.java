@@ -1,10 +1,6 @@
 package com.blm.controller;
 
-import com.blm.bean.Result;
-import com.blm.bean.StatusCode;
-import com.blm.bean.StoreRegistTemp;
-import com.blm.bean.StoreDetail;
-import com.blm.bean.User;
+import com.blm.bean.*;
 import com.blm.service.StoreDetailService;
 import com.blm.service.UserService;
 import com.blm.util.JwtUtil;
@@ -40,13 +36,20 @@ public class UserController {
     @Autowired
     private JwtUtil jwtUtil;
     /**
-     *
+     * 用户注册
+     * 需要获取用户名、密码、手机号、短信验证码（在点击提交的时候就和redis中的一起作比较）
      * @param user
      * @return
      */
     @ResponseBody
-    @RequestMapping(method = RequestMethod.POST)
-    public Result insertUser(@RequestBody User user){
+    @RequestMapping(value = "/{code}",method = RequestMethod.POST)
+    public Result insertUser(@RequestBody User user,@PathVariable String code){
+        String checkcode  = (String) redisTemplate.opsForValue().get("checkcode_" + user.getPhone());
+        if (checkcode.isEmpty()){
+            return new Result(false, StatusCode.ERROR,"请先获取手机验证码！");
+        }else if (!checkcode.equals(code)){
+            return new Result(false,StatusCode.ERROR,"请输入正确的手机验证码");
+        }
         userService.insert(user);
         return new Result(true, StatusCode.OK,"添加成功");
     }
@@ -112,14 +115,27 @@ public class UserController {
     }
 
     /**
-     * 发送验证码
+     * 注册和登录的验证码发送都应用此方法——辨别码
+     * 发送验证码/sendsms/{phone}/1就是登录直接发送验证码
+     * 发送验证码/sendsms/{phone}/0就是注册——先检验手机号是否已经存在，若已经存在返回false，正确返回true并发送验证码
+     *
      * @param phone
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/sendsms/{phone}",method = RequestMethod.POST)
-    public Result sendMsg(@PathVariable String phone){
-        userService.sendMsg(phone);
+    @RequestMapping(value = "/sendsms/{phone}/{code}",method = RequestMethod.POST)
+    public Result sendMsg(@PathVariable String phone,@PathVariable String code){
+        if ("1".equals(code)){
+            userService.sendMsg(phone,code);
+            return new Result(true,StatusCode.OK,"发送成功");
+        }
+        if ("0".equals(code)){
+            User user = userService.selectUserByPhone(phone);
+            if (user != null){
+                return new Result(false,StatusCode.ERROR,"手机号已经注册！");
+            }
+        }
+        userService.sendMsg(phone,code);
         return new Result(true,StatusCode.OK,"发送成功");
     }
 
@@ -145,8 +161,14 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/store",method = RequestMethod.POST)
-    public Result InsertStore(@RequestBody StoreRegistTemp storeRegistTemp){
+    @RequestMapping(value = "/store/{code}",method = RequestMethod.POST)
+    public Result InsertStore(@RequestBody StoreRegistTemp storeRegistTemp,@PathVariable String code){
+        String checkcode  = (String) redisTemplate.opsForValue().get("checkcode_" + storeRegistTemp.getUser().getPhone());
+        if (checkcode.isEmpty()){
+            return new Result(false, StatusCode.ERROR,"请先获取手机验证码！");
+        }else if (!checkcode.equals(code)){
+            return new Result(false,StatusCode.ERROR,"请输入正确的手机验证码");
+        }
         userService.insertStore(storeRegistTemp);
         return new Result(true, StatusCode.OK,"注册成功");
     }
@@ -170,11 +192,13 @@ public class UserController {
         return "userlogin";
     }
 
+//    跳转storeManage界面
     @RequestMapping("/getstoreManage")
     public String getStoreManage(){
         return "storemain";
     }
 
+//    跳转注册界面
     @RequestMapping("/toregister")
     public String toRegister(){return "register";}
 
@@ -195,10 +219,10 @@ public class UserController {
         if(resultUser==null){
             request.setAttribute("user", user);
             request.setAttribute("errorMsg", "用户名或密码错误！");
-            return "redirect:/storelogin.jsp";
+            return "storelogin";
         }else{
             HttpSession session=request.getSession();
-            session.setAttribute("currentUser", resultUser.getUsername());
+            session.setAttribute("currentUser", resultUser);
             session.setAttribute("resultStoreDetail",resultStoreDetail);
             return "storemain";
         }
@@ -208,5 +232,3 @@ public class UserController {
 
 
 }
-
-

@@ -39,15 +39,15 @@
                     <ul>
                         <li>
                             <span class="iconfont icon-user"></span>
-                            <span class="">个人中心</span>
+                            <span class="pe-conter">个人中心</span>
                         </li>
                         <li>
                             <span class="iconfont icon-jiahao"></span>
-                            <span class="">我的地址</span>
+                            <span class="pe-adddress">我的地址</span>
                         </li>
                         <li>
                             <span class="iconfont icon-tuichu1"></span>
-                            <span class="">退出登录</span>
+                            <span class="pe-exit">退出登录</span>
                         </li>
                     </ul>
                 </div>

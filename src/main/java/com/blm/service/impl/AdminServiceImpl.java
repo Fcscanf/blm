@@ -6,7 +6,6 @@ import com.blm.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class AdminServiceImpl implements AdminService {
 
@@ -15,7 +14,6 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin getAdmin(Admin admin) {
-
         return this.adminMapper.getAdmin_d(admin);
     }
 }
