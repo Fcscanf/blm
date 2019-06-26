@@ -74,12 +74,13 @@
 
     <!--    注册短信模板相关信息-->
     <bean class="com.blm.service.impl.UserServiceImpl" id="userService">
-        <property name="template_code" value="SMS_157276347"/>
-        <property name="sign_name" value="Fcsanf官方通知"/>
+        <property name="template_code_regist" value="SMS_168730823"/>
+        <property name="sign_name" value="饱了吗"/>
+        <property name="template_code_login" value="SMS_168730824"/>
     </bean>
     <bean class="com.blm.util.SmsUtil" id="smsUtil">
-        <property name="accessKeyId" value="LTAIUA4lNtnHNf1w"/>
-        <property name="accessKeySecret" value="e62x8Hv1tzzpgjuORLyKrDI5M5AlBA"/>
+        <property name="accessKeyId" value="LTAIkjRDPQ93TbZc"/>
+        <property name="accessKeySecret" value="NdiIBVDInF3RZvcvFdZ7U0cEb0OMKZ"/>
     </bean>
     <!--    短信模板 改进意见：将所有的短信属性全部都放进属性文件-->
 
