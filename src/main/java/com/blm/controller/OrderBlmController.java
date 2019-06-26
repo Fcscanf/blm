@@ -54,4 +54,13 @@ public class OrderBlmController {
         ResponseUtil.write(response, result);
         return null;
     }
+
+
+    /**
+     * yyt 测试
+     */
+    @RequestMapping("/test")
+    public String toPersonal(){
+        return  "personal";
+    }
 }
