@@ -23,6 +23,7 @@ public class StoreDetailServiceImpl implements StoreDetailService {
     @Autowired
     private OSSClientUtil ossClientUtil;
 
+    @Override
     public StoreDetail findStoreDetailByUsername(String username) {
         StoreDetail list = storeDetailMapper.findStoreDetailByUsername(username);
             list.setShopfronturl(ossClientUtil.getImgUrl(list.getShopfronturl()));

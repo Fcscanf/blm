@@ -122,11 +122,11 @@
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
-        <th field="foodname" width="50" height="50" align="center">商品</th>
-        <th field="othername" width="50" height="50" align="center">别名</th>
-        <th field="price" width="50" height="50" align="center">价格</th>
-        <th field="description" width="100" height="50" align="center">描述</th>
-        <th data-options="field:'picpath',width:100, height:50,formatter: imgFormatter">如图</th>
+        <th field="foodname" width="50"  align="center">商品</th>
+        <th field="othername" width="50"  align="center">别名</th>
+        <th field="price" width="50"  align="center">价格</th>
+        <th field="description" width="100"  align="center">描述</th>
+        <th data-options="field:'picpath',width:50, height:100,formatter: imgFormatter">如图</th>
     </tr>
     </thead>
 </table>
@@ -145,7 +145,7 @@
 <div id="dlg" class="easyui-dialog" style="width:620px;height:250px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
 
-    <form id="fm" method="post">
+    <form id="fm" method="post" enctype="multipart/form-data">
         <table cellspacing="8px">
             <tr>
                 <td >商品编号：</td>
@@ -170,7 +170,12 @@
                 <td><input type="text" id="description" name="description" class="easyui-validatebox" required="true"/>&nbsp;<font
                         color="red">*</font></td>
             </tr>
+            <tr>
+                <td>如图：</td>
+                <td><input type="file" id="picpath" name="picpath" class="easyui-validatebox" required="true"/>&nbsp;<font
+                        color="red">*</font></td>
 
+            </tr>
         </table>
     </form>
 </div>

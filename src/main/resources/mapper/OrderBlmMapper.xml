@@ -207,8 +207,4 @@
       </if>
     </where>
   </select>
-
-  <delete id="delete_zy" parameterType="com.blm.bean.OrderBlm">
-		delete from orderblm where orderid=#{orderid}
-	</delete>
 </mapper>

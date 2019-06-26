@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -59,6 +58,7 @@ public class FoodDetailController {
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPagesize());
         map.put("username",session.getAttribute("currentUser"));
+
         List<FoodDetail> foodList =foodDetailService.find_zy(map);
         Long total = foodDetailService.getTotal(map);
         JSONObject result = new JSONObject();

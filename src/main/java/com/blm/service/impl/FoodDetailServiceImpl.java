@@ -25,6 +25,7 @@ public class FoodDetailServiceImpl implements FoodDetailService {
     @Resource
     private FoodDetailMapper foodDetailMapper;
 
+    @Override
     public List<FoodDetail> find_zy(Map map){
         List<FoodDetail> list = foodDetailMapper.find_zy(map);
         for (FoodDetail foodDetail:list){
@@ -33,19 +34,23 @@ public class FoodDetailServiceImpl implements FoodDetailService {
         return list;
     }
 
+    @Override
     public Long getTotal(Map<String, Object> map){
         return foodDetailMapper.getTotal(map);
     }
 
+    @Override
     public int update(FoodDetail foodDetail){
         return foodDetailMapper.update(foodDetail);
     }
 
+    @Override
     public int add(FoodDetail foodDetail){
         return foodDetailMapper.add(foodDetail);
     }
 
 
+    @Override
     public int delete(String id){
 
         return foodDetailMapper.delete(id);

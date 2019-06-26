@@ -12,6 +12,7 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
+    @Override
     public Admin getAdmin(Admin admin) {
         return this.adminMapper.getAdmin_d(admin);
     }
