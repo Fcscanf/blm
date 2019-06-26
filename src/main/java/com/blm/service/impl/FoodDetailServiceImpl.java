@@ -3,6 +3,7 @@ package com.blm.service.impl;
 import com.blm.bean.FoodDetail;
 import com.blm.dao.FoodDetailMapper;
 import com.blm.service.FoodDetailService;
+import com.blm.util.IdWorker;
 import com.blm.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class FoodDetailServiceImpl implements FoodDetailService {
 
     @Autowired
     private OSSClientUtil ossClientUtil;
+
+    @Autowired
+    private IdWorker idWorker;
 
     @Resource
     private FoodDetailMapper foodDetailMapper;
@@ -46,6 +50,9 @@ public class FoodDetailServiceImpl implements FoodDetailService {
 
     @Override
     public int add(FoodDetail foodDetail){
+        foodDetail.setFoodid(idWorker.nextId()+"");
+
+        foodDetail.setIsvalid(1);
         return foodDetailMapper.add(foodDetail);
     }
 

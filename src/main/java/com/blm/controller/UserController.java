@@ -1,10 +1,6 @@
 package com.blm.controller;
 
-import com.blm.bean.Result;
-import com.blm.bean.StatusCode;
-import com.blm.bean.StoreRegistTemp;
-import com.blm.bean.StoreDetail;
-import com.blm.bean.User;
+import com.blm.bean.*;
 import com.blm.service.StoreDetailService;
 import com.blm.service.UserService;
 import com.blm.util.JwtUtil;
@@ -40,13 +36,20 @@ public class UserController {
     @Autowired
     private JwtUtil jwtUtil;
     /**
-     *
+     * 用户注册
+     * 需要获取用户名、密码、手机号、短信验证码（在点击提交的时候就和redis中的一起作比较）
      * @param user
      * @return
      */
     @ResponseBody
-    @RequestMapping(method = RequestMethod.POST)
-    public Result insertUser(@RequestBody User user){
+    @RequestMapping(value = "ureg/{code}",method = RequestMethod.POST)
+    public Result insertUser(@RequestBody User user,@PathVariable String code){
+        String checkcode  = (String) redisTemplate.opsForValue().get("checkcode_" + user.getPhone());
+        if (checkcode.isEmpty()){
+            return new Result(false, StatusCode.ERROR,"请先获取手机验证码！");
+        }else if (!checkcode.equals(code)){
+            return new Result(false,StatusCode.ERROR,"请输入正确的手机验证码");
+        }
         userService.insert(user);
         return new Result(true, StatusCode.OK,"添加成功");
     }
@@ -158,8 +161,14 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/store",method = RequestMethod.POST)
-    public Result InsertStore(@RequestBody StoreRegistTemp storeRegistTemp){
+    @RequestMapping(value = "/store/{code}",method = RequestMethod.POST)
+    public Result InsertStore(@RequestBody StoreRegistTemp storeRegistTemp,@PathVariable String code){
+        String checkcode  = (String) redisTemplate.opsForValue().get("checkcode_" + storeRegistTemp.getUser().getPhone());
+        if (checkcode.isEmpty()){
+            return new Result(false, StatusCode.ERROR,"请先获取手机验证码！");
+        }else if (!checkcode.equals(code)){
+            return new Result(false,StatusCode.ERROR,"请输入正确的手机验证码");
+        }
         userService.insertStore(storeRegistTemp);
         return new Result(true, StatusCode.OK,"注册成功");
     }
