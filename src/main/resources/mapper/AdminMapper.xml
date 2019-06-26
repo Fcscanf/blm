@@ -81,4 +81,10 @@
       isvalid = #{isvalid,jdbcType=VARCHAR}
     where adminid = #{adminid,jdbcType=VARCHAR}
   </update>
+
+  <select id="getAdmin_d" parameterType="com.blm.bean.Admin" resultType="com.blm.bean.Admin">
+		select a.loginname,a.password from admin a where a.loginname=#{loginname}
+		and a.password=#{password}
+	</select>
+
 </mapper>

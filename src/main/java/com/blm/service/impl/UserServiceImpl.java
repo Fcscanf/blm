@@ -1,4 +1,4 @@
-package com.blm.service.Impl;
+package com.blm.service.impl;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.blm.bean.StoreDetail;
@@ -109,6 +109,7 @@ public class UserServiceImpl implements UserService {
      * 发送手机验证码
      * @param phone
      */
+    @Override
     public void sendMsg(String phone){
         String checkcode = RandomStringUtils.randomNumeric(6);
         redisTemplate.opsForValue().set("checkcode_"+phone,checkcode, 6,TimeUnit.HOURS);

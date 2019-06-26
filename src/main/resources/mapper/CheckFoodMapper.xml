@@ -21,7 +21,7 @@
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from checkfood
     where foodid = #{foodid,jdbcType=VARCHAR}
@@ -31,9 +31,9 @@
     where foodid = #{foodid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blm.bean.CheckFood">
-    insert into checkfood (foodid, foodtype, keywords, 
+    insert into checkfood (foodid, foodtype, keywords,
       storeid)
-    values (#{foodid,jdbcType=VARCHAR}, #{foodtype,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+    values (#{foodid,jdbcType=VARCHAR}, #{foodtype,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR},
       #{storeid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.CheckFood">
