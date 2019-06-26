@@ -89,7 +89,7 @@
                 <div class="personal-center"  style="">
                     <div class="header-box clearfix">
                         <div class="header-item">
-                            <div class="imgBox"><img src="img/sm-icon/personal.png" alt=""></div>
+                            <div class="imgBox"><img src="../img/sm-icon/personal.png" alt=""></div>
                             <div class="info">
                                 <p class="user-info">你好，<strong class="user-name">1234</strong></p>
                                 <p class="say-some">不出门，也可以享受一天的美食哦！</p>
@@ -102,7 +102,7 @@
                     </div>
 
                 </div>
-                <div class="recent-order"  style="display: none;">
+                <div class="recent-order"  style="display: block;">
                     <div class="order-header clearfix">
                         <a href="javascript:void(0);" class="recent-ticket">最近订单</a>
                         <a href="" class="all-ticket">查看全部订单&gt;</a>
@@ -111,7 +111,7 @@
                     <div class="order-item">
                         <div class="order-rst clearfix">
                             <a class="logo" href="">
-                                <img src="img/food01.png" alt="">
+                                <img src="../img/food01.png" alt="">
                             </a>
                             <div class="info">
                                 <h3 class="name"><a href="">黄门鸡米饭</a></h3>
