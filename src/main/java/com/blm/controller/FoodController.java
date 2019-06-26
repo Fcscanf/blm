@@ -42,7 +42,7 @@ public class FoodController {
     //模糊查询用户信息
     @ResponseBody
     @RequestMapping("/vaguefind")
-    public Result vaugefind(@RequestBody CheckFood checkFood, HttpServletResponse response) throws Exception {
+    public Result vaugefind_wz(@RequestBody CheckFood checkFood, HttpServletResponse response) throws Exception {
         List<CheckFood> checkFoods=checkFoodService.vaugefind(checkFood.getFoodtype());
         return new Result(true, StatusCode.OK,"查询成功",checkFoods);
     }
