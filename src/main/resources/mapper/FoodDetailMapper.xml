@@ -147,11 +147,11 @@
   </select>
 
   <insert id="add" parameterType="com.blm.bean.FoodDetail">
-    insert into fooddetail (foodid, foodname, othername,
-      price, description, isvalid
+    insert into fooddetail ( foodid,foodname, othername,
+      price, description,picpath, isvalid
       )
     values (#{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR},
-      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{isvalid,jdbcType=INTEGER}
+      #{price,jdbcType=REAL}, #{description,jdbcType=VARCHAR},#{picpath,jdbcType=VARCHAR}, #{isvalid,jdbcType=INTEGER}
       )
   </insert>
 

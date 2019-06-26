@@ -8,8 +8,10 @@ import com.blm.util.StringUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -72,15 +74,17 @@ public class FoodDetailController {
 
 
     /**
-     * 添加或者修改商品属性
+     * 添加商品或者修改商品属性
      *
      * @param foodDetail
      * @param response
      * @return
      * @throws Exception
      */
+    @ResponseBody
     @RequestMapping("/save")
-    public String save(FoodDetail foodDetail, HttpServletResponse response) throws Exception {
+    public String save(@RequestBody FoodDetail foodDetail, HttpServletResponse response) throws Exception {
+        System.out.println(foodDetail.getFoodid());
         int resultTotal = 0; // 操作的记录条数
         if (foodDetail.getFoodid() == null) {
             resultTotal = foodDetailService.add(foodDetail);
