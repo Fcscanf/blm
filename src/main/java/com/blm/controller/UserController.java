@@ -180,7 +180,7 @@ public class UserController {
 
 
     /**
-     *
+     *商家登录
      * @param user
      * @param storeDetail
      * @param request

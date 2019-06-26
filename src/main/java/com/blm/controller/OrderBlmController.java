@@ -28,7 +28,7 @@ public class OrderBlmController {
     @Resource
     private OrderBlmService orderService;
 
-    /**订单显示并查询
+    /**订单显示并查询，不可以删除订单
      * @param page
      * @param rows
      * @param orderBlm
@@ -51,20 +51,6 @@ public class OrderBlmController {
         JSONArray jsonArray = new JSONArray(orderList);
         result.put("rows", jsonArray);
         result.put("total", total);
-        ResponseUtil.write(response, result);
-        return null;
-    }
-
-
-    @RequestMapping("/delete")
-    public String delete_zy(@RequestParam(value = "ids") String ids, HttpServletResponse response) throws Exception {
-        String[] idsStr = ids.split(",");//将前端获取并且返回的String类型的ids变为数组形式
-        for (int i = 0; i < idsStr.length; i++) {
-            orderService.delete_zy(Integer.parseInt(idsStr[i]) + "");
-            //先获取int类型的id，因为数据库设计为String类型，在转为String类型
-        }
-        JSONObject result = new JSONObject();
-        result.put("success", true);
         ResponseUtil.write(response, result);
         return null;
     }
