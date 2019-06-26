@@ -42,7 +42,7 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/{code}",method = RequestMethod.POST)
+    @RequestMapping(value = "ureg/{code}",method = RequestMethod.POST)
     public Result insertUser(@RequestBody User user,@PathVariable String code){
         String checkcode  = (String) redisTemplate.opsForValue().get("checkcode_" + user.getPhone());
         if (checkcode.isEmpty()){

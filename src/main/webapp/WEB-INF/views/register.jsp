@@ -273,7 +273,7 @@
         let $shop_mobile = $('.blm-content .shopForm .input-container input[name=mobile]');
         let $shop_mobilecode = $('.blm-content .shopForm .input-container input[name=mobilecode]');
         let $shop_shopname = $('.blm-content .shopForm .input-container input[name=shopname]');
-        let $shop_email = $('.blm-content .shopForm .input-container input[name=shopmail]')
+        let $shop_email = $('.blm-content .shopForm .input-container input[name=shopemail]');
         let $shop_detailplace = $('.blm-content .shopForm .input-container input[name=detailplace]');
         let $shop_sheng = $('.blm-content .shopForm .input-container .province .r-choose');
         let $shop_shi = $('.blm-content .shopForm .input-container .city .r-choose');
@@ -515,20 +515,23 @@
             let usermobile = $nor_mobile.val();
             let usermobileCode = $nor_mobilecode.val();
             console.info(username,userpwd,usermobile,usermobileCode);
-            // $.ajax({
-            //     type: "post",
-            //     url: "http://localhost:8080/blm_war_exploded/user/sendsms/"+$nor_mobile.val()+"/0",
-            //     dataType: "json",
-            //     headers: {'Content-Type': 'application/json'},
-            //     data: JSON.stringify({
-            //     }),
-            //     success: function (result) {
-            //         console.log(result)
-            //     },
-            //     error: function () {
-            //
-            //     }
-            // })
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/blm_war_exploded/user/ureg/"+usermobileCode,
+                dataType: "json",
+                headers: {'Content-Type': 'application/json'},
+                data: JSON.stringify({
+                    username : username,
+                    password : userpwd,
+                    phone : usermobile
+                }),
+                success: function (result) {
+                    console.log(result)
+                },
+                error: function () {
+
+                }
+            })
         })
 
         //商家用户的表单校对
@@ -939,14 +942,14 @@
                 storeaddress : shopAddress
             }
             dataObj.key = imgKey;
-
+            console.info(dataObj);
             $.ajax({
                 type: "post",
-                url: "http://localhost:8080/blm_war_exploded/user",
+                url: "http://localhost:8080/blm_war_exploded/user/store/"+mobileCode,
                 dataType: "json",
                 headers: {'Content-Type': 'application/json'},
                 data: JSON.stringify({
-
+                    dataObj
                 }),
                 success: function (result) {
 
