@@ -59,6 +59,7 @@ public class FoodDetailController {
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPagesize());
         map.put("username",session.getAttribute("currentUser"));
+
         List<FoodDetail> foodList =foodDetailService.find_zy(map);
         Long total = foodDetailService.getTotal(map);
         JSONObject result = new JSONObject();

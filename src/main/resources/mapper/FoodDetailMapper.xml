@@ -120,21 +120,15 @@
 
 
 
+
   <select id="find_zy" parameterType="Map" resultType="com.blm.bean.FoodDetail">
-    select u.userid,u.username,
-    s.storeid,s.userid,
-    c.foodid,c.storeid,
+    select
     f.foodid,f.foodname,f.othername,f.price,f.description,f.picpath
     from user u,storedetail s,checkfood c,fooddetail f
     where u.userid=s.userid and s.storeid=c.storeid and c.foodid=f.foodid  and u.username=#{username}
-   <where>
       <if test="foodname!=null and foodname!='' ">
         and foodname like #{foodname}
       </if>
-      <if test="othername!=null and othername!='' ">
-        and othername like #{othername}
-      </if>
-    </where>
     <if test="start!=null and size!=null">
       limit #{start},#{size}
     </if>

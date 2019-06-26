@@ -35,11 +35,4 @@ public class OrderBlmServiceImpl implements OrderBlmService {
         return orderBlmMapper.getTotal_zy(map);
     }
 
-
-    @Override
-    public int delete_zy(String orderid) {
-        return orderBlmMapper.delete_zy(orderid);
-
-    }
-
 }

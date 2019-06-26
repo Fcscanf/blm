@@ -23,5 +23,5 @@ public interface OrderBlmMapper {
 
     public Long getTotal_zy(Map<String, Object> map);//查询总的记录数
 
-    public int delete_zy(String orderid);//删除订单
+
 }

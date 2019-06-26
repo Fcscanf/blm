@@ -15,5 +15,4 @@ public interface OrderBlmService {
 
     public Long getTotal_zy(Map<String, Object> map);
 
-    public int delete_zy(String orderid);//删除订单
 }
