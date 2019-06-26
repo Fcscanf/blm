@@ -1,12 +1,10 @@
-package com.blm.service.Impl;
+package com.blm.service.impl;
 
 import com.blm.bean.Admin;
 import com.blm.dao.AdminMapper;
 import com.blm.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AdminServiceImpl implements AdminService {

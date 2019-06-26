@@ -1,4 +1,4 @@
-package com.blm.service.Impl;
+package com.blm.service.impl;
 
 import com.blm.bean.FoodDetail;
 import com.blm.dao.FoodDetailMapper;
