@@ -20,24 +20,29 @@ public class StoreDetailServiceImpl implements StoreDetailService {
     private StoreDetailMapper storeDetailMapper;
 
 
+    @Override
     public List<StoreDetail> find(Map<String, Object> map){
         return storeDetailMapper.find(map);
     }
 
+    @Override
     public StoreDetail findStoreDetailByUsername(String username) {
         return null;
     }
 
+    @Override
     public Long getTotal(Map<String, Object> map){
         return storeDetailMapper.getTotal(map);
     }
 
 
+    @Override
     public int update(StoreDetail storeDetail){
     return storeDetailMapper.update(storeDetail);
     }
 
     //查询商家所有信息
+    @Override
     public List<StoreDetail> findAll_wz(String storeid) {
         return storeDetailMapper.findAllById_wz(storeid);
     }

@@ -24,23 +24,28 @@ public class FoodDetailServiceImpl implements FoodDetailService {
 
     @Resource
     private FoodDetailMapper foodDetailMapper;
+    @Override
     public List<FoodDetail> find(Map<String, Object> map){
         return foodDetailMapper.find(map);
     }
 
+    @Override
     public Long getTotal(Map<String, Object> map){
         return foodDetailMapper.getTotal(map);
     }
 
+    @Override
     public int update(FoodDetail foodDetail){
         return foodDetailMapper.update(foodDetail);
     }
 
+    @Override
     public int add(FoodDetail foodDetail){
         return foodDetailMapper.add(foodDetail);
     }
 
 
+    @Override
     public int delete(String id){
 
         return foodDetailMapper.delete(id);

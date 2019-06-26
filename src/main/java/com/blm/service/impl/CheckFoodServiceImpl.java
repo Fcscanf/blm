@@ -12,6 +12,7 @@ public class CheckFoodServiceImpl implements CheckFoodService {
   @Autowired
   private CheckFoodMapper checkFoodMapper;
 
+  @Override
   public List<CheckFood> findAll() {
     return checkFoodMapper.findAll();
   }

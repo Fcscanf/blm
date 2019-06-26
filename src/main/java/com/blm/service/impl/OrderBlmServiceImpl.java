@@ -17,6 +17,7 @@ public class OrderBlmServiceImpl implements OrderBlmService {
     private OrderBlmMapper orderBlmMapper;
 
     //封装订单信息
+    @Override
     public List<OrderBlmTemp> findAllByUserId_wz(String userid) {
         List<OrderBlmTemp> Temps = new ArrayList<OrderBlmTemp>();
         List<OrderBlm> list = orderBlmMapper.findAllByUserId_wz(userid);

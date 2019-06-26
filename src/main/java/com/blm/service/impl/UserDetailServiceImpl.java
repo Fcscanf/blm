@@ -17,6 +17,7 @@ public class UserDetailServiceImpl implements UserDetailService {
 @Autowired
 private IdWorker idWorker;
 
+    @Override
     public int insert_wz(UserDetail userDetail) {
       //id自增
         String a=idWorker.nextId()+"";
@@ -25,6 +26,7 @@ private IdWorker idWorker;
         return 0 ;
     }
 
+    @Override
     public int delete_wz(String id) {
         return  userDetailMapper.deleteByPrimaryKey(id);
     }
