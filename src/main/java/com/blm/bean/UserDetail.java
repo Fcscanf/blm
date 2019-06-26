@@ -1,5 +1,7 @@
 package com.blm.bean;
 
+import java.util.List;
+
 public class UserDetail {
     private String id;
 
@@ -11,12 +13,23 @@ public class UserDetail {
 
     private String phone;
 
-    public UserDetail(String id, String userid, String sex, String address, String phone) {
+    private List<User> users;
+
+    public UserDetail(String id, String userid, String sex, String address, String phone, List<User> users) {
         this.id = id;
         this.userid = userid;
         this.sex = sex;
         this.address = address;
         this.phone = phone;
+        this.users = users;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public UserDetail() {

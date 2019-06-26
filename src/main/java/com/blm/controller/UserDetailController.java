@@ -1,8 +1,13 @@
 package com.blm.controller;
 
+import com.blm.bean.Result;
+import com.blm.bean.StatusCode;
 import com.blm.bean.UserDetail;
 import com.blm.service.UserDetailService;
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
+import com.blm.util.ResponseUtil;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,40 +18,40 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
+@RequestMapping("/userdetail")
 public class UserDetailController {
     @Autowired
     private UserDetailService userDetailService;
 
     @ResponseBody
     @RequestMapping("/insert")
-    //添加地址方法
-    public String insert_wz(@RequestBody UserDetail userDetail){
+    //添加用户收货地址,传入userid,phone,address,sex,
+    public Result insert_wz(@RequestBody UserDetail userDetail){
         userDetailService.insert_wz(userDetail);
-        return null;
+        return new Result(true, StatusCode.OK,"添加成功");
     }
-    //删除地址方法
+    //删除用户收货地址    传入id(主键)
     @ResponseBody
     @RequestMapping("/delete")
-    public String delete_wz(@RequestBody UserDetail userDetail){
-        userDetailService.delete_wz(userDetail.getUserid());
-        return null;
+    public Result delete_wz(@RequestBody UserDetail userDetail){
+        userDetailService.delete_wz(userDetail.getId());
+        return new Result(true, StatusCode.OK,"删除成功");
     }
 
-   //修改地址方法
+   //修改用户收货地址   在前台先获取之前的地址，再传入phone,address,sex,
     @ResponseBody
     @RequestMapping("/update")
-    public String update_wz(@RequestBody UserDetail userDetail){
+    public Result update_wz(@RequestBody UserDetail userDetail){
         userDetailService.update_wz(userDetail);
-        return null;
+        return new Result(true, StatusCode.OK,"修改成功");
     }
 
-    //查找地址
-    @ResponseBody
+    //查找用户收货地址 传入userid
+@ResponseBody
     @RequestMapping("/select")
-    public String select_wz(@RequestBody UserDetail userDetail, HttpServletResponse response) {
-        UserDetail userDetails = userDetailService.select_wz(userDetail.getUserid());
-        System.out.println(userDetail);
-        return null;
+    public Result select_wz(@RequestBody UserDetail userDetail,HttpServletResponse response) throws Exception {
+        List<UserDetail> userDetails = userDetailService.finduser_wz(userDetail.getUserid());
+        return new Result(true, StatusCode.OK,"查询成功",userDetails);
     }
     }
 

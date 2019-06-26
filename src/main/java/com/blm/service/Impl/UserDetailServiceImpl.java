@@ -3,6 +3,7 @@ package com.blm.service.Impl;
 import com.blm.bean.UserDetail;
 import com.blm.dao.UserDetailMapper;
 import com.blm.service.UserDetailService;
+import com.blm.util.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,15 @@ public class UserDetailServiceImpl implements UserDetailService {
 @Autowired
    private UserDetailMapper userDetailMapper;
 
+@Autowired
+private IdWorker idWorker;
+
     public int insert_wz(UserDetail userDetail) {
-        return  userDetailMapper.insert(userDetail);
+      //id自增
+        String a=idWorker.nextId()+"";
+        userDetail.setId(a);
+        userDetailMapper.insert(userDetail);
+        return 0 ;
     }
 
     public int delete_wz(String id) {
@@ -24,11 +32,14 @@ public class UserDetailServiceImpl implements UserDetailService {
 
 
     public int update_wz(UserDetail userDetail) {
-        userDetailMapper.updateByPrimaryKey(userDetail);
+
         return   userDetailMapper.updateByPrimaryKey(userDetail);
     }
 
-    public UserDetail select_wz(String id) {
-        return  userDetailMapper.selectByPrimaryKey(id);
+    @Override
+    public List<UserDetail> finduser_wz(String userid) {
+        return userDetailMapper.finduser_wz(userid);
     }
+
+
 }

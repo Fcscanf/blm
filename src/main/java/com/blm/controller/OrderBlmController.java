@@ -2,10 +2,11 @@ package com.blm.controller;
 
 
 import com.blm.bean.OrderBlm;
+import com.blm.bean.OrderBlmTemp;
+import com.blm.bean.Result;
+import com.blm.bean.StatusCode;
 import com.blm.service.OrderBlmService;
-import com.blm.util.ResponseUtil;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,18 +22,11 @@ public class OrderBlmController {
     @Resource
     private OrderBlmService orderBlmService;
 
-
-
-
-    //查询订单（详细信息） wz
+    //查询用户所有的订单信息 传入用户ID
     @ResponseBody
     @RequestMapping("/findallbyid")
-    public String findAllById_wz(@RequestBody OrderBlm orderblm, HttpServletResponse response) throws Exception {
-        List<OrderBlm> storeDetails = orderBlmService.findAllByUserId_wz(orderblm.getUserid());
-        JSONObject result=new JSONObject();
-        JSONArray jsonArray= new JSONArray(storeDetails);
-        result.put("result",jsonArray);
-        ResponseUtil.write(response, result);
-        return  null;
+    public Result findAllById_wz(@RequestBody OrderBlm orderblm, HttpServletResponse response) throws Exception {
+        List<OrderBlmTemp> orderBlmTemps = orderBlmService.findAllByUserId_wz(orderblm.getUserid());
+        return new Result(true, StatusCode.OK,"查询成功", orderBlmTemps);
     }
 }

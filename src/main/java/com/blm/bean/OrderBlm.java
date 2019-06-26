@@ -1,6 +1,7 @@
 package com.blm.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderBlm {
     private String orderid;
@@ -23,7 +24,16 @@ public class OrderBlm {
 
     private String remarks;
 
-    public OrderBlm(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date datee, Integer isvalid, String remarks) {
+    private List<OrderDetail> orderDetails;
+
+    private List<FoodDetail> foodDetails;
+
+    private OrderDetail orderDetail;
+
+    private FoodDetail foodDetail;
+
+
+    public OrderBlm(String orderid, String userid, String username, String storeid, String foodid, String foodname, String totalprice, Date datee, Integer isvalid, String remarks, List<OrderDetail> orderDetails, List<FoodDetail> foodDetails, OrderDetail orderDetail, FoodDetail foodDetail) {
         this.orderid = orderid;
         this.userid = userid;
         this.username = username;
@@ -34,7 +44,45 @@ public class OrderBlm {
         this.datee = datee;
         this.isvalid = isvalid;
         this.remarks = remarks;
+        this.orderDetails = orderDetails;
+        this.foodDetails = foodDetails;
+        this.orderDetail = orderDetail;
+        this.foodDetail = foodDetail;
     }
+
+    public OrderDetail getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(OrderDetail orderDetail) {
+        this.orderDetail = orderDetail;
+    }
+
+    public FoodDetail getFoodDetail() {
+        return foodDetail;
+    }
+
+    public void setFoodDetail(FoodDetail foodDetail) {
+        this.foodDetail = foodDetail;
+    }
+
+    public List<FoodDetail> getFoodDetails() {
+        return foodDetails;
+    }
+
+    public void setFoodDetails(List<FoodDetail> foodDetails) {
+        this.foodDetails = foodDetails;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+
 
     public OrderBlm() {
         super();

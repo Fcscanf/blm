@@ -13,20 +13,50 @@
   <sql id="Base_Column_List">
     id, userid, sex, address, phone
   </sql>
+
+
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from userdetail
     where id = #{id,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectmax_wz" resultType="String">
+    select id max from userdetail
+  </select>
+
+
+  <select id="finduser_wz"  parameterType="String"  resultMap="ResultMap_wz">
+    select t.id,t.userid,t.sex,t.address,t.phone,u.userid,u.username
+    from user  u,userdetail  t
+    where t.userid=u.userid and t.userid = #{userid}
+  </select>
+
+  <resultMap type="com.blm.bean.UserDetail" id="ResultMap_wz" >
+    <id property="id" column="id" />
+    <result property="userid" column="userid" />
+    <result property="sex" column="sex" />
+    <result property="address" column="address" />
+    <result property="phone" column="phone" />
+    <collection property="users" ofType="com.blm.bean.User">
+      <id property="userid" column="userid" />
+      <result property="username" column="username" />
+    </collection>
+  </resultMap>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from userdetail
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blm.bean.UserDetail">
-    insert into userdetail (id, userid, sex, 
+    insert into userdetail (id, userid, sex,
       address, phone)
-    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
       #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.UserDetail">
@@ -86,7 +116,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.blm.bean.UserDetail">
     update userdetail
-    set userid = #{userid,jdbcType=VARCHAR},
+    set
       sex = #{sex,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR}
