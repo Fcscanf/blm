@@ -23,5 +23,6 @@ public interface OrderBlmMapper {
 
     public Long getTotal_zy(Map<String, Object> map);//查询总的记录数
 
+    public List<OrderBlm> findAllByUserId_wz(String userid);
 
 }

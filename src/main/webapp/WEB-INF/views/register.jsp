@@ -481,7 +481,6 @@
                     sendBtn_n = 0;
                     // settime_n($(this));
                     //发起ajax请求，发送验证码
-                    console.info($nor_mobile.val())
                     $.ajax({
                         type: "post",
                         url: "http://localhost:8080/blm_war_exploded/user/sendsms/"+$nor_mobile.val()+"/0",
@@ -899,7 +898,6 @@
                     success: function (result) {
                         if(result.code == 20000){
                             imgKey = result.data;
-                            console.info("key为："+imgKey)
                         }
                     },
                     error: function () {
@@ -920,7 +918,7 @@
             let shopname = $shop_shopname.val();
             let shopArea = $shop_sheng.text() + ' ' + $shop_shi.text() + ' ' + $shop_qu.text();
             let shopAddress = $shop_detailplace.val();
-            console.info()
+
             if(shopname == ''){
                 $errInfoList_s.eq(5).css('display','block');
                 $errContainer_s.eq(5).addClass('errState');

@@ -44,7 +44,12 @@ public class CheckFoodServiceImpl implements CheckFoodService {
 
   @Override
   public List<CheckFood> vaugefind(String foodtype) {
-    return checkFoodMapper.vaguefind(foodtype);
+
+    List<CheckFood> list = checkFoodMapper.vaguefind(foodtype);
+    for (CheckFood checkFood:list){
+      checkFood.getFoodDetail().setPicpath(ossClientUtil.getImgUrl(checkFood.getFoodDetail().getPicpath()));
+    }
+    return list;
   }
 
 }

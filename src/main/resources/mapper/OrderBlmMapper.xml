@@ -17,7 +17,7 @@
   </resultMap>
 
   <select id="findAllByUserId_wz"  parameterType="String" resultMap="ResultMap_wz">
-    select o.orderid,o.username,o.storeid,o.totalprice,o.date,o.userid,t.foodid,t.orderid,t.orderdetailid,
+    select o.orderid,o.username,o.storeid,o.totalprice,o.datee,o.userid,t.foodid,t.orderid,t.orderdetailid,
     f.foodid,f.foodname,f.price,f.picpath
     from  fooddetail f,orderdetail t,orderblm o
     where t.foodid=f.foodid
@@ -30,7 +30,7 @@
     <result property="username" column="username" />
     <result property="storeid" column="storeid" />
     <result property="totalprice" column="totalprice" />
-    <result property="date" column="date" />
+    <result property="datee" column="datee" />
     <collection property="orderDetails" ofType="com.blm.bean.OrderDetail">
       <id property="orderdetailid" column="orderdetailid" />
       <result property="foodid" column="foodid" />
@@ -43,6 +43,7 @@
       <result property="picpath" column="picpath"/>
     </collection>
   </resultMap>
+
 
 
 

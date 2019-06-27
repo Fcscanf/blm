@@ -1,6 +1,5 @@
 package com.blm.service.impl;
 
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.blm.bean.StoreDetail;
 import com.blm.bean.StoreRegistTemp;
 import com.blm.bean.User;
@@ -139,7 +138,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void sendMsg(String phone,String code1){
-        SendSmsResponse sendSmsResponse = null;
         String checkcode = RandomStringUtils.randomNumeric(6);
         redisTemplate.opsForValue().set("checkcode_"+phone,checkcode, 6,TimeUnit.HOURS);
 //        Map<String,String> map = new HashMap<>();

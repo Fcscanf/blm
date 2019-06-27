@@ -19,14 +19,13 @@ window.onload = function () {
         }),
         success: function (result) {
             shopContainer.innerHTML = '';
-            getArr = result.result;
+            getArr = result.data
             allShopLength = getArr.length;
             if(getArr.length > 32){
                 nowShopLength = 32;
             }else {
                 nowShopLength = getArr.length;
             }
-            console.log('当前nowLength:'+nowShopLength)
             for (let i = 0; i < nowShopLength; i++) {
                 let oDiv = document.createElement('div');
                 oDiv.classList.add('shop-item');
@@ -83,20 +82,20 @@ window.onload = function () {
                             oDiv.classList.add('shop-item');
                             oDiv.innerHTML += `<a href="">
                         <div class="imgBox">
-                            <img src="${getArr[i].picpath}" alt="">
+                            <img src="${getArr[i].foodDetail.picpath}" alt="">
                         </div>
                         <div class="infoBox">
-                            <h3 class="food-name">${getArr[i].foodname}</h3>
-                            <p class="food-price">${getArr[i].price}元</p>
-                            <p class="food-shop">${getArr[i].storename}</p>
+                            <h3 class="food-name">${getArr[i].foodDetail.foodname}</h3>
+                            <p class="food-price">${getArr[i].foodDetail.price}元</p>
+                            <p class="food-shop">${getArr[i].storeDetail.storename}</p>
                         </div>
                     </a>
                     <div class="hide-info">
                         <span class="h-span"></span>
-                        <h3 class="h-name">${getArr[i].foodname}</h3>
+                        <h3 class="h-name">${getArr[i].foodDetail.foodname}</h3>
                         <p class="h-class">${getArr[i].foodtype}</p>
-                        <span class="h-price">${getArr[i].price}元</span>
-                        <p class="h-desc">${getArr[i].description}</p>`;
+                        <span class="h-price">${getArr[i].foodDetail.price}元</span>
+                        <p class="h-desc">${getArr[i].foodDetail.description}</p>`;
                             shopContainer.appendChild(oDiv);
                         }
                 },
@@ -126,6 +125,7 @@ window.onload = function () {
                 'foodtype':inputValue
             }),
             success: function (result) {
+                console.info(result)
                 shopContainer.innerHTML = '';
                 let getArr = result.result;
                 for (let i=0;i<getArr.length;i++){
@@ -133,20 +133,20 @@ window.onload = function () {
                     oDiv.classList.add('shop-item');
                     oDiv.innerHTML += `<a href="">
                     <div class="imgBox">
-                        <img src="${getArr[i].picpath}" alt="">
+                        <img src="${getArr[i].foodDetail.picpath}" alt="">
                     </div>
                     <div class="infoBox">
-                        <h3 class="food-name">${getArr[i].foodname}</h3>
-                        <p class="food-price">${getArr[i].price}元</p>
-                        <p class="food-shop">${getArr[i].storename}</p>
+                        <h3 class="food-name">${getArr[i].foodDetail.foodname}</h3>
+                        <p class="food-price">${getArr[i].foodDetail.price}元</p>
+                        <p class="food-shop">${getArr[i].storeDetail.storename}</p>
                     </div>
                 </a>
                 <div class="hide-info">
                     <span class="h-span"></span>
-                    <h3 class="h-name">${getArr[i].foodname}</h3>
+                    <h3 class="h-name">${getArr[i].foodDetail.foodname}</h3>
                     <p class="h-class">${getArr[i].foodtype}</p>
-                    <span class="h-price">${getArr[i].price}元</span>
-                    <p class="h-desc">${getArr[i].description}</p>`;
+                    <span class="h-price">${getArr[i].foodDetail.price}元</span>
+                    <p class="h-desc">${getArr[i].foodDetail.description}</p>`;
                     shopContainer.appendChild(oDiv);
                 }
             },

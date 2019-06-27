@@ -15,7 +15,7 @@ public interface UserService {
     public User loginp(String phone, String password);
 
 //    向手机发送验证码
-    public void sendMsg(String phone,String code);
+    public void sendMsg(String phone, String code);
 
 //    根据手机号码查找用户
     public User selectUserByPhone(String phone);
@@ -29,5 +29,5 @@ public interface UserService {
 
     public User selectUserByUsername(String username);
 
-    public User login(String username,String  password);
+    public User login(String username, String password);
 }

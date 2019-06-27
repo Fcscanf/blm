@@ -113,7 +113,7 @@
     </div>
 
     <div class="blm-bottom">
-        <div class="bot-container">
+        <div class="bot-container clearfix">
             <div class="web-info">
                     <span class="group-info">
                         &copy; 最美坤坤小组
