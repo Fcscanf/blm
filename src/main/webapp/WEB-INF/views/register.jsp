@@ -479,7 +479,7 @@
             }else{
                 if(sendBtn_n == 1){
                     sendBtn_n = 0;
-                    settime_n($(this));
+                    // settime_n($(this));
                     //发起ajax请求，发送验证码
                     $.ajax({
                         type: "post",
@@ -928,31 +928,48 @@
                 $errContainer_s.eq(8).addClass('errState');
             }
 
-            let dataObj = new Object();
-            dataObj.user = {
-                username : username,
-                password : userpwd,
-                phone : mobile
-            };
-            dataObj.storeDetail ={
-                storename : shopname,
-                email : shopemail,
-                tel : mobile,
-                area: shopArea,
-                storeaddress : shopAddress
-            }
-            dataObj.key = imgKey;
-            console.info(dataObj);
+            // let dataObj = new Object();
+            // dataObj.user = {
+            //     username : username,
+            //     password : userpwd,
+            //     phone : mobile
+            // };
+            // dataObj.storeDetail ={
+            //     storename : shopname,
+            //     email : shopemail,
+            //     tel : mobile,
+            //     area: shopArea,
+            //     storeaddress : shopAddress
+            // }
+            // dataObj.key = imgKey;
+            // console.info(dataObj);
             $.ajax({
                 type: "post",
                 url: "http://localhost:8080/blm_war_exploded/user/store/"+mobileCode,
                 dataType: "json",
                 headers: {'Content-Type': 'application/json'},
                 data: JSON.stringify({
-                    dataObj
+                    "user":{
+                        "username":username,
+                        "password":userpwd,
+                        "phone":mobile
+                    },
+                    "storeDetail":{
+                        "storename":shopname,
+                        "email":shopemail,
+                        "tel":mobile,
+                        "area":shopArea,
+                        "storeaddress":shopAddress
+                    },
+                    "key":imgKey
                 }),
                 success: function (result) {
-
+                    if (result.code==20000){
+                        //跳转登录界面
+                        // window.location.href=
+                    }else{
+                    //    跳转到相应的错误界面
+                    }
                 },
                 error: function () {
 

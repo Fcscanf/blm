@@ -1,6 +1,5 @@
 package com.blm.service.impl;
 
-import com.aliyuncs.exceptions.ClientException;
 import com.blm.bean.StoreDetail;
 import com.blm.bean.StoreRegistTemp;
 import com.blm.bean.User;
@@ -103,6 +102,8 @@ public class UserServiceImpl implements UserService {
         user.setUserid(idWorker.nextId()+"");
         user.setPassword(encoder.encode(user.getPassword()));
         user.setCreatetime(new Date());
+        user.setRoleid("1");
+        user.setIsvalid(1);
         userMapper.insert(user);
     }
 
@@ -145,18 +146,21 @@ public class UserServiceImpl implements UserService {
         //给用户发一份,
         //rabbitmq消费短息的发送先不做
 //        amqpTemplate.convertAndSend("sms",map);
-        try {
-            if ("1".equals(code1)){
-                smsUtil.sendSms(phone,template_code_login,sign_name," {\"code\":\""+ checkcode +"\"}");
-            }
-            if ("0".equals(code1)){
-                smsUtil.sendSms(phone,template_code_regist,sign_name," {\"code\":\""+ checkcode +"\"}");
-            }
-        }catch (ClientException e){
-            e.printStackTrace();
-        }
+
+//        try {
+//            if ("1".equals(code1)){
+//                sendSmsResponse = smsUtil.sendSms(phone, template_code_login, sign_name, " {\"code\":\"" + checkcode + "\"}");
+//            }
+//            if ("0".equals(code1)){
+//                sendSmsResponse = smsUtil.sendSms(phone, template_code_regist, sign_name, " {\"code\":\"" + checkcode + "\"}");
+//            }
+//        }catch (ClientException e){
+//            e.printStackTrace();
+//        }
         //调试阶段控制台显示一份
+        System.out.println("缓存中的验证码"+redisTemplate.opsForValue().get("checkcode_"+phone));
         System.out.println("验证码为："+checkcode);
+
     }
 
     @Override
@@ -180,6 +184,7 @@ public class UserServiceImpl implements UserService {
         user.setUserid(id);
         user.setCreatetime(new Date());
         user.setRoleid("2");
+        user.setPassword(encoder.encode(storeRegistTemp.getUser().getPassword()));
         user.setIsvalid(1);
         userMapper.insert(user);
         storeDetail.setStoreid(idWorker.nextId()+"");
