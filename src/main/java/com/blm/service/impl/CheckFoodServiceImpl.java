@@ -25,6 +25,7 @@ public class CheckFoodServiceImpl implements CheckFoodService {
   @Autowired
   private CheckFoodMapper checkFoodMapper;
 
+  @Override
   public List<FoodTemp> findAll() {
     List<FoodTemp> foodTemps = new ArrayList<FoodTemp>();
     List<CheckFood> list = checkFoodMapper.findAll();
