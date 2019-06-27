@@ -1,6 +1,7 @@
 package com.blm.service;
 
 import com.blm.bean.OrderBlm;
+import com.blm.bean.OrderBlmTemp;
 
 import java.util.List;
 import java.util.Map;
@@ -15,4 +16,5 @@ public interface OrderBlmService {
 
     public Long getTotal_zy(Map<String, Object> map);
 
+    public List<OrderBlmTemp> findAllByUserId_wz(String userid);//查询订单（详细信息） wz
 }

@@ -1,15 +1,16 @@
 package com.blm.controller;
 
-import com.blm.bean.OrderBlm;
-import com.blm.bean.PageBean;
+import com.blm.bean.*;
 import com.blm.service.OrderBlmService;
 import com.blm.util.ResponseUtil;
 import com.blm.util.StringUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -53,5 +54,24 @@ public class OrderBlmController {
         result.put("total", total);
         ResponseUtil.write(response, result);
         return null;
+    }
+
+    /**
+     * 王震
+     */
+    //查询用户所有的订单信息 传入用户ID
+    @ResponseBody
+    @RequestMapping("/findallbyid")
+    public Result findAllById_wz(@RequestBody OrderBlm orderblm, HttpServletResponse response) throws Exception {
+        List<OrderBlmTemp> orderBlmTemps = orderService.findAllByUserId_wz(orderblm.getUserid());
+        return new Result(true, StatusCode.OK,"查询成功", orderBlmTemps);
+    }
+
+    /**
+     * yyt 测试
+     */
+    @RequestMapping("/test")
+    public String toPersonal(){
+        return  "personal";
     }
 }

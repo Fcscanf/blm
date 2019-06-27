@@ -14,7 +14,7 @@
   </sql>
 
   <select id="findAll"  resultMap="ResultMap">
-    select c.foodid,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
+    select c.foodid,c.keywords,c.storeid,c.foodtype,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
     s.storename,s.storeaddress
     from checkfood c,fooddetail f,storedetail s
     where c.foodid=f.foodid and c.storeid=s.storeid
