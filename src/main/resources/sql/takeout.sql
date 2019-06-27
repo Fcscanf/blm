@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2019-06-25 11:46:43
+Date: 2019-06-27 11:37:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,6 +30,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
+INSERT INTO `admin` VALUES ('1', 'kris', '123', '1');
 
 -- ----------------------------
 -- Table structure for `checkfood`
@@ -61,13 +62,41 @@ INSERT INTO `checkfood` VALUES ('108', '中餐', '1', '4');
 INSERT INTO `checkfood` VALUES ('109', '中餐', '1', '4');
 INSERT INTO `checkfood` VALUES ('11', '零食', '1', '12');
 INSERT INTO `checkfood` VALUES ('110', '中餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('111', '饮品', '1', '4');
+INSERT INTO `checkfood` VALUES ('112', '饮品', '1', '4');
+INSERT INTO `checkfood` VALUES ('113', '饮品', '1', '4');
+INSERT INTO `checkfood` VALUES ('114', '饮品', '1', '4');
+INSERT INTO `checkfood` VALUES ('115', '面条馄饨', '1', '4');
+INSERT INTO `checkfood` VALUES ('116', '面条馄饨', '1', '4');
+INSERT INTO `checkfood` VALUES ('117', '面条馄饨', '1', '4');
+INSERT INTO `checkfood` VALUES ('118', '面条馄饨', '1', '4');
+INSERT INTO `checkfood` VALUES ('119', '中餐', '1', '4');
 INSERT INTO `checkfood` VALUES ('12', '面条馄饨', '1', '5');
-INSERT INTO `checkfood` VALUES ('13', '盖浇饭', null, '6');
-INSERT INTO `checkfood` VALUES ('14', '油炸麻花', null, '2');
-INSERT INTO `checkfood` VALUES ('15', '生鲜蔬菜', null, '10');
-INSERT INTO `checkfood` VALUES ('16', '早餐', null, '6');
-INSERT INTO `checkfood` VALUES ('17', '夜宵', null, '11');
-INSERT INTO `checkfood` VALUES ('19', '生鲜肉类', null, '10');
+INSERT INTO `checkfood` VALUES ('120', '中餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('121', '中餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('122', '地方菜品', '1', '4');
+INSERT INTO `checkfood` VALUES ('123', '地方菜品', '1', '4');
+INSERT INTO `checkfood` VALUES ('124', '地方菜品', '1', '4');
+INSERT INTO `checkfood` VALUES ('125', '油炸食品', '1', '4');
+INSERT INTO `checkfood` VALUES ('126', '生鲜蔬菜', '1', '4');
+INSERT INTO `checkfood` VALUES ('127', '中餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('128', '中餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('129', '早餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('13', '盖浇饭', '1', '6');
+INSERT INTO `checkfood` VALUES ('130', '早餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('131', '早餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('132', '晚餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('133', '晚餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('134', '晚餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('135', '晚餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('136', '晚餐', '1', '4');
+INSERT INTO `checkfood` VALUES ('137', '面条混沌', '1', '4');
+INSERT INTO `checkfood` VALUES ('138', '生鲜蔬菜', '1', '1');
+INSERT INTO `checkfood` VALUES ('14', '油炸麻花', '1', '2');
+INSERT INTO `checkfood` VALUES ('15', '生鲜蔬菜', '1', '10');
+INSERT INTO `checkfood` VALUES ('16', '早餐', '1', '6');
+INSERT INTO `checkfood` VALUES ('17', '夜宵', '1', '11');
+INSERT INTO `checkfood` VALUES ('19', '生鲜肉类', '1', '10');
 INSERT INTO `checkfood` VALUES ('2', '水果', '1', '8');
 INSERT INTO `checkfood` VALUES ('20', '生鲜肉类', '1', '10');
 INSERT INTO `checkfood` VALUES ('21', '生鲜肉类', '1', '10');
@@ -104,7 +133,7 @@ INSERT INTO `checkfood` VALUES ('5', '生鲜肉类', '1', '10');
 INSERT INTO `checkfood` VALUES ('50', '饮品', '1', '8');
 INSERT INTO `checkfood` VALUES ('51', '地方菜品', '1', '1');
 INSERT INTO `checkfood` VALUES ('52', '生鲜蔬菜', '1', '10');
-INSERT INTO `checkfood` VALUES ('53', '芹菜', '1', '10');
+INSERT INTO `checkfood` VALUES ('53', '生鲜蔬菜', '1', '10');
 INSERT INTO `checkfood` VALUES ('54', '中餐', '1', '1');
 INSERT INTO `checkfood` VALUES ('55', '小米', '1', '10');
 INSERT INTO `checkfood` VALUES ('56', '大米', '1', '10');
@@ -172,22 +201,50 @@ CREATE TABLE `fooddetail` (
 -- ----------------------------
 -- Records of fooddetail
 -- ----------------------------
-INSERT INTO `fooddetail` VALUES ('1', '荔枝', '水果', '100', '非常好吃，水分很足，刚买来用冰水泡着，闲暇时可以吃一吃，糖分很足，非常甜的那种。价格也不贵，已经推荐朋友购买。', '1561387732604.jpg', '1');
-INSERT INTO `fooddetail` VALUES ('10', '火锅', '中餐', '100', '好吃啊，作为一个串霸，很负责任的说串串很实惠，种类也很多，四个人团购的，最爱肥肠和去骨鸭掌和鸡脚，很有嚼劲，吃一口滋溜滋溜，青菜也很新鲜，推荐一波，团购更实惠，鸳鸯锅推荐中辣。', '1561387756573.jpg', '1');
-INSERT INTO `fooddetail` VALUES ('100', '梭子蟹海螺花甲毛蛤蜊生蚝海蛎子水产组合', '晚餐', '198', '材料很全，用来做火锅食材刚好，都包括全了，很满意的一次体验！', null, '1');
-INSERT INTO `fooddetail` VALUES ('101', '宫保鸡丁', '中餐', '16', '酸辣土豆丝很可口 菠萝咕咾肉美味经典 韭菜炒鸡蛋味道好', null, '1');
-INSERT INTO `fooddetail` VALUES ('102', '干锅千叶豆腐', '中餐', '20', '酸辣土豆丝很可口 菠萝咕咾肉美味经典 韭菜炒鸡蛋味道好', null, '1');
-INSERT INTO `fooddetail` VALUES ('103', '招牌酸菜黑鱼+红烧排骨酸辣土豆丝2份米饭', '中餐', '100', '一如既往地好，环境大气档次高、菜品地道纯正，服务也好，吃过很多次了，很是推荐', null, '1');
-INSERT INTO `fooddetail` VALUES ('104', '鸡块烧毛豆', '中餐', '24', '环境很好，服务很周到，菜品的味道一直很不错。推荐！', null, '1');
-INSERT INTO `fooddetail` VALUES ('105', '杏鲍菇炒肉片', '中餐', '20', '感觉味道没有以前好了，西瓜汁也是怪怪的味道，米饭还不错，现在接待多的还是旅行团感觉。所以菜的质量不如以前精致了', null, '1');
-INSERT INTO `fooddetail` VALUES ('106', '酸辣土豆丝', '中餐', '8', '口味还不错，经常去吃，比较正的川辣口味，量不大，价格偏上 。\r\n', null, '1');
-INSERT INTO `fooddetail` VALUES ('107', '啤酒鸭', '中餐', '38', '离得近，包间多，随时预定都有，主要还是方便', null, '1');
-INSERT INTO `fooddetail` VALUES ('108', '鱼香肉丝', '中餐', '18', '请朋友吃饭，2人去的，菜的口味还可以', null, '1');
-INSERT INTO `fooddetail` VALUES ('109', '五香螺蛳', '中餐', '12', '每次来蜀国演义，都是一种满意的体验。尤其是姓伞的服务员热情周到，使人有宾至如归的感觉。', null, '1');
+INSERT INTO `fooddetail` VALUES ('1', '荔枝223篇', '水果', '100', '非常好吃，水分很足，刚买来用冰水泡着，闲暇时可以吃一吃，糖分很足，非常甜的那种。价格也不贵，已经推荐朋友购买。', '1561387732604.jpg', '1');
+INSERT INTO `fooddetail` VALUES ('10', '火锅', '中餐不好吃', '100343', '好吃啊，作为一个串霸，很负责任的说串串很实惠，种类也很多，四个人团购的，最爱肥肠和去骨鸭掌和鸡脚，很有嚼劲，吃一口滋溜滋溜，青菜也很新鲜，推荐一波，团购更实惠，鸳鸯锅推荐中辣。', '1561387756573.jpg', '1');
+INSERT INTO `fooddetail` VALUES ('100', '梭子蟹海螺花甲毛蛤蜊生蚝海蛎子水产组合', '晚餐', '198', '材料很全，用来做火锅食材刚好，都包括全了，很满意的一次体验！', '1561603593969.png', '1');
+INSERT INTO `fooddetail` VALUES ('101', '宫保鸡丁', '中餐', '16', '酸辣土豆丝很可口 菠萝咕咾肉美味经典 韭菜炒鸡蛋味道好', '1561603621444.png', '1');
+INSERT INTO `fooddetail` VALUES ('102', '干锅千叶豆腐', '中餐', '20', '酸辣土豆丝很可口 菠萝咕咾肉美味经典 韭菜炒鸡蛋味道好', '1561603642358.png', '1');
+INSERT INTO `fooddetail` VALUES ('103', '招牌酸菜黑鱼+红烧排骨酸辣土豆丝2份米饭', '中餐', '100', '一如既往地好，环境大气档次高、菜品地道纯正，服务也好，吃过很多次了，很是推荐', '1561603687219.png', '1');
+INSERT INTO `fooddetail` VALUES ('104', '鸡块烧毛豆', '中餐', '24', '环境很好，服务很周到，菜品的味道一直很不错。推荐！', '1561603797374.png', '1');
+INSERT INTO `fooddetail` VALUES ('105', '杏鲍菇炒肉片', '中餐', '20', '感觉味道没有以前好了，西瓜汁也是怪怪的味道，米饭还不错，现在接待多的还是旅行团感觉。所以菜的质量不如以前精致了', '1561603808264.png', '1');
+INSERT INTO `fooddetail` VALUES ('106', '酸辣土豆丝', '中餐', '8', '口味还不错，经常去吃，比较正的川辣口味，量不大，价格偏上 。\r\n', '1561603998757.png', '1');
+INSERT INTO `fooddetail` VALUES ('107', '啤酒鸭', '中餐', '38', '离得近，包间多，随时预定都有，主要还是方便', '1561604024882.png', '1');
+INSERT INTO `fooddetail` VALUES ('108', '鱼香肉丝', '中餐', '18', '请朋友吃饭，2人去的，菜的口味还可以', '1561604091730.png', '1');
+INSERT INTO `fooddetail` VALUES ('109', '五香螺蛳', '中餐', '12', '每次来蜀国演义，都是一种满意的体验。尤其是姓伞的服务员热情周到，使人有宾至如归的感觉。', '1561604150850.png', '1');
 INSERT INTO `fooddetail` VALUES ('11', '脆脆鲨', '零食', '10', '蛋糕很好吃，还有参加生日party的孩子妈妈问我蛋糕哪里买的。口感细腻，又不会太甜。', '1561387797391.jpg', '1');
-INSERT INTO `fooddetail` VALUES ('110', '红烧排骨', '中餐', '38', '菜味很好，喜欢吃辣的强烈推荐，尤其是毛血旺非常好吃\r\n菜味很好，喜欢吃辣的强烈推荐，尤其是毛血旺非常好吃\r\n菜味很好，喜欢吃辣的强烈推荐，尤其是毛血旺非常好吃', null, '1');
+INSERT INTO `fooddetail` VALUES ('110', '红烧排骨', '中餐', '38', '菜味很好，喜欢吃辣的强烈推荐，尤其是毛血旺非常好吃\r\n菜味很好，喜欢吃辣的强烈推荐，尤其是毛血旺非常好吃\r\n菜味很好，喜欢吃辣的强烈推荐，尤其是毛血旺非常好吃', '1561604197055.png', '1');
+INSERT INTO `fooddetail` VALUES ('111', '五粮液', '饮品', '600', '五粮液总厂的酒气派大，显摆上档次，包装精美，酒质量很好，清澈透明纯净，香气四溢浓厚，口味甘甜浓郁悠久，价格实惠，来店吃饭的客户都喜欢点这个酒喝，五粮液万事如意佳品值得拥有！', '1561603342123.png', '1');
+INSERT INTO `fooddetail` VALUES ('112', '茅台', '饮品', '5000', '酒香纯净优雅，无欲无求间却又透出一丝丝野心。闻香丝毫不刺鼻，醇厚的，香甜的酱香沁人心脾。这是老酒才有的沉稳大气。', '1561603427618.png', '1');
+INSERT INTO `fooddetail` VALUES ('113', '二锅头', '饮品', '30', '已经多次购买了，清香型56度北京二锅头很适合我的口味，天天中午喝一小杯，感觉很好。', '1561603405386.png', '1');
+INSERT INTO `fooddetail` VALUES ('114', '老村长', '饮品', '30', '蛮不错的！喝完再买', '1561603063736.png', '1');
+INSERT INTO `fooddetail` VALUES ('115', '大排面', '面条馄饨', '15', '丫儿呦，味道八分，量。。。。。给四分！ 一碗面，面条被我一筷子夹没了', '1561604306264.png', '1');
+INSERT INTO `fooddetail` VALUES ('116', '青椒肉丝面', '面条馄饨', '15', '百面的味道很好，服务很到位，老坂人很好！', '1561604366889.png', '1');
+INSERT INTO `fooddetail` VALUES ('117', '鸡蛋面', '面条混沌', '15', '面很细，味道还不错，再多点青菜就好了。下次有需要还会再来', '1561604409593.png', '1');
+INSERT INTO `fooddetail` VALUES ('118', '阳春面', '面条混沌', '10', '环境很优雅 有传统特色建筑的一个小院 心情会很美 服务员态度不错', '1561604446808.png', '1');
+INSERT INTO `fooddetail` VALUES ('119', '扬州炒饭', '中餐', '10', '社会炒饭，料狠价格美！', '1561604481563.png', '1');
 INSERT INTO `fooddetail` VALUES ('12', '猪肉大葱水饺', '面条馄饨', '20', '.路过顺便尝尝这家开了好多家店的水饺..感觉应该蛮香的最起码好吃啊....煮熟后吃着口味一般.没感觉好吃也没感觉出难吃..反正就是个饺子.凑合着吃吧.', '1561387824308.jpg', '1');
+INSERT INTO `fooddetail` VALUES ('120', '蟹黄汤包', '早餐', '300', '非常棒！！！ #鲜肉汤包# #台式鸡# #卤肉烧土豆# #四季烤麸#', '1561604608716.png', '1');
+INSERT INTO `fooddetail` VALUES ('121', '上汤西兰花', '中餐', '20', '母亲节带姥姥妈妈一家去吃，特别开心。', '1561604647647.png', '1');
+INSERT INTO `fooddetail` VALUES ('122', '烫干丝', '地方菜品', '15', '非常正宗的淮阳菜。 4人套餐基本上够5人吃。', '1561604708688.png', '1');
+INSERT INTO `fooddetail` VALUES ('123', '四喜汤圆', '地方菜品', '16', '常来的。 喜欢春鲜四宝的清淡，以及干丝的清醇 ～春天来了，青团子也出来了呢。', '1561604767246.png', '1');
+INSERT INTO `fooddetail` VALUES ('124', '手抓羊肉', '地方菜品', '60', '不错的宁夏风味，老板娘好热情，经常带朋友来吃，一如既往的好，超赞推荐', '1561604935537.png', '1');
+INSERT INTO `fooddetail` VALUES ('125', '秘制炸肉', '油炸食品', '30', '有孜然的，香辣的，孜然的比较好吃，香辣的怪怪的。一定要趁热吃，才好吃，不然就皮了，就像是蘑菇和面了。', '1561604976758.png', '1');
+INSERT INTO `fooddetail` VALUES ('126', '千禧', '生鲜蔬菜', '15', '实惠不贵！', '1561605111248.png', '1');
+INSERT INTO `fooddetail` VALUES ('127', '凉拌猪头肉', '中餐', '18', '多次回购，服务和质量都不错，宝贝口味很赞', '1561605152423.png', '1');
+INSERT INTO `fooddetail` VALUES ('128', '凉拌皮蛋豆腐', '中餐', '20', '还不错，味道还行，环境干净，服务态度好', '1561605197587.png', '1');
+INSERT INTO `fooddetail` VALUES ('129', '黄金大油条', '早餐', '10', '早饭可以吃一天的地方，油条脆脆的，中午饭有卤肉饭排骨饭什么的', '1561605229870.png', '1');
 INSERT INTO `fooddetail` VALUES ('13', '青椒肉丝盖浇饭', '盖浇饭', '15', '很大一碗，味道很棒，辣味很明显很香，不会太辣又吃的很爽。有两三根青菜和好多好多细面。 ', '1561388107986.png', '1');
+INSERT INTO `fooddetail` VALUES ('130', '八宝粥', '早餐', '10', '八宝粥特别好喝，热菜也出人意料的好，上菜也快，主食一般。', '1561605312234.png', '1');
+INSERT INTO `fooddetail` VALUES ('131', '白粥', '早餐', '3', '#萝卜条# #清火白粥# #香芋地瓜丸#', '1561605347855.png', '1');
+INSERT INTO `fooddetail` VALUES ('132', '土豆丝盖浇饭', '晚餐', '15', '味道好，分量足，经济实惠', '1561605457243.png', '1');
+INSERT INTO `fooddetail` VALUES ('133', '丁丁炒面', '晚餐', '15', '今天的面超好吃，有进步！', '1561605503245.png', '1');
+INSERT INTO `fooddetail` VALUES ('134', '番茄炒蛋盖浇饭', '晚餐', '15', '味道还不错，就是量小点，店内有些冷 #招牌龙虾饭#', '1561605549710.png', '1');
+INSERT INTO `fooddetail` VALUES ('135', '龙虾盖浇饭', '晚餐', '35', '虾肉真的很鲜，也不油腻，你孩子一份套餐就够了，下次想吃小圆子。', '1561605607741.png', '1');
+INSERT INTO `fooddetail` VALUES ('136', '鱼香肉丝盖浇饭', '晚餐', '17', '常去，常来。因为美味，流连往返。', '1561605653228.png', '1');
+INSERT INTO `fooddetail` VALUES ('137', '葱油拌面', '面条混沌', '9', '饭量特别足，服务态度特别好，环境也特别好，卖家好的没得说', '1561605694601.png', '1');
+INSERT INTO `fooddetail` VALUES ('138', '香菜', '生鲜蔬菜', '10', '很浓的一股清香，不吃香菜的朋友注意一下。', '1561605732528.png', '1');
 INSERT INTO `fooddetail` VALUES ('14', '油炸麻花', '油炸食品', '5', '去丰台永旺喜欢吃，不过不要总吃，热量比较大，它家夏天有点儿夏威夷沙滩风，很多小孩子喜欢在这面点超大份的冰淇淋 #特大什锦拼盘# #特大巴菲# #奶油蘑菇意面#', '1561388155493.png', '1');
 INSERT INTO `fooddetail` VALUES ('15', '西兰花', '生鲜蔬菜', '5', '菜品很新鲜！', '1561388225461.png', '1');
 INSERT INTO `fooddetail` VALUES ('16', '狗不理包子', '早餐', '30', '上菜速度超快，套餐也性价比超高！没想到狗不理出的烤鸭也不错，老公说我们另外要的椒盐鸭架最好吃，鸭脖子那快肉特多。量挺大两个人吃半天也没吃完，包子都没吃几个全打包了，我觉得猪肉包最好吃。', '1561388338528.png', '1');
@@ -237,47 +294,47 @@ INSERT INTO `fooddetail` VALUES ('57', '黄焖羊肉', '中餐', '50', '环境�
 INSERT INTO `fooddetail` VALUES ('58', '牦牛肉', '生鲜肉类', '200', '是真的牦牛肉，很少见，特别劲道，一口咬下去，肉味很浓！', '1561390954238.png', '1');
 INSERT INTO `fooddetail` VALUES ('59', '生日蛋糕', '下午茶', '100', '生日快乐！', '1561391105415.png', '1');
 INSERT INTO `fooddetail` VALUES ('60', '牛排', '异国料理', '80', '很有情调，店里适合拍照，网红打卡地。', '1561391232176.png', '1');
-INSERT INTO `fooddetail` VALUES ('61', '黑麦全麦面包', '低脂肪', '10', '好吃，早上做三明治太方便了，煎个蛋加个黄瓜生菜番茄，超级方便。想做就做。以前为了做三明治去面包店一买一大包总是吃不完浪费', null, '1');
-INSERT INTO `fooddetail` VALUES ('62', '黑加仑葡萄干', '零食', '64', '质量真的好，推荐给很多同事，好东西一起分享，还送了枣干，开心。黑加仑葡萄干图片中右边，带有细杆柄，看起来很干净，也很大个，吃起来口感甜，非常好吃。', null, '1');
-INSERT INTO `fooddetail` VALUES ('63', '香辣柴火鱼小鱼仔', '零食', '28', '第二次买这家的农家菜了，换了个菜，味道依然很棒。小鱼仔是正宗的湖南口味，下饭一流。赞赞赞', null, '1');
-INSERT INTO `fooddetail` VALUES ('64', '牛肉干内蒙古1000g', '零食', '108', '包装还是不错，看上去整洁，精致，卫生，吃了一个孜然味的感觉味道还是不错的，很香，但是个人感觉一点点的偏咸，再淡一点就更好了', null, '1');
-INSERT INTO `fooddetail` VALUES ('65', '香辣豆干', '零食', '7', '买回来本来是不看好，但是吃了以后真的很好吃，店家也很好，很客气，希望您的生意像您一样，越做越好', null, '1');
-INSERT INTO `fooddetail` VALUES ('66', '南瓜子饼', '零食', '75', '第N次买了，女儿一岁多，当早餐和零食吃的，儿子17岁最喜欢吃南瓜子饼和一品酥蛋条，一罐一下子就吃完了，希望能保证食品质量安全，尤其是黑芝麻，千万不要有发霉的，上次有个黑芝麻饼吃出了石沙，希望能改进', null, '1');
-INSERT INTO `fooddetail` VALUES ('67', '特级大枣500g', '零食', '135', '特别好吃，颗粒均匀很大！皮薄肉多种子小！价廉物美，值得购买', null, '1');
-INSERT INTO `fooddetail` VALUES ('68', '去皮原味生核桃仁', '零食', '68', '客服小妹很贴心，耐心及时解决问题，核桃一如既往的好，吃完这波再来！', null, '1');
-INSERT INTO `fooddetail` VALUES ('69', '正宗无锡阳山水蜜桃', '水果', '128', '收到时有点生，放了几天渐熟了。超级好吃的水蜜桃，想要一直不断买下去，所以从早桃就开始买，这个水蜜桃的皮很好撕，水分一直淌，好久好久没吃到这么正宗的阳山水蜜桃了，吃完又买。', null, '1');
-INSERT INTO `fooddetail` VALUES ('70', '海南妃子笑荔枝', '水果', '198', '常新鲜，办公室的人都要买荔枝汁甜味美，深受我们的喜爱。荔枝一生生长在树上，一般是六七个月成熟，长成后呈球形或卵形，熟时为红色，果皮有明显的突起的硬皮质疙疙瘩瘩的小瘤体', null, '1');
-INSERT INTO `fooddetail` VALUES ('71', '黄肉黄心油桃', '水果', '59', '买的十斤装，和三块一斤，不比超市六块一斤的差。 好吃实惠。', null, '1');
-INSERT INTO `fooddetail` VALUES ('72', '四川攀枝花凯特芒果', '水果', '58', '青芒收到了，个头大均匀，立马品尝一下，个大核小，咬一口饱满的果汁四溅，甜甜的味道很好，物美价廉，物流很快，物有所值，值得推荐。', null, '1');
-INSERT INTO `fooddetail` VALUES ('73', '蓝莓鲜果', '水果', '118', '蓝莓口感是酸酸甜甜的，女儿很喜欢吃，水分很足颗粒饱满。都是一小把一小把的吃才过瘾！蓝莓快吃完了，人多力量大，放了一夜，口感还是很不错的。', null, '1');
-INSERT INTO `fooddetail` VALUES ('74', '浦江巨峰葡萄', '水果', '136', '大大大大大大大大大大大大大大大大大大大大大大大大大大大大大大葡萄！', null, '1');
-INSERT INTO `fooddetail` VALUES ('75', '肯德基超值生日双人桶', '油炸食品', '65', '已经吃完啦，点单速度好快哦，店家配好餐会发短信过来，挺好的！！！！', null, '1');
-INSERT INTO `fooddetail` VALUES ('76', '肯德基 20份香辣鸡翅', '油炸食品', '210', '便宜实惠！', null, '1');
-INSERT INTO `fooddetail` VALUES ('77', '肯德基早餐', '油炸食品', '20', '哇哦，肯德基蛋挞！12块钱四个！我的天，想都不敢想！哈哈哈！买不了吃亏，买不了上当！你值得拥有', null, '1');
-INSERT INTO `fooddetail` VALUES ('78', '蓝威薯条', '油炸食品', '24', '比我想象中的还好，收到货之后马上就用了，确实很不错，价格又便宜，东西质量要好，能买到这样的东西，很惊喜哦，所以我又在搜搜看还有没有更好的，然后再来买哦。', null, '1');
-INSERT INTO `fooddetail` VALUES ('79', '肯德基四人套餐', '油炸食品', '140', '人出生之初，禀性本身都是善良的。天性也都相差不多，只是后天所处的环境不同和所受教育不同，彼此的习性才形成了巨大的差别。', null, '1');
+INSERT INTO `fooddetail` VALUES ('61', '黑麦全麦面包', '低脂肪', '10', '好吃，早上做三明治太方便了，煎个蛋加个黄瓜生菜番茄，超级方便。想做就做。以前为了做三明治去面包店一买一大包总是吃不完浪费', '1561605767738.png', '1');
+INSERT INTO `fooddetail` VALUES ('62', '黑加仑葡萄干', '零食', '64', '质量真的好，推荐给很多同事，好东西一起分享，还送了枣干，开心。黑加仑葡萄干图片中右边，带有细杆柄，看起来很干净，也很大个，吃起来口感甜，非常好吃。', '1561605780124.png', '1');
+INSERT INTO `fooddetail` VALUES ('63', '香辣柴火鱼小鱼仔', '零食', '28', '第二次买这家的农家菜了，换了个菜，味道依然很棒。小鱼仔是正宗的湖南口味，下饭一流。赞赞赞', '1561605797947.png', '1');
+INSERT INTO `fooddetail` VALUES ('64', '牛肉干内蒙古1000g', '零食', '108', '包装还是不错，看上去整洁，精致，卫生，吃了一个孜然味的感觉味道还是不错的，很香，但是个人感觉一点点的偏咸，再淡一点就更好了', '1561605807570.png', '1');
+INSERT INTO `fooddetail` VALUES ('65', '香辣豆干', '零食', '7', '买回来本来是不看好，但是吃了以后真的很好吃，店家也很好，很客气，希望您的生意像您一样，越做越好', '1561605834579.png', '1');
+INSERT INTO `fooddetail` VALUES ('66', '南瓜子饼', '零食', '75', '第N次买了，女儿一岁多，当早餐和零食吃的，儿子17岁最喜欢吃南瓜子饼和一品酥蛋条，一罐一下子就吃完了，希望能保证食品质量安全，尤其是黑芝麻，千万不要有发霉的，上次有个黑芝麻饼吃出了石沙，希望能改进', '1561605847184.png', '1');
+INSERT INTO `fooddetail` VALUES ('67', '特级大枣500g', '零食', '135', '特别好吃，颗粒均匀很大！皮薄肉多种子小！价廉物美，值得购买', '1561605861988.png', '1');
+INSERT INTO `fooddetail` VALUES ('68', '去皮原味生核桃仁', '零食', '68', '客服小妹很贴心，耐心及时解决问题，核桃一如既往的好，吃完这波再来！', '1561605874829.png', '1');
+INSERT INTO `fooddetail` VALUES ('69', '正宗无锡阳山水蜜桃', '水果', '128', '收到时有点生，放了几天渐熟了。超级好吃的水蜜桃，想要一直不断买下去，所以从早桃就开始买，这个水蜜桃的皮很好撕，水分一直淌，好久好久没吃到这么正宗的阳山水蜜桃了，吃完又买。', '1561605891307.png', '1');
+INSERT INTO `fooddetail` VALUES ('70', '海南妃子笑荔枝', '水果', '198', '常新鲜，办公室的人都要买荔枝汁甜味美，深受我们的喜爱。荔枝一生生长在树上，一般是六七个月成熟，长成后呈球形或卵形，熟时为红色，果皮有明显的突起的硬皮质疙疙瘩瘩的小瘤体', '1561605940634.png', '1');
+INSERT INTO `fooddetail` VALUES ('71', '黄肉黄心油桃', '水果', '59', '买的十斤装，和三块一斤，不比超市六块一斤的差。 好吃实惠。', '1561605965499.png', '1');
+INSERT INTO `fooddetail` VALUES ('72', '四川攀枝花凯特芒果', '水果', '58', '青芒收到了，个头大均匀，立马品尝一下，个大核小，咬一口饱满的果汁四溅，甜甜的味道很好，物美价廉，物流很快，物有所值，值得推荐。', '1561605984394.png', '1');
+INSERT INTO `fooddetail` VALUES ('73', '蓝莓鲜果', '水果', '118', '蓝莓口感是酸酸甜甜的，女儿很喜欢吃，水分很足颗粒饱满。都是一小把一小把的吃才过瘾！蓝莓快吃完了，人多力量大，放了一夜，口感还是很不错的。', '1561606053157.png', '1');
+INSERT INTO `fooddetail` VALUES ('74', '浦江巨峰葡萄', '水果', '136', '大大大大大大大大大大大大大大大大大大大大大大大大大大大大大大葡萄！', '1561606073791.png', '1');
+INSERT INTO `fooddetail` VALUES ('75', '肯德基超值生日双人桶', '油炸食品', '65', '已经吃完啦，点单速度好快哦，店家配好餐会发短信过来，挺好的！！！！', '1561606101662.png', '1');
+INSERT INTO `fooddetail` VALUES ('76', '肯德基 20份香辣鸡翅', '油炸食品', '210', '便宜实惠！', '1561606117008.png', '1');
+INSERT INTO `fooddetail` VALUES ('77', '肯德基早餐', '油炸食品', '20', '哇哦，肯德基蛋挞！12块钱四个！我的天，想都不敢想！哈哈哈！买不了吃亏，买不了上当！你值得拥有', '1561606146512.png', '1');
+INSERT INTO `fooddetail` VALUES ('78', '蓝威薯条', '油炸食品', '24', '比我想象中的还好，收到货之后马上就用了，确实很不错，价格又便宜，东西质量要好，能买到这样的东西，很惊喜哦，所以我又在搜搜看还有没有更好的，然后再来买哦。', '1561606174330.png', '1');
+INSERT INTO `fooddetail` VALUES ('79', '肯德基四人套餐', '油炸食品', '140', '人出生之初，禀性本身都是善良的。天性也都相差不多，只是后天所处的环境不同和所受教育不同，彼此的习性才形成了巨大的差别。', '1561606213778.png', '1');
 INSERT INTO `fooddetail` VALUES ('8', '怡宝', '饮品', '3', '比上次买贵了点。可能天气热了饮料也涨价了。东西没问题很好。快递员也给送上三楼了很不错。', '1561389268530.png', '1');
-INSERT INTO `fooddetail` VALUES ('80', '青梗柳叶空心菜', '生鲜蔬菜', '22', '又到了种菜的季节了，经同事推荐买了这家的菜种子，颗粒饱满，特别喜欢吃空心菜，期待收获', null, '1');
-INSERT INTO `fooddetail` VALUES ('81', '大土豆新鲜5斤', '生鲜蔬菜', '45', '土豆不错的～很大～我是买来给狗子做窝头的～削的时候看得出真的很新鲜～有少量坏的～需要清理～', null, '1');
-INSERT INTO `fooddetail` VALUES ('82', '黄瓜小水果新鲜5斤', '生鲜蔬菜', '29', '小黄瓜挺好的，满满的一箱，个头比预期中要小多了，挺新鲜的，口感也还不错，满分好评！', null, '1');
-INSERT INTO `fooddetail` VALUES ('83', '时令圆茄子', '生鲜蔬菜', '48', '茄子一大箱到了 包装很不错 那么远的路程一个都没有坏 炒茄子 煮茄子都是很香 最主要的是喜欢吃素茄子 我们老家才会有的一道菜 热天必备 杠杠的 比菜市场买的新鲜多了 不怕有激素催熟的 特别放心', null, '1');
-INSERT INTO `fooddetail` VALUES ('84', '新鲜薄皮大青椒', '生鲜蔬菜', '33', '大园椒收到。真好。只有二个压裂了。不影响吃。中午马上炒牛肉木耳。好吃。还准备包饺子。应该更好。赶快吃。吃完再来。', null, '1');
-INSERT INTO `fooddetail` VALUES ('85', '罗马生菜500g', '生鲜蔬菜', '25', '很好很新鲜', null, '1');
-INSERT INTO `fooddetail` VALUES ('86', '大头菜咸菜疙瘩', '生鲜蔬菜', '38', '很好吃，不是很咸，喝粥的时候吃又是一种味道', null, '1');
-INSERT INTO `fooddetail` VALUES ('87', '广西小米椒超辣', '生鲜蔬菜', '108', '网购过三次小米辣，虽然小米辣都涨价了但这家的性价比很高，小米辣品质很好，到手很新鲜，没有一个坏的。', null, '1');
-INSERT INTO `fooddetail` VALUES ('88', '山东大葱5斤', '生鲜蔬菜', '29', '宝贝刚收到，比我想象的超好，非常满意，货物和商家描述的一样，感谢卖家！还会再购的，给五星！', null, '1');
-INSERT INTO `fooddetail` VALUES ('89', '精牛肉牛腱臀肉健身4斤', '生鲜肉类', '318', '特别好，是一整块肉，都是红肉还有牛筋，本来是买给猫咪吃的，没想到这么好，自己也吃，猫咪也', null, '1');
+INSERT INTO `fooddetail` VALUES ('80', '青梗柳叶空心菜', '生鲜蔬菜', '22', '又到了种菜的季节了，经同事推荐买了这家的菜种子，颗粒饱满，特别喜欢吃空心菜，期待收获', '1561606237930.png', '1');
+INSERT INTO `fooddetail` VALUES ('81', '大土豆新鲜5斤', '生鲜蔬菜', '45', '土豆不错的～很大～我是买来给狗子做窝头的～削的时候看得出真的很新鲜～有少量坏的～需要清理～', '1561606243794.png', '1');
+INSERT INTO `fooddetail` VALUES ('82', '黄瓜小水果新鲜5斤', '生鲜蔬菜', '29', '小黄瓜挺好的，满满的一箱，个头比预期中要小多了，挺新鲜的，口感也还不错，满分好评！', '1561606262477.png', '1');
+INSERT INTO `fooddetail` VALUES ('83', '时令圆茄子', '生鲜蔬菜', '48', '茄子一大箱到了 包装很不错 那么远的路程一个都没有坏 炒茄子 煮茄子都是很香 最主要的是喜欢吃素茄子 我们老家才会有的一道菜 热天必备 杠杠的 比菜市场买的新鲜多了 不怕有激素催熟的 特别放心', '1561606280192.png', '1');
+INSERT INTO `fooddetail` VALUES ('84', '新鲜薄皮大青椒', '生鲜蔬菜', '33', '大园椒收到。真好。只有二个压裂了。不影响吃。中午马上炒牛肉木耳。好吃。还准备包饺子。应该更好。赶快吃。吃完再来。', '1561606302320.png', '1');
+INSERT INTO `fooddetail` VALUES ('85', '罗马生菜500g', '生鲜蔬菜', '25', '很好很新鲜', '1561606314807.png', '1');
+INSERT INTO `fooddetail` VALUES ('86', '大头菜咸菜疙瘩', '生鲜蔬菜', '38', '很好吃，不是很咸，喝粥的时候吃又是一种味道', '1561606333654.png', '1');
+INSERT INTO `fooddetail` VALUES ('87', '广西小米椒超辣', '生鲜蔬菜', '108', '网购过三次小米辣，虽然小米辣都涨价了但这家的性价比很高，小米辣品质很好，到手很新鲜，没有一个坏的。', '1561606343026.png', '1');
+INSERT INTO `fooddetail` VALUES ('88', '山东大葱5斤', '生鲜蔬菜', '29', '宝贝刚收到，比我想象的超好，非常满意，货物和商家描述的一样，感谢卖家！还会再购的，给五星！', '1561606359985.png', '1');
+INSERT INTO `fooddetail` VALUES ('89', '精牛肉牛腱臀肉健身4斤', '生鲜肉类', '318', '特别好，是一整块肉，都是红肉还有牛筋，本来是买给猫咪吃的，没想到这么好，自己也吃，猫咪也', '1561606376322.png', '1');
 INSERT INTO `fooddetail` VALUES ('9', '香蕉', '水果', '5', '香蕉份量很足，一大串，收到是青的，然后和熟苹果一起放几天就熟了，软软糯糯超好吃！比外边水果店卖的更好吃更香！', '1561389297613.png', '1');
-INSERT INTO `fooddetail` VALUES ('90', '羊后腿肉', '生鲜肉类', '300', '包装很好，可惜只有一半腿肉，一半软肋肉，和说的不一样。', null, '1');
-INSERT INTO `fooddetail` VALUES ('91', '西冷牛腩肉4斤装', '生鲜肉类', '277', '牛腩肉很正宗，做出来的牛腩汤味道鲜美看包装就知道非常专业，里三层外三层的包装让牛腩在路上还是冰的送到手上还是冰的牛腩是肯定新鲜的，就是牛腩太大块了需要自己切一下', null, '1');
-INSERT INTO `fooddetail` VALUES ('92', '大西冷进口调理雪花牛排8片*150g', '生鲜肉类', '448', '这家应该是我买过的牛排中最好的一家了，肉很新鲜，一看就是雪花好牛排，快递发货特别快，收到冰袋还没化，牛排份量足，送了海盐黑胡椒酱、安佳黄油和刀叉，很齐全啊，真心满意。', null, '1');
-INSERT INTO `fooddetail` VALUES ('93', '野生海参', '晚餐', '198', '是野生的，小就是野生的，大的才是养值，我就喜欢小小的', null, '1');
-INSERT INTO `fooddetail` VALUES ('94', '白蛤', '晚餐', '198', '老客户了 东西很干净 老板人很好 新鲜好吃', null, '1');
-INSERT INTO `fooddetail` VALUES ('95', '舟山鲜活海虾', '晚餐', '198', '正宗野生海虾没错啦！', null, '1');
-INSERT INTO `fooddetail` VALUES ('96', '小墨鱼仔', '晚餐', '198', '喜欢这个，喜欢喜欢。别煮太久。。。会缩成一点点。。。哈哈', null, '1');
-INSERT INTO `fooddetail` VALUES ('97', '扇贝', '晚餐', '198', '里里外外好几层 这么热的天里面的冰袋一点没化保证了扇贝的新鲜 扇贝不小非常满意！ 赞！', null, '1');
-INSERT INTO `fooddetail` VALUES ('98', '皮皮虾鲜活', '晚餐', '198', '虾菇图片上看着挺大的，到手很大的只有两只，大部分是中等的，还两只小的。', null, '1');
-INSERT INTO `fooddetail` VALUES ('99', '象拔蚌', '晚餐', '198', '口感和1000左右的没差，常常鲜。', null, '1');
+INSERT INTO `fooddetail` VALUES ('90', '羊后腿肉', '生鲜肉类', '300', '包装很好，可惜只有一半腿肉，一半软肋肉，和说的不一样。', '1561606393016.png', '1');
+INSERT INTO `fooddetail` VALUES ('91', '西冷牛腩肉4斤装', '生鲜肉类', '277', '牛腩肉很正宗，做出来的牛腩汤味道鲜美看包装就知道非常专业，里三层外三层的包装让牛腩在路上还是冰的送到手上还是冰的牛腩是肯定新鲜的，就是牛腩太大块了需要自己切一下', '1561606398304.png', '1');
+INSERT INTO `fooddetail` VALUES ('92', '大西冷进口调理雪花牛排8片*150g', '生鲜肉类', '448', '这家应该是我买过的牛排中最好的一家了，肉很新鲜，一看就是雪花好牛排，快递发货特别快，收到冰袋还没化，牛排份量足，送了海盐黑胡椒酱、安佳黄油和刀叉，很齐全啊，真心满意。', '1561606411603.png', '1');
+INSERT INTO `fooddetail` VALUES ('93', '野生海参', '晚餐', '198', '是野生的，小就是野生的，大的才是养值，我就喜欢小小的', '1561606422780.png', '1');
+INSERT INTO `fooddetail` VALUES ('94', '白蛤', '晚餐', '198', '老客户了 东西很干净 老板人很好 新鲜好吃', '1561606439046.png', '1');
+INSERT INTO `fooddetail` VALUES ('95', '舟山鲜活海虾', '晚餐', '198', '正宗野生海虾没错啦！', '1561606459779.png', '1');
+INSERT INTO `fooddetail` VALUES ('96', '小墨鱼仔', '晚餐', '198', '喜欢这个，喜欢喜欢。别煮太久。。。会缩成一点点。。。吃起来炒鸡Q弹！哈哈', '1561606472822.png', '1');
+INSERT INTO `fooddetail` VALUES ('97', '扇贝', '晚餐', '198', '里里外外好几层 这么热的天里面的冰袋一点没化保证了扇贝的新鲜 扇贝不小非常满意！ 赞！', '1561606513190.png', '1');
+INSERT INTO `fooddetail` VALUES ('98', '皮皮虾鲜活', '晚餐', '198', '虾菇图片上看着挺大的，到手很大的只有两只，大部分是中等的，还两只小的。', '1561606533584.png', '1');
+INSERT INTO `fooddetail` VALUES ('99', '象拔蚌', '晚餐', '198', '口感和1000左右的没差，常常鲜。', '1561606546167.png', '1');
 
 -- ----------------------------
 -- Table structure for `orderblm`
@@ -291,7 +348,7 @@ CREATE TABLE `orderblm` (
   `foodid` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `foodname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `totalprice` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
+  `datee` datetime DEFAULT NULL,
   `isvalid` int(50) DEFAULT '1',
   `remarks` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`orderid`),
@@ -365,17 +422,17 @@ CREATE TABLE `storedetail` (
 -- ----------------------------
 -- Records of storedetail
 -- ----------------------------
-INSERT INTO `storedetail` VALUES ('1', '1', '13912852257', '1297799065@qq.com', '杨杨小酒家', '海安', '如图', '338475004de9e4fbe345f79af51d8jpeg.webp', '从海安到如皋', '1');
-INSERT INTO `storedetail` VALUES ('10', '2', '17768493689', 'laowang@qq,com', '农贸菜市场', '如皋', null, null, '如皋', '1');
-INSERT INTO `storedetail` VALUES ('11', '3', null, null, '人民市场', '如皋', null, null, '如皋', null);
-INSERT INTO `storedetail` VALUES ('12', '12', '17826263333', 'laozhao@qq.com', '赵氏零食纺', '如皋', null, null, '如皋', null);
-INSERT INTO `storedetail` VALUES ('2', '4', '18651087556', '18651087556@qq.com', '炸鸡汉堡奶茶小吃店', '如皋', 'zhizhao.jpg', '8c1d0d90648d8c68428aeb5ae46d2jpeg (1).webp', '如皋', '1');
+INSERT INTO `storedetail` VALUES ('1', '1', '13912852257', '1297799065@qq.com', '杨杨小酒家', '海安', '如图', '1561460484049.jpg', '从海安到如皋', '1');
+INSERT INTO `storedetail` VALUES ('10', '2', '17768493689', 'laowang@qq,com', '农贸菜市场', '如皋', null, '1561460448262.jpg', '如皋', '1');
+INSERT INTO `storedetail` VALUES ('11', '3', null, null, '人民市场', '如皋', null, '1561460484049.jpg\r\n1561460484049.jpg\r\n', '如皋', null);
+INSERT INTO `storedetail` VALUES ('1144067619356258304', '1144067618676781056', '17826263689', '373020024@qq.com', '老赵酒吧', '北京王府井', '1561601957631.jpg', '1.jpg', '江苏 无锡 惠山', '1');
+INSERT INTO `storedetail` VALUES ('12', '12', '17826263333', 'laozhao@qq.com', '赵氏零食纺', '如皋', null, '1561460484049.jpg\r\n1561460484049.jpg\r\n', '如皋', null);
+INSERT INTO `storedetail` VALUES ('2', '4', '18651087556', '18651087556@qq.com', '炸鸡汉堡奶茶小吃店', '如皋', 'zhizhao.jpg', '1561460484049.jpg\r\n1561460484049.jpg\r\n1561460484049.jpg\r\n', '如皋', '1');
 INSERT INTO `storedetail` VALUES ('3', '5', '18651087556', '18651087556@qq.com', '肯德基宅急送（南通莲花店）\r\n (24)\r\n\r\n', '如皋', 'zhizhao.jpg', '8aa96b11789b45bf53d92e470acacjpeg.webp', '如皋', '1');
 INSERT INTO `storedetail` VALUES ('4', '6', '18651087556', '18651087556@qq.com', '一品私房菜', '如皋', null, '67274e0c4835b317963c5a2701ffbjpeg.webp', '如皋', '1');
 INSERT INTO `storedetail` VALUES ('5', '7', '18999880932', '18999880932@qq.com', '大娘水饺(南通虹桥路文峰店)', '如皋', null, '8d4138f86e847e37e3e7e9d157dd5png.webp', '如皋', '1');
 INSERT INTO `storedetail` VALUES ('6', '8', '17786557889', '17786557889@qq.com', '甬兴福大食堂', '如皋', null, '70ef83f137e46de93ee27ce165b39png.webp', '如皋', '1');
 INSERT INTO `storedetail` VALUES ('7', '9', '13333322211', '13333322211@qq.com', '炸鸡', '如皋', null, '81582dff7c79abcff1734d6c591d4jpeg.webp', null, '1');
-INSERT INTO `storedetail` VALUES ('8', '10', '17826263689', 'laowang@qq.com', '老王水果店', '如皋', null, null, '如皋', '1');
 INSERT INTO `storedetail` VALUES ('9', '11', '17826260689', 'laozhao@qq.com', '老赵海鲜自助', '如皋', null, null, '如皋', '1');
 
 -- ----------------------------
@@ -398,9 +455,11 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '周宇', '$2a$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '17826263689', '2019-06-20 23:46:02', '2', '1');
+INSERT INTO `user` VALUES ('1', '周宇', '$2a$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '17826263680', '2019-06-20 23:46:02', '2', '1');
 INSERT INTO `user` VALUES ('10', '006', '$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '213123', '2019-06-24 21:06:11', '2', '1');
 INSERT INTO `user` VALUES ('11', '007', '$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '123123', '2019-05-29 21:06:24', '2', '1');
+INSERT INTO `user` VALUES ('1143774112959799296', 'kriswu123', '$2a$10$U09Q32P9gAzcWTZhTb2m/uBplJj9i6JvVppbfWS8mARyxjjyQQDBC', '17826263680', '2019-06-26 06:52:54', '1', '1');
+INSERT INTO `user` VALUES ('1144067618676781056', '17826263689', '$2a$10$2WlvaTiafTopihsXfwN89OVXB6Fr9SDWOPil81ds3vGcSzemXEvci', '17826263689', '2019-06-27 02:19:11', '2', '1');
 INSERT INTO `user` VALUES ('12', '鸡儿赵', '$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '13912852257', '2019-06-04 21:31:24', '2', '1');
 INSERT INTO `user` VALUES ('13', '蔡徐坤', '$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '1111', '2019-06-05 21:32:15', '1', '1');
 INSERT INTO `user` VALUES ('14', '杨幂', '$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7VjB2j8E1FiLb6GUBG', '13912852257', '2019-06-12 21:32:39', '1', '1');
@@ -425,13 +484,25 @@ INSERT INTO `user` VALUES ('9', '005', '$10$c8.b9dP/33KHLXq2eqHo2eFm5FdZ8NYQ7Gs7
 -- ----------------------------
 DROP TABLE IF EXISTS `userdetail`;
 CREATE TABLE `userdetail` (
-  `userid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  PRIMARY KEY (`userid`),
-  CONSTRAINT `userdetail_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  `id` varchar(100) NOT NULL,
+  `userid` varchar(100) NOT NULL,
+  `sex` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of userdetail
 -- ----------------------------
-INSERT INTO `userdetail` VALUES ('1', '上海');
+INSERT INTO `userdetail` VALUES ('1143681785053155328', '1', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143682143649353728', '1', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143687204630777856', '1', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143716835215843328', '1', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143717740766126080', '1', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143718286692564992', '1', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143719287176687616', '3', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143720358859087872', '4', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143720561997619200', '5', '男', '厦门', '147258');
+INSERT INTO `userdetail` VALUES ('1143721120712466432', '6', '男', '上海', '11799123456');
+INSERT INTO `userdetail` VALUES ('1143724556736565248', '2', '男', '上海', '11799123456');
