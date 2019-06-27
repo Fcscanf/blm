@@ -7,22 +7,23 @@ window.onload = function () {
     //需要渲染的目标容器
     let goalContainer = document.querySelector('.wrap-container .wrap-right');
 
-    let now
 
     $.ajax({
-        type: "post",
-        url: "http://localhost:8080/blm_war_exploded/order/list/page=?",
-        dataType: "json",
-        headers: {'Content-Type': 'application/json'},
-        data: JSON.stringify({
+        type:"post",
+        url:"http://localhost:8080/blm_war_exploded/order/findallbyid",
+        dataType:"json",
+        async : false,
+        headers: {'Content-Type':'application/json'},
+        data:JSON.stringify({
+            'userid':b,
         }),
-        success: function (result) {
-            console.info(result)
+        success:function (result) {
 
         },
-        error: function () {
+        error:function (result) {
 
         }
     })
+
 
 }

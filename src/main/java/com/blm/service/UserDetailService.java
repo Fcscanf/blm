@@ -17,6 +17,7 @@ public interface UserDetailService {
     //修改方法
     int update_wz(UserDetail userDetail);
 
-    List<UserDetail> finduser_wz(String userid);
+    //查找方法
+    UserDetail select_wz(String id);
 
 }

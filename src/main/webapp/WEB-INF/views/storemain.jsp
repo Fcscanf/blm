@@ -30,7 +30,6 @@
             }
 
         }
-
     </script>
 </head>
 <body class="easyui-layout">
@@ -38,11 +37,17 @@
     <table style="padding: 5px" width="100%">
         <tr>
             <td width="50%">
-                <img alt="logo" src="${pageContext.request.contextPath}/images/main1.png">
+                <img alt="logo" src="${resultStoreDetail.shopfronturl}">
             </td>
-            <td valign="bottom" align="right" width="50%">
-                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.username }</font><br>
-                <font size="3">&nbsp;&nbsp;<strong>电话：</strong>${resultStoreDetail.tel}</font>
+            <td valign="bottom" align="center" width="50%">
+                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser}</font><br>
+                <font size="3">
+                    &nbsp;&nbsp;地址：${resultStoreDetail.storeaddress}
+                    &nbsp;&nbsp;服务区：${resultStoreDetail.area}<br>
+                    &nbsp;&nbsp;电话：${resultStoreDetail.tel}
+                    &nbsp;&nbsp;email：${resultStoreDetail.email}
+                    &nbsp;&nbsp;店名：${resultStoreDetail.storename}
+                </font>
             </td>
         </tr>
     </table>
@@ -51,7 +56,9 @@
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
-            <div align="center" style="padding-top: 100px"><font color="red" size="10">欢迎使用<br>"饱了吗"订餐系统</font></div>
+            <div align="center" style="padding-top: 100px">
+                <img alt="logo" src="${pageContext.request.contextPath}/images/main1.png">
+            </div>
         </div>
     </div>
 </div>
@@ -69,16 +76,16 @@
         </div>
 
         <div title="系统管理" data-options="iconCls:'icon-item'" style="padding:10px">
-            <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
-            <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'"
+            <a href="${pageContext.request.contextPath}/storeDetail/logout"
+               class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'"
                style="width: 150px;">安全退出</a>
         </div>
     </div>
 </div>
-
 <div region="south" style="height: 25px;padding: 5px" align="center">
-    QST青软实训&nbsp;&nbsp;&nbsp;<a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1297799065&website=www.oicqzone.com" target="_blank">执笔画倾颜</a>&nbsp;&nbsp;&nbsp;联系方式:13912852257(2019/6/19)
+    QST青软实训&nbsp;&nbsp;&nbsp;<a
+        href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1297799065&website=www.oicqzone.com"
+        target="_blank">执笔画倾颜</a>&nbsp;&nbsp;&nbsp;联系方式:13912852257(2019/6/27)
 </div>
 
 </body>

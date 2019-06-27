@@ -47,12 +47,13 @@
 
 
 
+
   <sql id="Base_Column_List">
-    orderid, userid, username, storeid, foodid, foodname, totalprice, datee, isvalid, 
+    orderid, userid, username, storeid, foodid, foodname, totalprice, datee, isvalid,
     remarks
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from orderblm
     where orderid = #{orderid,jdbcType=VARCHAR}
@@ -62,13 +63,13 @@
     where orderid = #{orderid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blm.bean.OrderBlm">
-    insert into orderblm (orderid, userid, username, 
-      storeid, foodid, foodname, 
-      totalprice, datee, isvalid, 
+    insert into orderblm (orderid, userid, username,
+      storeid, foodid, foodname,
+      totalprice, datee, isvalid,
       remarks)
-    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR}, 
-      #{totalprice,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER}, 
+    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{storeid,jdbcType=VARCHAR}, #{foodid,jdbcType=VARCHAR}, #{foodname,jdbcType=VARCHAR},
+      #{totalprice,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{isvalid,jdbcType=INTEGER},
       #{remarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.OrderBlm">
@@ -184,4 +185,27 @@
       remarks = #{remarks,jdbcType=VARCHAR}
     where orderid = #{orderid,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="find_zy" parameterType="Map" resultType="com.blm.bean.OrderBlm">
+    select * from orderblm
+    <where>
+      <if test="username!=null and username!='' ">
+        and username like #{username}
+      </if>
+    </where>
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
+
+  <select id="getTotal_zy" parameterType="Map" resultType="Long">
+    select count(*) from orderblm
+    <where>
+      <if test="username!=null and username!='' ">
+        and username like #{username}
+      </if>
+    </where>
+  </select>
 </mapper>

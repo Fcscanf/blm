@@ -78,11 +78,6 @@
             $("#adminlogin").submit();
 
         }
-
-        if ('${errorMsg}' != '') {
-            alert('${errorMsg}');
-        }
-
     </script>
 </head>
 <body>
@@ -151,4 +146,8 @@
 </form>
 </body>
 </html>
-
+<script type="text/javascript">
+    if ('${errorMsg}' != '') {
+        alert('${errorMsg}');
+    }
+</script>

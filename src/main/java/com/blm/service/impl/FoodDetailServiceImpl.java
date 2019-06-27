@@ -3,6 +3,7 @@ package com.blm.service.impl;
 import com.blm.bean.FoodDetail;
 import com.blm.dao.FoodDetailMapper;
 import com.blm.service.FoodDetailService;
+import com.blm.util.IdWorker;
 import com.blm.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,37 +23,43 @@ public class FoodDetailServiceImpl implements FoodDetailService {
     @Autowired
     private OSSClientUtil ossClientUtil;
 
+    @Autowired
+    private IdWorker idWorker;
+
     @Resource
     private FoodDetailMapper foodDetailMapper;
-    public List<FoodDetail> find(Map<String, Object> map){
-        return foodDetailMapper.find(map);
-    }
-
-    public Long getTotal(Map<String, Object> map){
-        return foodDetailMapper.getTotal(map);
-    }
-
-    public int update(FoodDetail foodDetail){
-        return foodDetailMapper.update(foodDetail);
-    }
-
-    public int add(FoodDetail foodDetail){
-        return foodDetailMapper.add(foodDetail);
-    }
-
-
-    public int delete(String id){
-
-        return foodDetailMapper.delete(id);
-    }
 
     @Override
-    public List<FoodDetail> find_k(){
-        List<FoodDetail> list = foodDetailMapper.findAllFoodDetail_k();
+    public List<FoodDetail> find_zy(Map map){
+        List<FoodDetail> list = foodDetailMapper.find_zy(map);
         for (FoodDetail foodDetail:list){
             foodDetail.setPicpath(ossClientUtil.getImgUrl(foodDetail.getPicpath()));
         }
         return list;
+    }
 
+    @Override
+    public Long getTotal(Map<String, Object> map){
+        return foodDetailMapper.getTotal(map);
+    }
+
+    @Override
+    public int update(FoodDetail foodDetail){
+        return foodDetailMapper.update(foodDetail);
+    }
+
+    @Override
+    public int add(FoodDetail foodDetail){
+        foodDetail.setFoodid(idWorker.nextId()+"");
+
+        foodDetail.setIsvalid(1);
+        return foodDetailMapper.add(foodDetail);
+    }
+
+
+    @Override
+    public int delete(String id){
+
+        return foodDetailMapper.delete(id);
     }
 }

@@ -13,9 +13,15 @@
     foodid, foodtype, keywords, storeid
   </sql>
 
+  <select id="findAll"  resultMap="ResultMap">
+    select c.foodid,c.keywords,c.storeid,c.foodtype,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
+    s.storename,s.storeaddress
+    from checkfood c,fooddetail f,storedetail s
+    where c.foodid=f.foodid and c.storeid=s.storeid
+  </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from checkfood
     where foodid = #{foodid,jdbcType=VARCHAR}
@@ -25,9 +31,9 @@
     where foodid = #{foodid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blm.bean.CheckFood">
-    insert into checkfood (foodid, foodtype, keywords, 
+    insert into checkfood (foodid, foodtype, keywords,
       storeid)
-    values (#{foodid,jdbcType=VARCHAR}, #{foodtype,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+    values (#{foodid,jdbcType=VARCHAR}, #{foodtype,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR},
       #{storeid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blm.bean.CheckFood">
@@ -83,13 +89,6 @@
       storeid = #{storeid,jdbcType=VARCHAR}
     where foodid = #{foodid,jdbcType=VARCHAR}
   </update>
-
-  <select id="findAll"  resultMap="ResultMap">
-    select c.foodid,c.foodtype,c.keywords,c.storeid,f.foodid,f.foodname,f.price,f.picpath,f.description,s.storeid,
-    s.storename,s.storeaddress
-    from checkfood c,fooddetail f,storedetail s
-    where c.foodid=f.foodid and c.storeid=s.storeid
-  </select>
 
   <resultMap type="com.blm.bean.CheckFood" id="ResultMap" >
     <id property="foodid" column="foodid" />
