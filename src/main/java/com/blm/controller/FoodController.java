@@ -1,10 +1,9 @@
 package com.blm.controller;
 
-import com.blm.bean.CheckFood;
-import com.blm.bean.FoodTemp;
-import com.blm.bean.Result;
-import com.blm.bean.StatusCode;
+import com.blm.bean.*;
 import com.blm.service.CheckFoodService;
+import com.blm.service.UserDetailService;
+import com.blm.service.UserService;
 import com.blm.util.ResponseUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,9 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.soap.Detail;
 import java.util.List;
 
 /**
@@ -27,6 +29,10 @@ import java.util.List;
 public class FoodController {
     @Autowired
     private CheckFoodService checkFoodService;
+
+    @Autowired
+    private UserService userService;
+
 
     //获取所有食物信息
     @RequestMapping("/findAll")
@@ -43,8 +49,13 @@ public class FoodController {
 
 //    跳转到主界面
     @RequestMapping("/gethome")
-    public String  rtTest(){
-        return "home";
+    public ModelAndView rtTest(@RequestParam String phone) {
+        System.out.println(phone);
+        ModelAndView mav = new ModelAndView();
+        User user = userService.selectUserByPhone(phone);
+        mav.addObject("user",user);
+        mav.setViewName("home");
+        return mav;
     }
 
     //模糊查询用户信息

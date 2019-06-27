@@ -67,11 +67,21 @@ public class OrderBlmController {
         return new Result(true, StatusCode.OK,"查询成功", orderBlmTemps);
     }
 
+
+
     /**
      * yyt 测试
      */
     @RequestMapping("/test")
     public String toPersonal(){
         return  "personal";
+    }
+
+    /**
+     * yyt测试跳转商家页面
+     */
+    @RequestMapping("/toShopDetail")
+    public String toShopDetail(){
+        return "shopDiet";
     }
 }

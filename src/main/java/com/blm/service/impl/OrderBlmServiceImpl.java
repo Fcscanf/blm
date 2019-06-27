@@ -8,6 +8,8 @@ import com.blm.bean.OrderBlmTemp;
 import com.blm.dao.OrderBlmMapper;
 
 import com.blm.service.OrderBlmService;
+import com.blm.util.OSSClientUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +24,9 @@ import java.util.Map;
  */
 @Service("orderService")
 public class OrderBlmServiceImpl implements OrderBlmService {
+
+    @Autowired
+    private OSSClientUtil ossClientUtil;
 
     /*Dao层*/
     @Resource
@@ -43,8 +48,8 @@ public class OrderBlmServiceImpl implements OrderBlmService {
     public List<OrderBlmTemp> findAllByUserId_wz(String userid) {
         List<OrderBlmTemp> Temps = new ArrayList<OrderBlmTemp>();
         List<OrderBlm> list = orderBlmMapper.findAllByUserId_wz(userid);
-        List<FoodDetailTemp> list3 = new ArrayList<FoodDetailTemp>();
         for (OrderBlm orderBlm : list) {
+            List<FoodDetailTemp> list3 = new ArrayList<FoodDetailTemp>();
             List<FoodDetail> list2 = orderBlm.getFoodDetails();
             OrderBlmTemp temp = new OrderBlmTemp();
             temp.setUsername(orderBlm.getUsername());
@@ -53,7 +58,7 @@ public class OrderBlmServiceImpl implements OrderBlmService {
             for (FoodDetail foodDetail : list2) {
                 FoodDetailTemp foodDetail2 = new FoodDetailTemp();
                 foodDetail2.setFoodname(foodDetail.getFoodname());
-                foodDetail2.setPicpath(foodDetail.getPicpath());
+                foodDetail2.setPicpath(ossClientUtil.getImgUrl(foodDetail.getPicpath()));
                 foodDetail2.setPrice(foodDetail.getPrice());
                 list3.add(foodDetail2);
             }

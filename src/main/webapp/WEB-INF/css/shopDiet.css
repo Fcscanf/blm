@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+ul{
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #ededed;
+}
+.clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: "";
+    display: block;
+    height: 0;
+    clear:both;
+    visibility: hidden;
+}
+.blm-container{
+    width: 100%;
+
+}
+.blm-header{
+    width: 100%;
+    height: 190px;
+    background-image: url(../img/shop-bg.jpg);
+}
+.blm-header .topBanner{
+    width: 1200px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+.blm-header .topBanner div.logo{
+    font-size: 24px;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'STHupo';
+}
+.blm-header .topBanner div.logo > span{
+    font-size: 30px;
+    padding: 5px;
+}
+.blm-header .topBanner a{
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    width: 120px;
+    text-align: center;
+    color: #fff;
+}
+.blm-header .shopBanner{
+    width: 1200px;
+    height: 130px;
+    line-height: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    box-sizing: border-box;
+}
+.blm-header .shopBanner .imgBox img{
+    width: 100%;
+    height: 100%;
+}
+.blm-header .shopBanner .imgBox{
+    height: 95px;
+    width: 95px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+    margin-top: 20px;
+}
+.blm-header .shopBanner .shopBox{
+    height: 95px;
+    width: 200px;
+    line-height: 40px;
+    overflow: hidden;
+    float: left;
+    margin-top: 20px;
+    font-size: 16px;
+    padding-left: 20px;
+}
+.blm-header .shopBanner .shopBox .shop-name{
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    font-weight: normal;
+}
+.blm-header .shopBanner .shopBox .shop-type{
+    color: #9cb240;
+    font-family: fantasy;
+}
+.blm-container .blm-list{
+    width: 1200px;
+    height: 80px;
+    font-size: 18px;
+    line-height: 80px;
+    border: 1px solid #77830c;
+    margin: 30px auto 0 auto;
+    background-color: #fff;
+    padding-left: 100px;
+    box-sizing: border-box;
+}
+.blm-container .blm-content{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.blm-container .blm-content ul.list-container{
+    width: 600px;
+    /* background-color: violet; */
+    height: 900px;
+}
+.blm-content ul.list-container li.list-item{
+    width: 100%;
+    height: 150px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+.blm-content ul.list-container li.list-item img{
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+.blm-content ul.list-container li.list-item .info-box{
+    height: 150px;
+    font-size: 14px;
+}
+.info-box h5{
+    font-size: 16px;
+    line-height: 30px;
+    padding-top: 20px;
+}
+.info-box p{
+    font-size: 12px;
+    text-indent: 2rem;
+    color: #666;
+}
+.info-box p.price{
+    font-size: 16px;
+    line-height: 40px;
+    color: rgb(175, 6, 6);
+    text-indent: 0rem;
+    font-weight: bold;
+}

@@ -106,6 +106,9 @@ public class UserController {
             return new Result(false,StatusCode.ERROR,"请输入正确的手机验证码");
         }
         user = userService.selectUserByPhone(user.getPhone());
+        if (user == null){
+            return new Result(false,StatusCode.ERROR,"用户不存在！");
+        }
         String token = jwtUtil.createJWT(user.getUserid(),user.getPhone(),"user");
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("token",token);

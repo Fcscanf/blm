@@ -133,7 +133,7 @@
                 </div>
 
                 <!-- 订单详情页 -->
-                <div class="order-detail" style="display: none;">
+                <div class="order-detail">
                     <div class="detail-title">
                         <h3>订单详情</h3>
                     </div>
@@ -142,7 +142,7 @@
                         <p>18：29送达</p>
                     </div>
                     <div class="detail-shop">
-                        <a href=""><img src="img/food02.png" alt=""></a>
+                        <a href=""><img src="../img/food02.png" alt=""></a>
                         <div class="shop-info">
                             <h4>小明便当</h4>
                             <div class="ticket-info">
@@ -208,130 +208,7 @@
                     </div>
                 </div>
 
-                <!-- 近三个月的订单 -->
-                <div class="recent-order" style="display: none;">
-                    <div class="r-header">
-                        <h3>近三个月的订单</h3>
-                    </div>
-                    <div class="r-content">
-                        <table class="r-table">
-                            <thead>
-                            <tr>
-                                <th>下单时间</th>
-                                <th>订单内容</th>
-                                <th></th>
-                                <th>支付金额（元）</th>
-                                <th>状态</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="ro-time">
-                                    <p>2019-06-16 18:26</p>
-                                    <span class="iconfont icon-yuanquan"></span>
-                                </td>
-                                <td class="ro-avator">
-                                    <a href="">
-                                        <img src="img/food03.png" alt="">
-                                    </a>
-                                </td>
-                                <td class="ro-info">
-                                    <p class="food-info">黑椒牛排饭等一个菜品</p>
-                                    <p class="ticket-info">订单号: 2110685471086654558</p>
-                                </td>
-                                <td class="ro-amount">
-                                    <h3>15.88</h3>
-                                </td>
-                                <td class="ro-status">
-                                    <h3>订单已完成</h3>
-                                </td>
-                                <td class="ro-handle">
-                                    <span>订单详情</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ro-time">
-                                    <p>2019-06-16 18:26</p>
-                                    <span class="iconfont icon-yuanquan"></span>
-                                </td>
-                                <td class="ro-avator">
-                                    <a href="">
-                                        <img src="img/food03.png" alt="">
-                                    </a>
-                                </td>
-                                <td class="ro-info">
-                                    <p class="food-info">黑椒牛排饭等一个菜品</p>
-                                    <p class="ticket-info">订单号: 2110685471086654558</p>
-                                </td>
-                                <td class="ro-amount">
-                                    <h3>15.88</h3>
-                                </td>
-                                <td class="ro-status">
-                                    <h3>订单已完成</h3>
-                                </td>
-                                <td class="ro-handle">
-                                    <span>订单详情</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ro-time">
-                                    <p>2019-06-16 18:26</p>
-                                    <span class="iconfont icon-yuanquan"></span>
-                                </td>
-                                <td class="ro-avator">
-                                    <a href="">
-                                        <img src="img/food03.png" alt="">
-                                    </a>
-                                </td>
-                                <td class="ro-info">
-                                    <p class="food-info">黑椒牛排饭等一个菜品</p>
-                                    <p class="ticket-info">订单号: 2110685471086654558</p>
-                                </td>
-                                <td class="ro-amount">
-                                    <h3>15.88</h3>
-                                </td>
-                                <td class="ro-status">
-                                    <h3>订单已完成</h3>
-                                </td>
-                                <td class="ro-handle">
-                                    <span>订单详情</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
-                <!-- 地址管理 -->
-                <div class="place-manager" style="display: none;">
-                    <h3 class="p-header">地址管理</h3>
-                    <div class="place-box clearfix">
-                        <div class="box-item">
-                            <div class="top">
-                                虞育涛<span>先生</span>
-                                <div class="operate">
-                                    <span>修改</span>
-                                    <span>删除</span>
-                                </div>
-                            </div>
-                            <div class="content">
-                                蓉阳苑21-24号 蓉阳苑8－21 602
-                            </div>
-                            <div class="bottom">13962083614</div>
-                            <div class="delete-box hide">
-                                <p>是否删除收获地址</p>
-                                <div class="choose-btn">
-                                    <span>确定</span>
-                                    <span>取消</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-item"></div>
-                        <div class="box-item"></div>
-                        <div class="box-item"></div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -31,7 +31,7 @@
             </div>
 
             <div class="user-info">
-                <span class="user-name">yyt12345</span>
+                <span class="user-name">${user.username}</span>
                 <span class="iconfont icon-tubiao211"></span>
 
                 <div class="targetList">
@@ -59,7 +59,7 @@
         <div class="place-container">
             <div class="now-place">
                 <span class="pSpan-1">当前位置：</span>
-                <span class="pSpan-2">南通123翔安隧道</span>
+                <span class="pSpan-2">如皋市人才公寓</span>
                 <span class="pSpan-3"><a href="javascript:void(0);">[切换地址]</a></span>
                 <span class="pSpan-4">&gt;搜索</span>
             </div>
