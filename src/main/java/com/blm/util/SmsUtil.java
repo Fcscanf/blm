@@ -1,4 +1,5 @@
 package com.blm.util;
+
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.QuerySendDetailsRequest;
@@ -8,6 +9,8 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -26,6 +29,7 @@ public class SmsUtil {
     //产品域名,开发者无需替换
     static final String domain = "dysmsapi.aliyuncs.com";
 
+    private static final Logger log = LoggerFactory.getLogger(SmsUtil.class);
 //    @Autowired
 //    private Environment env;
 
@@ -86,6 +90,7 @@ public class SmsUtil {
         request.setOutId("yourOutId");
         //hint 此处可能会抛出异常，注意catch
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
+        log.info(sendSmsResponse.getMessage());
         return sendSmsResponse;
     }
 
