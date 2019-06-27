@@ -15,7 +15,6 @@
             src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
 
-        var url;
         var pic;
 
         function searchFood() {
@@ -94,29 +93,10 @@
             }
             var row = selectedRows[0];
             $("#modify").dialog("open").dialog("setTitle", "编辑商品信息");
-
            $("#mdf").form("load", row);
                }
 
         function saveFood() {
-           /* $("#mdf").form("submit", {
-                url: url,
-                onSubmit: function () {
-                    return $(this).form("validate");
-                },
-                success: function (result) {
-                    var result = eval('(' + result + ')');
-                    if (result.success) {
-                        $.messager.alert("系统提示", "保存成功！");
-                        resetValue();
-                        $("#modify").dialog("close");
-                        $("#dg").datagrid("reload");
-                    } else {
-                        $.messager.alert("系统提示", "保存失败！");
-                        return;
-                    }
-                }
-            });*/
            var foodid=$("#foodidmodify").val();
             var foodname = $("#foodnamemodify").val().trim();
             var othername = $("#othernamemodify").val().trim();
@@ -231,7 +211,7 @@
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
-        <th field="foodid"  width="50" align="center" hidden="true">编号</th>
+        <th field="foodid"  width="50" align="center" style="">编号</th>
         <th field="foodname" width="50" align="center">商品</th>
         <th field="othername" width="50" align="center">别名</th>
         <th field="price" width="50" align="center">价格</th>
@@ -287,7 +267,6 @@
         </table>
     </form>
 </div>
-
 <div id="dlg-buttons">
     <a href="javascript:save()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
     <a href="javascript:closeFoodDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
@@ -324,13 +303,9 @@
         </table>
     </form>
 </div>
-
 <div id="modify-buttons">
     <a href="javascript:saveFood()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
     <a href="javascript:closeFoodModify()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
-
-
-
 </body>
 </html>

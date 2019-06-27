@@ -116,21 +116,18 @@
                 <div class="input-right">
                     <span class="getcode">获取验证码</span>
                 </div>
-                <div class="errInfo">验证码错误！</div>
             </div>
             <div class="input-container">
                 <div class="input-left"><span>店铺名称</span></div>
                 <div class="input-content">
                     <input type="text" name="shopname" placeholder="请输入店铺名称">
                 </div>
-                <div class="errInfo">店铺名称不能为空或店铺名称不合法！</div>
             </div>
             <div class="input-container">
-                <div class="input-left"><span>邮箱</span></div>
+                <div class="input-left"><span>联系电话</span></div>
                 <div class="input-content">
-                    <input type="text" name="shopemail" placeholder="邮箱格式不合法！">
+                    <input type="text" name="shopname" placeholder="请输入联系电话">
                 </div>
-                <div class="errInfo">联系电话不能为空或联系电话不合法！</div>
             </div>
             <div class="input-container">
                 <div class="input-left"><span>店铺区域</span></div>
@@ -175,7 +172,6 @@
                 <div class="input-content">
                     <input type="text" name="detailplace" placeholder="详细地址（xx街道/xx小区/xx号）">
                 </div>
-                <div class="errInfo">地址不能为空！</div>
             </div>
             <div class="fileupload">
                 <div class="file-container">
@@ -273,12 +269,7 @@
         let $shop_mobile = $('.blm-content .shopForm .input-container input[name=mobile]');
         let $shop_mobilecode = $('.blm-content .shopForm .input-container input[name=mobilecode]');
         let $shop_shopname = $('.blm-content .shopForm .input-container input[name=shopname]');
-        let $shop_email = $('.blm-content .shopForm .input-container input[name=shopmail]')
         let $shop_detailplace = $('.blm-content .shopForm .input-container input[name=detailplace]');
-        let $shop_sheng = $('.blm-content .shopForm .input-container .province .r-choose');
-        let $shop_shi = $('.blm-content .shopForm .input-container .city .r-choose');
-        let $shop_qu = $('.blm-content .shopForm .input-container .area .r-choose');
-
         //获取两张表
         let $norForm = $('.blm-container .norForm');
         let $shopForm = $('.blm-container .shopForm');
@@ -290,7 +281,9 @@
         let $errContainer_s = $('.blm-content .shopForm .input-container');
         //重新发送按钮
         let $timespan = $('.input-container .getcode');
-
+        //定义要验证的对象
+        let normalUser,shopUser;
+        normalUser = new Object();
 
         //声明timer
         let timer = null;
@@ -300,7 +293,7 @@
         let sendBtn_n = 1;
         let sendBtn_s = 1;
 
-        let imgKey = '';
+
 
         //倒计时
         function settime_n(val) {
@@ -336,6 +329,9 @@
         }
 
 
+        //注册用户类型,1代表普通用户，2代表商家用户
+        let userType = 1;
+
         //清空表单信息
         function clearForm(){
             $nor_username.val('') ;
@@ -351,6 +347,9 @@
             $shop_mobilecode.val('') ;
             $shop_shopname.val('') ;
             $shop_detailplace.val('');
+
+            normalUser = null;
+            shopUser = null;
         }
 
         //正则 密码匹配是否满足要求
@@ -373,7 +372,10 @@
 
         //点击
         $norRegBtn.click(function(){
-            clearForm();;
+            clearForm();
+            userType = 1;
+
+            normalUser = new Object();
 
             $norForm.css('display','block');
             $shopForm.css('display','none');
@@ -388,6 +390,9 @@
 
         $shopRegBtn.click(function(){
             clearForm();
+            userType = 2;
+
+            shopUser = new Object();
 
             $norForm.css('display','none');
             $shopForm.css('display','block');
@@ -402,30 +407,40 @@
 
         //普通用户的表单校对
         $nor_username.focus(function(){ //username
-            $nor_username.blur(function () {
-                $.ajax({
-                    type: "post",
-                    url: "http://localhost:8080/blm_war_exploded/user/check",
-                    dataType: "json",
-                    headers: {'Content-Type': 'application/json'},
-                    data: JSON.stringify({
-                        username: $nor_username.val()
-                    }),
-                    success: function (result) {
-                        if(result.code !== 20000){
-                            $errInfoList_n.eq(0).css('display','block');
-                            $errContainer_n.eq(0).addClass('errState');
-                        }else{
-                            $errInfoList_n.eq(0).css('display','none');
-                            $errContainer_n.eq(0).removeClass('errState');
-                        }
-                    },
-                    error: function () {
+            $(window).keydown(function(event){
+                $(window).keyup(function(e){
 
+                    // $.ajax({
+                    //     type: "POST",
+                    //     url: "some.php",
+                    //     data: "name=John&location=Boston",
+                    //     success: function(msg){
+                    //         if(msg = true){
+                    //             //验证通过的话进行赋值
+                    //             normalUser.username = $(this).val();
+
+
+                    //         }else{
+                    //             //报错处理
+                    //             $errAn1.css({
+                    //                 'animation':'errInfoMove 2s ease-in-out 0s 1 alternate forwards',
+                    //                 'display':'block'
+                    //             });
+                    //         }
+                    //     },
+                    //     error: function(){}
+                    // })
+
+                    if($nor_username.val() === '123'){
+                        $errInfoList_n.eq(0).css('display','block');
+                        $errContainer_n.eq(0).addClass('errState');
+                    }else{
+                        $errInfoList_n.eq(0).css('display','none');
+                        $errContainer_n.eq(0).removeClass('errState');
                     }
                 })
-            })
 
+            });
         })
         //普通用户密码框校对
         $nor_userpwd.focus(function(){
@@ -465,7 +480,19 @@
                         $errContainer_n.eq(3).addClass('errState');
                     }else{
                         $errInfoList_n.eq(3).css('display','none');
+                        //$errInfoList_n.eq(3).text('手机号码已经被注册！');
                         $errContainer_n.eq(3).removeClass('errState');
+
+                        //ajax验证是否存在,成功后可触发获取验证码事件
+                        // $timespan.click(function(){
+                        //     if(sendBtn == 1){
+                        //         sendBtn = 0;
+                        //         settime($(this));
+                        //         //发起ajax请求，发送验证码
+                        //     }else{
+                        //         console.info("不可发送状态");
+                        //     }
+                        // })
                     }
                 })
             })
@@ -474,84 +501,35 @@
         $timespan.eq(0).click(function(){
             if(!testMobile($nor_mobile.val())){
                 $errInfoList_n.eq(3).css('display','block');
-                $errInfoList_n.eq(3).text('手机号码不符合规范！');
+                $errInfoList_n.eq(3).text('手机号码不符合规范！')
                 $errContainer_n.eq(3).addClass('errState');
             }else{
                 if(sendBtn_n == 1){
                     sendBtn_n = 0;
                     settime_n($(this));
                     //发起ajax请求，发送验证码
-                    $.ajax({
-                        type: "post",
-                        url: "http://localhost:8080/blm_war_exploded/user/sendsms/"+$nor_mobile.val()+"/0",
-                        dataType: "json",
-                        headers: {'Content-Type': 'application/json'},
-                        data: JSON.stringify({
-                        }),
-                        success: function (result) {
-                            if(result.code != 20000){
-                                $errInfoList_n.eq(3).css('display','block');
-                                $errInfoList_n.eq(3).text('手机号码已经被注册！');
-                                $errContainer_n.eq(3).addClass('errState');
-                            }
-                        },
-                        error: function () {
-                        }
-                    })
                 }else{
                     $errInfoList_n.eq(3).css('display','none');
+                    //$errInfoList_n.eq(3).text('手机号码已经被注册！');
                     $errContainer_n.eq(3).removeClass('errState');
                     console.info("不可发送状态");
                 }
             }
 
         })
-        //普通用户注册
-        let $nor_regBtn = $('.blm-content .norForm .regBtn .toReg');
-        $nor_regBtn.click(function () {
-            //获取信息
-            let username = $nor_username.val();
-            let userpwd = $nor_userpwd.val();
-            let usermobile = $nor_mobile.val();
-            let usermobileCode = $nor_mobilecode.val();
-            console.info(username,userpwd,usermobile,usermobileCode);
-            // $.ajax({
-            //     type: "post",
-            //     url: "http://localhost:8080/blm_war_exploded/user/sendsms/"+$nor_mobile.val()+"/0",
-            //     dataType: "json",
-            //     headers: {'Content-Type': 'application/json'},
-            //     data: JSON.stringify({
-            //     }),
-            //     success: function (result) {
-            //         console.log(result)
-            //     },
-            //     error: function () {
-            //
-            //     }
-            // })
-        })
 
         //商家用户的表单校对
         //username
         $shop_username.focus(function(){
-            $shop_username.blur(function () {
-                $.ajax({
-                    type: "post",
-                    url: "http://localhost:8080/blm_war_exploded/user/check",
-                    dataType: "json",
-                    headers: {'Content-Type': 'application/json'},
-                    data: JSON.stringify({
-                        username:$shop_username.val()
-                    }),
-                    success: function (result) {
-                        if(result.code != 20000){
-                            $errInfoList_s.eq(0).css('display','block');
-                            $errContainer_s.eq(0).addClass('errState');
-                        }else{
-                            $errInfoList_s.eq(0).css('display','none');
-                            $errContainer_s.eq(0).removeClass('errState');
-                        }
-                    },
+            $(window).keydown(function(){
+                $(window).keyup(function(){
+                    if($shop_username.val() == '123'){
+                        $errInfoList_s.eq(0).css('display','block');
+                        $errContainer_s.eq(0).addClass('errState');
+                    }else{
+                        $errInfoList_s.eq(0).css('display','none');
+                        $errContainer_s.eq(0).removeClass('errState');
+                    }
                 })
             })
         })
@@ -589,9 +567,11 @@
                 $(window).keyup(function(){
                     if(!testMobile($shop_mobile.val())){
                         $errInfoList_s.eq(3).css('display','block');
+                        //$errInfoList_n.eq(3).text('手机号码已经被注册！');
                         $errContainer_s.eq(3).addClass('errState');
                     }else{
                         $errInfoList_s.eq(3).css('display','none');
+                        //$errInfoList_n.eq(3).text('手机号码已经被注册！');
                         $errContainer_s.eq(3).removeClass('errState');
                     }
                 })
@@ -608,24 +588,6 @@
                     sendBtn_s = 0;
                     settime_s($(this));
                     //发起ajax请求，发送验证码
-                    $.ajax({
-                        type: "post",
-                        url: "http://localhost:8080/blm_war_exploded/user/sendsms/"+$shop_mobile.val()+"/0",
-                        dataType: "json",
-                        headers: {'Content-Type': 'application/json'},
-                        data: JSON.stringify({
-                        }),
-                        success: function (result) {
-                            if(result.code != 20000){
-                                $errInfoList_s.eq(3).css('display','block');
-                                $errInfoList_n.eq(3).text('手机号码已经被注册！');
-                                $errContainer_s.eq(3).addClass('errState');
-                            }
-                        },
-                        error: function () {
-
-                        }
-                    })
                 }else{
                     $errInfoList_s.eq(3).css('display','none');
                     //$errInfoList_n.eq(3).text('手机号码已经被注册！');
@@ -634,49 +596,7 @@
                 }
             }
         })
-        //店铺名
-        $shop_shopname.focus(function () {
-            $(window).keydown(function () {
-                $(window).keyup(function () {
-                    if($shop_shopname.val() == ''){
-                        $errInfoList_s.eq(5).css('display','block');
-                        $errContainer_s.eq(5).addClass('errState');
-                    }else{
-                        $errInfoList_s.eq(5).css('display','none');
-                        $errContainer_s.eq(5).removeClass('errState');
-                    }
-                })
-            })
-        })
-        //详细地址
-        $shop_detailplace.focus(function () {
-            $(window).keydown(function () {
-                $(window).keyup(function () {
-                    if($shop_detailplace.val() == ''){
-                        $errInfoList_s.eq(8).css('display','block');
-                        $errContainer_s.eq(8).addClass('errState');
-                    }else{
-                        $errInfoList_s.eq(8).css('display','none');
-                        $errContainer_s.eq(8).removeClass('errState');
-                    }
-                })
-            })
-        })
-        //联系电话
-        $shop_email.focus(function () {
-            $(window).keydown(function () {
-                $(window).keyup(function () {
-                    if (!testEmail($shop_email.val())) {
-                        $errInfoList_s.eq(6).css('display', 'block');
-                        $errContainer_s.eq(6).addClass('errState');
-                    } else {
-                        $errInfoList_s.eq(6).css('display', 'none');
-                        $errContainer_s.eq(6).removeClass('errState');
-                    }
 
-                })
-            })
-        })
         //省区域按下
         $province.click(function(){
             if($provinceState ==1){
@@ -775,187 +695,7 @@
             }
 
         })
-        //文件上传
-        let fileInput = document.querySelector('.shopForm .fileupload input');
-        let fileDrag = document.querySelector('.shopForm .fileupload .pic-show');
-        let fileImgShow = document.querySelector('.shopForm .fileupload .img-show');
-        let fileSubmit = document.querySelector('.shopForm .fileupload .file-submit');
 
-
-        // 文件数组
-                let arr = [],
-        // 文件大小
-                    aSize = [],
-        // 文件名称
-                    aTitle = [];
-
-        var formData = new FormData();
-
-        //文件上传
-        // 接收拖拽文件
-        fileDrag.ondragenter = function () {
-            this.innerText = '请释放鼠标';
-        }
-        fileDrag.ondragover = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        fileDrag.ondragleave = function () {
-            this.innerText = '请将图片拖拽到此区域';
-        }
-        fileDrag.ondrop = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            for( let i=0,len=e.dataTransfer.files.length;i<len;i++){
-                let files = e.dataTransfer.files.item(i);
-                if(/image/.test(files.type)){
-                    arr.push(files);
-                    aSize.push(files.size);
-                    aTitle.push(files.name);
-                    readerFile(files);
-                }
-            }
-        }
-
-        fileInput.onchange = function(){
-            if( this.value ){
-                if( this.files.length ){
-                    for( let i=0,len=this.files.length;i<len;i++ ){
-                        let files = this.files.item(i);
-                        arr.push(files);
-                        aSize.push(files.size);
-                        aTitle.push(files.name);
-
-                        readerFile(files);
-                    }
-                }
-                this.value = '';
-            }
-        }
-
-        // 图片预览
-        function readerFile(files) {
-            // 不推荐用文件读取对象 FileReader 读取 data base64二进制数据 的字符串
-            let  blob= new Blob([files]);
-            let url = window.URL.createObjectURL(blob);
-            let div = document.createElement('div');
-            div.innerHTML = '<img src="'+url+'" width="100%" height="100%" /><p></p>';
-            fileImgShow.appendChild(div);
-            count();
-        }
-
-        // 计算 图片个数 大小名称
-        function count() {
-            let aDiv = fileImgShow.querySelectorAll('div');
-
-            // 图片的个数
-            //$('#picLen').innerText = arr.length;
-            // 图片的总大小
-
-            // if(!aSize[0]){
-            //     $('#picSize').innerText = 0;
-            // }else{
-            //     $('#picSize').innerText = (eval(aSize.join('+'))/1024/1024).toFixed(2);
-            // }
-            let aP = fileImgShow.querySelectorAll('p');
-            aP.forEach((item,index)=>{
-                item.innerHTML = aTitle[index] + '<i></i>';
-            })
-            del();
-        }
-
-        // 删除 文件数组 li
-        function del() {
-            let aDiv = fileImgShow.querySelectorAll('div');
-            aDiv.forEach((item,index)=>{
-                item.children[1].children[0].addEventListener('click',function (e) {
-                    arr.splice(index,1);
-                    aSize.splice(index,1);
-                    fileImgShow.removeChild(aDiv[index]);
-                    count();
-                })
-            })
-        }
-
-        //文件上传
-        fileSubmit.onclick = function(){
-
-            if(arr.length >= 2){
-                alert('图片只能上传一张！');
-            }else{
-                console.log(arr[0]);
-                formData.append("pic",arr[0]);
-                $.ajax({
-                    type: "post",
-                    url: "http://localhost:8080/blm_war_exploded/user/certurl",
-                    dataType: "json",
-                    contentType:false,  //不需要头
-                    processData:false,  //不转换数据
-                    data: formData,
-                    success: function (result) {
-                        if(result.code == 20000){
-                            imgKey = result.data;
-                        }
-                    },
-                    error: function () {
-                    }
-                })
-            }
-        }
-
-
-        //商家点击注册
-        let $shop_regBtn = $('.shopForm .regBtn .toReg');
-        $shop_regBtn.click(function () {
-            let username = $shop_username.val();
-            let userpwd = $shop_userpwd.val();
-            let mobile = $shop_mobile.val();
-            let mobileCode = $shop_mobilecode.val();
-            let shopemail = $shop_email.val();
-            let shopname = $shop_shopname.val();
-            let shopArea = $shop_sheng.text() + ' ' + $shop_shi.text() + ' ' + $shop_qu.text();
-            let shopAddress = $shop_detailplace.val();
-
-            if(shopname == ''){
-                $errInfoList_s.eq(5).css('display','block');
-                $errContainer_s.eq(5).addClass('errState');
-            }
-            if(shopAddress == ''){
-                $errInfoList_s.eq(8).css('display','block');
-                $errContainer_s.eq(8).addClass('errState');
-            }
-
-            let dataObj = new Object();
-            dataObj.user = {
-                username : username,
-                password : userpwd,
-                phone : mobile
-            };
-            dataObj.storeDetail ={
-                storename : shopname,
-                email : shopemail,
-                tel : mobile,
-                area: shopArea,
-                storeaddress : shopAddress
-            }
-            dataObj.key = imgKey;
-
-            $.ajax({
-                type: "post",
-                url: "http://localhost:8080/blm_war_exploded/user",
-                dataType: "json",
-                headers: {'Content-Type': 'application/json'},
-                data: JSON.stringify({
-
-                }),
-                success: function (result) {
-
-                },
-                error: function () {
-
-                }
-            })
-        })
 
     })
 </script>

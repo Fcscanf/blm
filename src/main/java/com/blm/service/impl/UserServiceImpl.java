@@ -49,24 +49,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private OSSClientUtil ossClientUtil;
 
-    private String template_code_regist;
+    private String template_code;
     private String sign_name;
-    private String template_code_login;
 
-    public String getTemplate_code_regist() {
-        return template_code_regist;
+    public String getTemplate_code() {
+        return template_code;
     }
 
-    public void setTemplate_code_regist(String template_code_regist) {
-        this.template_code_regist = template_code_regist;
-    }
-
-    public String getTemplate_code_login() {
-        return template_code_login;
-    }
-
-    public void setTemplate_code_login(String template_code_login) {
-        this.template_code_login = template_code_login;
+    public void setTemplate_code(String template_code) {
+        this.template_code = template_code;
     }
 
     public String getSign_name() {
@@ -76,23 +67,6 @@ public class UserServiceImpl implements UserService {
     public void setSign_name(String sign_name) {
         this.sign_name = sign_name;
     }
-
-//    public String getTemplate_code_login() {
-//        return template_code_login;
-//    }
-//
-//    public void setTemplate_code_login(String template_code_login) {
-//        this.template_code_login = template_code_login;
-//    }
-//
-//    public String getTemplate_code_regist() {
-//        return template_code_regist;
-//    }
-//
-//    public void setTemplate_code_regist(String template_code_regist) {
-//        this.template_code_regist = template_code_regist;
-//    }
-
 
     /**
      * 用户注册
@@ -136,7 +110,7 @@ public class UserServiceImpl implements UserService {
      * @param phone
      */
     @Override
-    public void sendMsg(String phone,String code1){
+    public void sendMsg(String phone){
         String checkcode = RandomStringUtils.randomNumeric(6);
         redisTemplate.opsForValue().set("checkcode_"+phone,checkcode, 6,TimeUnit.HOURS);
 //        Map<String,String> map = new HashMap<>();
@@ -146,12 +120,7 @@ public class UserServiceImpl implements UserService {
         //rabbitmq消费短息的发送先不做
 //        amqpTemplate.convertAndSend("sms",map);
         try {
-            if ("1".equals(code1)){
-                smsUtil.sendSms(phone,template_code_login,sign_name," {\"code\":\""+ checkcode +"\"}");
-            }
-            if ("0".equals(code1)){
-                smsUtil.sendSms(phone,template_code_regist,sign_name," {\"code\":\""+ checkcode +"\"}");
-            }
+            smsUtil.sendSms(phone,template_code,sign_name," {\"code\":\""+ checkcode +"\"}");
         }catch (ClientException e){
             e.printStackTrace();
         }

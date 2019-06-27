@@ -144,7 +144,7 @@ $(function () {
             success:function (result) {
                 console.info(result.code)
                 if (result.code==20000){
-                    window.location.href="http://localhost:8080/blm_war_exploded/food/gethome"
+                    window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
                 }
             },
             error:function () {
@@ -174,10 +174,9 @@ $(function () {
             }),
             success:function (result) {
                 console.info(result)
-                window.location.href="http://localhost:8080/blm_war_exploded/food/gethome"
+                window.location.href="http://localhost:8080/blm_war_exploded/user/getstoreManage"
             },
             error:function () {
-
             }
         })
     }
