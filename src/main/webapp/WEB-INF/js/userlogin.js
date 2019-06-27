@@ -173,8 +173,8 @@ $(function () {
                 "phone":phone,
             }),
             success:function (result) {
-                console.info(result)
-                window.location.href="http://localhost:8080/blm_war_exploded/food/gethome"
+                console.log(result);
+                //window.location.href="http://localhost:8080/blm_war_exploded/food/gethome?phone="+phone;
             },
             error:function () {
 
